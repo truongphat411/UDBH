@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/aqua"
+        android:id="@+id/top">
+        <ImageButton
+            android:id="@+id/imgb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/aqua"
+            android:src="@drawable/back_icon" />
+        <EditText
+            android:id="@+id/txtSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/search_bar_drawable"
+            android:hint="Bánh,Kẹo,...."
+            android:layout_margin="10dp"
+            android:textColorHint="@color/black"
+            android:layout_toRightOf="@+id/imgb"
+            android:textSize="15dp"/>
+    </RelativeLayout>
+    <ListView
+        android:layout_width="match_parent"
+        android:id="@+id/listview"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top"/>
+</RelativeLayout>

@@ -37,6 +37,7 @@ public class gioHangTinhTien extends Fragment {
     private int tongtien = 0;
     public static int TT;
     gioHangAdapter gioHangAdapter;
+
     public ImageView getTxtChecked() {
         return txtChecked;
     }
@@ -83,7 +84,7 @@ public class gioHangTinhTien extends Fragment {
             public void onClick(View v) {
                 if (MainActivity.dadangnhap == true && MainActivity.listGH.size() == 0) {
                     Toast.makeText(getActivity(), "Giỏ hàng đang trống", Toast.LENGTH_SHORT).show();
-                } else if(MainActivity.dadangnhap == true && MainActivity.listGH.size() > 0){
+                } else if(MainActivity.dadangnhap && MainActivity.listGH.size() > 0){
                     giohangthongtin fragment = new giohangthongtin();
                     FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.framelayoutGioHang, fragment);

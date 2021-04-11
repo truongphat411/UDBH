@@ -40,6 +40,7 @@ public class FragmentDangNhap extends Fragment {
         edtmatkhau = view.findViewById(R.id.edtmatkhau);
         btnDangNhap = view.findViewById(R.id.btnDangNhap);
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
+            
             @Override
             public void onClick(View v) {
                 if(!validateTenDangNhap() | !validateMatKhau()){

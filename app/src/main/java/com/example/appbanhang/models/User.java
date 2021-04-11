@@ -23,6 +23,7 @@ public class User {
         return matkhau;
     }
 
+
     public void setMatkhau(String matkhau) {
         this.matkhau = matkhau;
     }

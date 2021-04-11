@@ -91,6 +91,7 @@ public class gioHangTinhTien extends Fragment {
                     fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();
                     txtChecked.setBackgroundResource(R.drawable.circle);
+
                     txtUnchecked.setBackgroundResource(R.drawable.circle);
                 }else {
                     Intent intent = new Intent(getActivity(), FormDNDK.class);

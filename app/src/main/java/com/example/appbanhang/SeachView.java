@@ -147,7 +147,7 @@ public class SeachView extends AppCompatActivity {
                         }
                     });
                     if (isDaTonTai.get() == false) {
-                        SanPham sp = new SanPham(key, tensp, hinhsp, giasp, tenth, motasp, idTH, giaSPStr,false, 0,0);
+                        SanPham sp = new SanPham(key, tensp, hinhsp, giasp, tenth, motasp, idTH,false, 0);
                         if (HomePage.ten.equals(tenth)) {
                             list.add(sp);
                         }

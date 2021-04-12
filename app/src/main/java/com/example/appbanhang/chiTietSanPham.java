@@ -58,14 +58,11 @@ public class chiTietSanPham extends AppCompatActivity {
                 });
                 if( sanPhamSelected.getSoluong() == 0) {
                     sanPhamSelected.setSoluong(sanPhamSelected.getSoluong() + 1);
-                    sanPhamSelected.setTongtien(sanPhamSelected.getSoluong()*sanPhamSelected.getGiaSP());
                     MainActivity.listGH.add(sanPhamSelected);
-
                     Toast.makeText(chiTietSanPham.this, "thêm giỏ hàng thành công", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     sanPhamSelected.setSoluong(sanPhamSelected.getSoluong() + 1);
-                    sanPhamSelected.setTongtien(sanPhamSelected.getSoluong()*sanPhamSelected.getGiaSP());
                     Toast.makeText(chiTietSanPham.this, "thêm giỏ hàng thành công", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -83,9 +80,9 @@ public class chiTietSanPham extends AppCompatActivity {
         int gia = intent.getIntExtra("gia",0);
         String mota = intent.getStringExtra("mota");
         String tenth = intent.getStringExtra("tenth");
-        String giaSPStr = intent.getStringExtra("giastr");
+        int idth = intent.getIntExtra("idTH",0);
 
-        sanPhamSelected = new SanPham(id,ten,hinh,gia,"",mota,0,giaSPStr , false, 0,0);
+        sanPhamSelected = new SanPham(id,ten,hinh,gia,tenth,mota,idth, false, 0);
 
         MainActivity.HINH = hinh;
         MainActivity.GIA = gia;

@@ -15,16 +15,6 @@ public class SanPham {
     public int giaSP;
     public String giaSPStr;
     public boolean isYeuThich;
-
-    public int getTongtien() {
-        return tongtien;
-    }
-
-    public void setTongtien(int tongtien) {
-        this.tongtien = tongtien;
-    }
-
-    public int tongtien;
     public int getSoluong() {
         return soluong;
     }
@@ -41,15 +31,6 @@ public class SanPham {
     public void setYeuThich(boolean yeuThich) {
         isYeuThich = yeuThich;
     }
-
-    public String getGiaSPStr() {
-        return giaSPStr;
-    }
-
-    public void setGiaSPStr(String giaSPStr) {
-        this.giaSPStr = giaSPStr;
-    }
-
     public String tenTH;
     public String motaSP;
     public int idTH;
@@ -70,7 +51,7 @@ public class SanPham {
         this.motaSP = motaSP;
     }
 
-    public SanPham(String ID, String tenSP, String hinhSP, int giaSP, String tenTH, String motaSP,int idTH,String giaSPStr,boolean isYeuThich, int soluong,int tongtien) {
+    public SanPham(String ID, String tenSP, String hinhSP, int giaSP, String tenTH, String motaSP,int idTH,boolean isYeuThich, int soluong) {
         this.ID = ID;
         this.tenSP = tenSP;
         this.hinhSP = hinhSP;
@@ -78,10 +59,8 @@ public class SanPham {
         this.tenTH = tenTH;
         this.motaSP = motaSP;
         this.idTH = idTH;
-        this.giaSPStr = giaSPStr;
         this.isYeuThich = isYeuThich;
         this.soluong = soluong;
-        this.tongtien = tongtien;
     }
 
     public String getTenSP() {

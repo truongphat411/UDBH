@@ -27,7 +27,7 @@ import java.util.Calendar;
 public class giohangthongtin extends Fragment {
     EditText edthoten,edtsodienthoai,edtdiachi;
     Button btnHoanTat;
-    SanPham sanPham;
+    SanPham sanpham;
     HoaDon hoaDon;
     ChiTietHoaDon chiTietHoaDon;
     DatabaseReference referenceHD;
@@ -67,12 +67,13 @@ public class giohangthongtin extends Fragment {
                     HoaDon hoaDon = new HoaDon(keyHD,gioHangTinhTien.TT,ngaytaodon,ngayhoanthanh,hoten,sodienthoai,diachi,trangthai,MainActivity.id);
                     referenceHD.child(keyHD).setValue(hoaDon);
                     Toast.makeText(view.getContext(), "Tạo đơn hàng thành công", Toast.LENGTH_LONG).show();
-//                    MainActivity.listGH.forEach(sanPham -> {
-//                        String keyCTHD = referenceCTHD.push().getKey();
-//                        int gia = sanPham.getGiaSP();
-//                        String hinh = sanPham.getHinhSP();
-//                        String tensp = sanPham.getTenSP();
-//                    });
+                    MainActivity.listGH.forEach(sanPham -> {
+                        String keyCTHD = referenceCTHD.push().getKey();
+                        String idSP = sanPham.getID();
+                        int soluong = sanPham.getSoluong();
+                        chiTietHoaDon = new ChiTietHoaDon(keyCTHD,idSP,keyHD,soluong);
+                        referenceCTHD.child(keyCTHD).setValue(chiTietHoaDon);
+                    });
                 }
             }
         });

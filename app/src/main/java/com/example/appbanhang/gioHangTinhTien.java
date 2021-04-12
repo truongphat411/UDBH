@@ -73,7 +73,7 @@ public class gioHangTinhTien extends Fragment {
         gioHangAdapter = new gioHangAdapter(getActivity(), MainActivity.listGH, txttongtien);
         lvgh.setAdapter(gioHangAdapter);
         MainActivity.listGH.forEach(sanPham -> {
-            tongtien += sanPham.getTongtien();
+            tongtien += (sanPham.getSoluong()*sanPham.getGiaSP());
             txttongtien.setText("Giá: " + tongtien +" VNĐ");
             TT = tongtien;
         });

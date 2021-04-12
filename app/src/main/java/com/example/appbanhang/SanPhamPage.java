@@ -79,7 +79,7 @@ public class SanPhamPage extends AppCompatActivity {
                 intent.putExtra("gia", sanPhamItem.getGiaSP());
                 intent.putExtra("mota", sanPhamItem.getMotaSP());
                 intent.putExtra("tenth", sanPhamItem.getTenTH());
-                intent.putExtra("giastr", sanPhamItem.getGiaSPStr());
+                intent.putExtra("idTH",sanPhamItem.getIdTH());
                 startActivity(intent);
             }
         });
@@ -135,7 +135,7 @@ public class SanPhamPage extends AppCompatActivity {
                     /// nó phải cùng thương hiệu với homepage khi click vào
                     if (isDaTonTai.get() == false && isThuongHieu.get() == true) {
                         /// -> them vao
-                        SanPham sp = new SanPham(key, tensp, hinhsp, giasp, tenth, motasp, idTH, giaSPStr, isYeuThich.get(), 0,0);
+                        SanPham sp = new SanPham(key, tensp, hinhsp, giasp, tenth, motasp, idTH, isYeuThich.get(), 0);
                         list.add(sp);
 //                        if (HomePage.ten.equals(tenth)) {
 //                            list.add(sp);

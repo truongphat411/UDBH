@@ -40,6 +40,7 @@ public class userAdapter extends RecyclerView.Adapter<userAdapter.ViewHolder>{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext,chiTietUser.class);
+                intent.putExtra("id",userList.get(position).getId());
                 intent.putExtra("hoten",userList.get(position).getHoten());
                 intent.putExtra("sodienthoai",userList.get(position).getSodienthoai());
                 intent.putExtra("diachi",userList.get(position).getDiachi());

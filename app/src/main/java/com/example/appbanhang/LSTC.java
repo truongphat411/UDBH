@@ -1,8 +1,11 @@
 package com.example.appbanhang;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -62,8 +65,8 @@ public class LSTC extends AppCompatActivity {
                         String sodienthoaiFromDatabase = snapshot.child(childKey).child("sodienthoaiUser").getValue(String.class);
                         String ngaygioFromDatabase = snapshot.child(childKey).child("ngaygio").getValue(String.class);
                         String trangthaiFromDatabase = snapshot.child(childKey).child("trangthai").getValue(String.class);
-                        LichSuTruyCap truyCap = new LichSuTruyCap(tenFromDatabase,sodienthoaiFromDatabase,ngaygioFromDatabase,trangthaiFromDatabase);
-                        truyCapArrayList.add(truyCap);
+                            LichSuTruyCap truyCap = new LichSuTruyCap(tenFromDatabase, sodienthoaiFromDatabase, ngaygioFromDatabase, trangthaiFromDatabase);
+                            truyCapArrayList.add(truyCap);
                     }
                     lichSuTruyCapAdapter.notifyDataSetChanged();
                 }
@@ -74,5 +77,15 @@ public class LSTC extends AppCompatActivity {
 
             }
         });
+    }
+    protected void onStart() {
+        super.onStart();
+        getSupportActionBar().hide();
+        if (Build.VERSION.SDK_INT >= 21) {
+            Window window = this.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(R.color.aqua));
+        }
     }
 }

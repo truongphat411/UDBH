@@ -42,6 +42,7 @@ public class chiTietUser extends AppCompatActivity {
         Intent intent = getIntent();
         cbNam.setEnabled(false);
         cbNu.setEnabled(false);
+        reference = FirebaseDatabase.getInstance().getReference().child("taikhoan");
         if(intent.hasExtra("hoten") && intent.hasExtra("sodienthoai") && intent.hasExtra("diachi") && intent.hasExtra("ngaysinh") && intent.hasExtra("gioitinh"))
         {
              ngaysinh = intent.getStringExtra("ngaysinh");
@@ -69,19 +70,22 @@ public class chiTietUser extends AppCompatActivity {
         btnKhoaTaiKhoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                reference = FirebaseDatabase.getInstance().getReference().child("taikhoan");
+
                 Query query = reference.orderByChild("sodienthoai").equalTo(sodienthoai);
 
                 query.addValueEventListener(new ValueEventListener() {
                     @SuppressLint("ResourceAsColor")
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            reference.child(sodienthoai).child("hoatdong").setValue(false);
-                            btnKhoaTaiKhoan.setEnabled(false);
-                            btnKhoaTaiKhoan.setBackgroundColor(getResources().getColor(R.color.grey));
-                            Toast.makeText(chiTietUser.this, "Đã khóa tài khoản", Toast.LENGTH_SHORT).show();
-                            query.removeEventListener(this);
+                        for(DataSnapshot ds : snapshot.getChildren()) {
+                            if (snapshot.exists()) {
+                                String key = ds.getKey();
+                                reference.child(key).child("hoatdong").setValue(false);
+                                btnKhoaTaiKhoan.setEnabled(false);
+                                btnKhoaTaiKhoan.setBackgroundColor(getResources().getColor(R.color.grey));
+                                Toast.makeText(chiTietUser.this, "Đã khóa tài khoản", Toast.LENGTH_SHORT).show();
+                                query.removeEventListener(this);
+                            }
                         }
                     }
                     @Override
@@ -100,12 +104,15 @@ public class chiTietUser extends AppCompatActivity {
                     @SuppressLint("ResourceAsColor")
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            reference.child(sodienthoai).child("hoatdong").setValue(true);
-                            btnKhoaTaiKhoan.setEnabled(true);
-                            btnKhoaTaiKhoan.setBackgroundColor(getResources().getColor(R.color.aqua));
-                            Toast.makeText(chiTietUser.this, "Đã mở khóa tài khoản", Toast.LENGTH_SHORT).show();
-                            query.removeEventListener(this);
+                        for(DataSnapshot ds : snapshot.getChildren()) {
+                            if (snapshot.exists()) {
+                                String key = ds.getKey();
+                                reference.child(key).child("hoatdong").setValue(true);
+                                btnKhoaTaiKhoan.setEnabled(true);
+                                btnKhoaTaiKhoan.setBackgroundColor(getResources().getColor(R.color.aqua));
+                                Toast.makeText(chiTietUser.this, "Đã mở khóa tài khoản", Toast.LENGTH_SHORT).show();
+                                query.removeEventListener(this);
+                            }
                         }
                     }
                     @Override
@@ -138,6 +145,38 @@ public class chiTietUser extends AppCompatActivity {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.setStatusBarColor(this.getResources().getColor(R.color.aqua));
         }
+        Query query = reference.orderByChild("sodienthoai").equalTo(sodienthoai);
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int count = 0;
+
+                for(DataSnapshot ds : snapshot.getChildren()){
+                    count ++;
+                    String key = ds.getKey();
+                    DataSnapshot childHoatDong = ds.child("hoatdong");
+                    Boolean isHoatdong = childHoatDong.getValue(boolean.class);
+                    if(!isHoatdong){
+                        btnKhoaTaiKhoan.setEnabled(false);
+                        btnKhoaTaiKhoan.setBackgroundColor(getResources().getColor(R.color.grey));
+                    }else {
+                        btnKhoaTaiKhoan.setEnabled(true);
+                    }
+                    query.removeEventListener(this);
+                }
+                Log.d("MTL", "onDataChange: " + count);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
 }

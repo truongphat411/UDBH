@@ -123,11 +123,14 @@ public class FragmentDangNhap extends Fragment {
                                 Calendar calendar = Calendar.getInstance();
                                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
                                 String ngaygio = sdf.format(calendar.getTime());
-                                lichSuTruyCap = new LichSuTruyCap(hotenFromDB,sodienthoaiFromDB,ngaygio,"Đăng Nhập");
-                                referenceLSTC.child(keyLSTC).setValue(lichSuTruyCap);
+                                if(MainActivity.tenLoai.equals("client")) {
+                                    lichSuTruyCap = new LichSuTruyCap(hotenFromDB, sodienthoaiFromDB, ngaygio, "Đăng Nhập");
+                                    referenceLSTC.child(keyLSTC).setValue(lichSuTruyCap);
+                                }
                                 Toast.makeText(getContext(),"Đăng Nhập Thành Công",Toast.LENGTH_LONG).show();
                                 getActivity().finish();
                             }
+
                             else {
                                 AlertDialog alertDialog   = new AlertDialog.Builder(getActivity()).create();
                                 alertDialog.setTitle("Thông báo");

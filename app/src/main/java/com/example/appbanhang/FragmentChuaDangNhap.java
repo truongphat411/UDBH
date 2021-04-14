@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ public class FragmentChuaDangNhap extends Fragment {
         View view = inflater.inflate(R.layout.fragmentchuadangnhap,container,false);
         txtDNDK = (TextView) view.findViewById(R.id.txtDNDK);
         txtXemTT = (TextView) view.findViewById(R.id.txtXemTT);
+
         txtDNDK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

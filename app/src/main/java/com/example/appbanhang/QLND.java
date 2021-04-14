@@ -1,11 +1,13 @@
 package com.example.appbanhang;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -29,14 +31,23 @@ public class QLND extends AppCompatActivity {
     private ArrayList<User> userArrayList;
     DatabaseReference reference;
     private userAdapter adapter;
-    private Context mContext;
+
+    Button btnXemLSTC;
     ImageView imgback;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.qlnd);
+        btnXemLSTC = findViewById(R.id.btnxemLSTC);
         recyclerView = findViewById(R.id.rv);
         imgback =  findViewById(R.id.imgBack);
+        btnXemLSTC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(QLND.this,LSTC.class);
+                startActivity(intent);
+            }
+        });
         imgback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +71,6 @@ public class QLND extends AppCompatActivity {
         }
         userArrayList = new ArrayList<>();
     }
-
     private void GetDataFromFireBase(){
         Query query = reference.orderByChild("tenLoai").equalTo("client");
         query.addValueEventListener(new ValueEventListener() {

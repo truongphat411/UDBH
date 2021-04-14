@@ -1,6 +1,10 @@
 package com.example.appbanhang;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +15,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 
@@ -45,6 +50,21 @@ public class FragmentAdmin  extends Fragment {
                 startActivity(intent);
             }
         });
+        btnDangXuat.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onClick(View v) {
+                restartApp();
+            }
+        });
         return view;
+    }
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void restartApp() {
+        Intent intent = new Intent(this.getContext(), MainActivity.class);
+        PendingIntent mPendingIntent = PendingIntent.getActivity(this.getContext(), 1000, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        AlarmManager mgr = (AlarmManager) this.getContext().getSystemService(Context.ALARM_SERVICE);
+        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+        System.exit(0);
     }
 }

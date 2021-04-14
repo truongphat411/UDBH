@@ -1,5 +1,6 @@
 package com.example.appbanhang;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -63,7 +64,7 @@ public class giohangthongtin extends Fragment {
                     String keyHD = referenceHD.push().getKey();
                     String ngaytaodon = sdf.format(myCalendar.getTime());
                     String ngayhoanthanh = "";
-                    String trangthai = "Đặt hàng";
+                    String trangthai = "Tạo đơn";
                     HoaDon hoaDon = new HoaDon(keyHD,gioHangTinhTien.TT,ngaytaodon,ngayhoanthanh,hoten,sodienthoai,diachi,trangthai,MainActivity.id);
                     referenceHD.child(keyHD).setValue(hoaDon);
                     Toast.makeText(view.getContext(), "Tạo đơn hàng thành công", Toast.LENGTH_LONG).show();
@@ -74,6 +75,9 @@ public class giohangthongtin extends Fragment {
                         chiTietHoaDon = new ChiTietHoaDon(keyCTHD,idSP,keyHD,soluong);
                         referenceCTHD.child(keyCTHD).setValue(chiTietHoaDon);
                     });
+                    Intent intent = new Intent(getActivity(),donMua.class);
+                    intent.putExtra("idHD",keyHD);
+                    startActivity(intent);
                 }
             }
         });

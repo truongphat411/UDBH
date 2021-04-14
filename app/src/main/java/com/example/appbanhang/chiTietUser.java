@@ -139,4 +139,5 @@ public class chiTietUser extends AppCompatActivity {
             window.setStatusBarColor(this.getResources().getColor(R.color.aqua));
         }
     }
+
 }

@@ -20,9 +20,10 @@
         <activity android:name=".SanPhamPage" />
         <activity android:name=".chiTietSanPham" />
         <activity android:name=".FormTTCN" />
-        <activity android:name=".tienDoGiaoHang"/>
+        <activity android:name=".LSTC"/>
         <activity android:name=".QLND"/>
         <activity android:name=".chiTietUser"/>
+        <activity android:name=".donMua"/>
     </application>
 
 </manifest>

@@ -16,7 +16,6 @@ import com.example.appbanhang.models.User;
 import java.util.ArrayList;
 
 public class userAdapter extends RecyclerView.Adapter<userAdapter.ViewHolder>{
-    public static final String Tag = "RecyclerView";
     private Context mContext;
     private ArrayList<User> userList;
 

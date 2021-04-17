@@ -3,6 +3,7 @@ package com.example.appbanhang;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,15 +19,18 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 
 import com.example.appbanhang.models.SanPham;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class gioHangAdapter extends BaseAdapter {
     private Context context;
     private LayoutInflater inflater;
     ArrayList<SanPham> sanPham;
     private int tongtien;
+    public static final  String SHARED_PREFS = "sharedPrefs";
     private TextView txttongtien;
     public gioHangAdapter(Context context, ArrayList<SanPham> sanPham,TextView txttongtien ) {
         this.context = context;
@@ -84,6 +88,7 @@ public class gioHangAdapter extends BaseAdapter {
                     tongtien += (sanPham.getSoluong()*sanPham.getGiaSP());
                     txttongtien.setText("Giá: " + tongtien+" VNĐ");
                 });
+                saveData();
                 tongtien = 0;
             }
         });
@@ -100,8 +105,8 @@ public class gioHangAdapter extends BaseAdapter {
                         tongtien += (sanPham.getSoluong()*sanPham.getGiaSP());
                         txttongtien.setText("Giá: " + tongtien+" VNĐ");
                     });
+                    saveData();
                     tongtien = 0;
-
                 }else {
                     DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                         @Override
@@ -113,13 +118,16 @@ public class gioHangAdapter extends BaseAdapter {
                                         tongtien += (sanPham.getSoluong()*sanPham.getGiaSP());
                                         txttongtien.setText("Giá: " + tongtien+" VNĐ");
                                     });
+                                    tongtien = 0;
                                     if(MainActivity.listGH.size() == 0){
                                         txttongtien.setText("Giá: " + 0 +" VNĐ");
                                     }
+                                    saveData();
                                     notifyDataSetChanged();
                                     break;
                                 case DialogInterface.BUTTON_NEGATIVE:
                                     textView2.setText("số lượng: " + currentItem.getSoluong());
+                                    saveData();
                                     notifyDataSetChanged();
                                     break;
                             }
@@ -135,5 +143,17 @@ public class gioHangAdapter extends BaseAdapter {
         String url = currentItem.hinhSP;
         Picasso.with(context).load(url).into(imageView);
         return convertView;
+    }
+    private void saveData(){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        // creating a new variable for gson.
+        Gson gson = new Gson();
+        // getting data from gson and storing it in a string.
+        String json = gson.toJson(MainActivity.listGH);
+        //below line is to save data in shared
+        //prefs in the form of string.
+        editor.putString("listGH", json);
+        editor.apply();
     }
 }

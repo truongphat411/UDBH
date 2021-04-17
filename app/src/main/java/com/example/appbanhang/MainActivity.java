@@ -9,11 +9,17 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,7 +31,10 @@ import android.widget.Toast;
 
 import com.example.appbanhang.models.SanPham;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,22 +46,24 @@ public class MainActivity extends AppCompatActivity {
     public static Boolean dadangnhap = false;
     public static String hoten;
     public static String sodienthoai;
-    public static String matkhau;
     public static String diachi;
     public static String ngaysinh;
     public static String gioitinh;
-    public static String HINH;
-    public static String TEN;
-    public static int GIA;
     public static String ngaythamgia;
     public static String tenLoai;
+    SharedPreferences sharedPreferences;
+    public static final  String SHARED_PREFS = "sharedPrefs";
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         viewPager = findViewById(R.id.viewpapermain);
         setUpViewpaper();
+        loadData();
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -113,6 +124,8 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     protected void onStart() {
+        IntentFilter filter =new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener,filter);
         super.onStart();
         getSupportActionBar().hide();
         if (Build.VERSION.SDK_INT >= 21) {
@@ -123,4 +136,42 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
+    }
+
+    public void loadData(){
+        sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        id = sharedPreferences.getString("id",null);
+         dadangnhap = sharedPreferences.getBoolean("dadangnhap",false);
+        hoten = sharedPreferences.getString("hoten",null);
+         sodienthoai = sharedPreferences.getString("sodienthoai",null);
+        diachi = sharedPreferences.getString("diachi",null);
+        ngaysinh = sharedPreferences.getString("ngaysinh",null);
+        gioitinh = sharedPreferences.getString("gioitinh",null);
+        ngaythamgia = sharedPreferences.getString("ngaythamgia",null);
+        tenLoai = sharedPreferences.getString("tenloai",null);
+        Gson gson = new Gson();
+        // below line is to get to string present from our
+        // shared prefs if not present setting it as null.
+        String json = sharedPreferences.getString("listGH", null);
+        String json2 = sharedPreferences.getString("listYT", null);
+        // below line is to get the type of our array list.
+        Type type = new TypeToken<ArrayList<SanPham>>() {}.getType();
+        listGH = gson.fromJson(json, type);
+        listYT = gson.fromJson(json2, type);
+        // checking below if the array list is empty or not
+        if (listGH == null) {
+            // if the array list is empty
+            // creating a new array list.
+            listGH = new ArrayList<>();
+        }
+        if (listYT == null) {
+            // if the array list is empty
+            // creating a new array list.
+            listYT = new ArrayList<>();
+        }
+    }
 }

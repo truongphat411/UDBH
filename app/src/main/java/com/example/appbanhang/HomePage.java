@@ -1,9 +1,13 @@
 package com.example.appbanhang;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,17 +47,27 @@ public class HomePage extends Fragment {
     ThuongHieu thuongHieu;
     CustomAdapter customAdapter;
     ArrayAdapter<String> arrayAdapter;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home, container , false);
         gridView = view.findViewById(R.id.grid_view);
         txtSearch = view.findViewById(R.id.txtSearch);
+
+
+
+
+
         reference = FirebaseDatabase.getInstance().getReference().child("thuonghieu");
         /// lắng nghe sự thay đổi của data trên firebase
         DataFromFirebaseListener();
         customAdapter = new CustomAdapter(getActivity(), thuongHieuArrayList);
         gridView.setAdapter(customAdapter);
+
+
+
+
         txtSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -2,6 +2,7 @@ package com.example.appbanhang;
 
 import android.content.ClipData;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appbanhang.models.SanPham;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ public class sanPhamAdapter extends BaseAdapter {
     private Context context;
     private LayoutInflater inflater;
     public ArrayList<SanPham> sanPham;
+    public static final  String SHARED_PREFS = "sharedPrefs";
     public sanPhamAdapter(Context context, ArrayList<SanPham> sanpham) {
         this.context = context;
         this.sanPham = sanpham;
@@ -77,12 +80,14 @@ public class sanPhamAdapter extends BaseAdapter {
                     imageButton.setImageResource(R.drawable.favorite_icon);
                     currentItem.setYeuThich(true);
                     MainActivity.listYT.add(currentItem);
+                    saveData(context);
                     Toast.makeText(v.getContext(),"Đã Thêm Vào Yêu Thích",Toast.LENGTH_SHORT).show();
                 }
                 else {
                     currentItem.setYeuThich(false);
                     /// khi nó là false -> remove nó khỏi listYT
                     MainActivity.listYT.remove(currentItem);
+                    saveData(context);
                     notifyDataSetChanged();
                     imageButton.setImageResource(R.drawable.favorite_border_icon);
                     Toast.makeText(v.getContext(),"Xóa Khỏi Yêu Thích",Toast.LENGTH_SHORT).show();
@@ -93,5 +98,17 @@ public class sanPhamAdapter extends BaseAdapter {
         String url = sanPham.get(position).hinhSP;
         Picasso.with(context).load(url).into(imageView);
         return convertView;
+    }
+    private void saveData(Context mcontext){
+        SharedPreferences sharedPreferences = mcontext.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        // creating a new variable for gson.
+        Gson gson = new Gson();
+        // getting data from gson and storing it in a string.
+        String json2 = gson.toJson(MainActivity.listYT);
+        //below line is to save data in shared
+        //prefs in the form of string.
+        editor.putString("listYT", json2);
+        editor.apply();
     }
 }

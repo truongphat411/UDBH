@@ -72,12 +72,6 @@ public class gioHangTinhTien extends Fragment {
         txttongtien = (TextView) view.findViewById(R.id.txttongtien);
         gioHangAdapter = new gioHangAdapter(getActivity(), MainActivity.listGH, txttongtien);
         lvgh.setAdapter(gioHangAdapter);
-        MainActivity.listGH.forEach(sanPham -> {
-            tongtien += (sanPham.getSoluong()*sanPham.getGiaSP());
-            txttongtien.setText("Giá: " + tongtien +" VNĐ");
-            TT = tongtien;
-        });
-        Log.d("mtp", "onCreateView: "+tongtien);
         gioHangAdapter.notifyDataSetChanged();
         btnNhapThongTin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,11 +96,20 @@ public class gioHangTinhTien extends Fragment {
         return view;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onResume() {
         super.onResume();
         txtChecked.setBackgroundResource(R.drawable.circle);
         txtUnchecked.setBackgroundResource(R.drawable.circle2);
+        gioHangAdapter.notifyDataSetChanged();
+        MainActivity.listGH.forEach(sanPham -> {
+            tongtien += (sanPham.getSoluong()*sanPham.getGiaSP());
+            txttongtien.setText("Giá: " + tongtien +" VNĐ");
+            TT = tongtien;
+        });
         tongtien = 0;
     }
+
+
 }

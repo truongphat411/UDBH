@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -34,6 +35,7 @@ public class FragmentDaDangNhap extends Fragment {
     Button btnDangXuat;
     LichSuTruyCap lichSuTruyCap;
     DatabaseReference reference;
+    public static final  String SHARED_PREFS = "sharedPrefs";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -70,6 +72,7 @@ public class FragmentDaDangNhap extends Fragment {
                 String ngaygio = sdf.format(calendar.getTime());
                 lichSuTruyCap = new LichSuTruyCap(MainActivity.hoten,MainActivity.sodienthoai,ngaygio,"Đăng Xuất");
                 reference.child(keyLSTC).setValue(lichSuTruyCap);
+                removeSharedPreferences();
                 restartApp();
             }
         });
@@ -77,10 +80,16 @@ public class FragmentDaDangNhap extends Fragment {
     }
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void restartApp() {
-        Intent intent = new Intent(this.getContext(), MainActivity.class);
+        Intent intent = new Intent(this.getContext(), WellComeApp.class);
         PendingIntent mPendingIntent = PendingIntent.getActivity(this.getContext(), 1000, intent, PendingIntent.FLAG_CANCEL_CURRENT);
         AlarmManager mgr = (AlarmManager) this.getContext().getSystemService(Context.ALARM_SERVICE);
         mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
         System.exit(0);
+    }
+    private void  removeSharedPreferences(){
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.commit();
     }
 }

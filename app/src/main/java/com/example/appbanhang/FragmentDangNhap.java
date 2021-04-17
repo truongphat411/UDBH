@@ -28,10 +28,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.core.Constants;
+import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Objects;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 
@@ -118,6 +120,7 @@ public class FragmentDangNhap extends Fragment {
                             MainActivity.gioitinh = gioitinhFromDB;
                             MainActivity.tenLoai = tenLoaiFromDB;
                             MainActivity.ngaythamgia = ngaythamgiaFromDB;
+                            saveData();
                             if(hoatdong == true){
                                 String keyLSTC = referenceLSTC.push().getKey();
                                 Calendar calendar = Calendar.getInstance();
@@ -160,7 +163,7 @@ public class FragmentDangNhap extends Fragment {
 
     }
     public void saveData(){
-        SharedPreferences sharedPreferences = this.getContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = Objects.requireNonNull(getActivity()).getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("hoten",MainActivity.hoten);
         editor.putString("sodienthoai",MainActivity.sodienthoai);
@@ -171,12 +174,16 @@ public class FragmentDangNhap extends Fragment {
         editor.putString("tenloai",MainActivity.tenLoai);
         editor.putBoolean("daDangNhap",MainActivity.dadangnhap);
         editor.putString("id",MainActivity.id);
-        editor.putString("HINH",MainActivity.HINH);
-        editor.putString("TEN",MainActivity.TEN);
-        editor.putInt("GIA",MainActivity.GIA);
+        editor.putBoolean("dadangnhap",MainActivity.dadangnhap);
+//        // creating a new variable for gson.
+//        Gson gson = new Gson();
+//        // getting data from gson and storing it in a string.
+//        String json = gson.toJson(MainActivity.listGH);
+//        String json2 = gson.toJson(MainActivity.listYT);
+//        // below line is to save data in shared
+//        // prefs in the form of string.
+//        editor.putString("listGH", json);
+//        editor.putString("listYT", json2);
+        editor.apply();
     }
-    public void getTime(){
-
-    }
-
 }

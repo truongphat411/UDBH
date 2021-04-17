@@ -69,9 +69,9 @@ public class FragmentDonHang extends Fragment {
 
                     AtomicBoolean isHoaDon = new AtomicBoolean();
                     AtomicBoolean isTaiKhoan = new AtomicBoolean();
-//                    if(key.equals(idHD)){
-//                        isHoaDon.set(true);
-//                    }
+                    if(key.equals(idHD)){
+                        isHoaDon.set(true);
+                    }
                     if(idUser.equals(MainActivity.id)){
                         isTaiKhoan.set(true);
                     }

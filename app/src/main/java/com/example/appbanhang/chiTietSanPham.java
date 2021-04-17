@@ -1,6 +1,8 @@
 package com.example.appbanhang;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,22 +22,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.appbanhang.models.SanPham;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class chiTietSanPham extends AppCompatActivity {
     ImageView image_sanpham;
     ImageButton imBack;
     TextView txttensp, txtgiasp, txtmotasp;
-    DatabaseReference reference;
     Button btnThemGioHang;
-    static chiTietSanPham INSTANCE;
     SanPham sanPhamSelected;
+    public static final  String SHARED_PREFS = "sharedPrefs";
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chitietsanpham);
         image_sanpham = findViewById(R.id.image_sp);
+        image_sanpham.buildDrawingCache();
         txttensp = findViewById(R.id.txttenSP);
         txtgiasp = findViewById(R.id.txtgiaSP);
         txtmotasp = findViewById(R.id.txtmotaSP);
@@ -65,14 +69,11 @@ public class chiTietSanPham extends AppCompatActivity {
                     sanPhamSelected.setSoluong(sanPhamSelected.getSoluong() + 1);
                     Toast.makeText(chiTietSanPham.this, "thêm giỏ hàng thành công", Toast.LENGTH_SHORT).show();
                 }
+                saveData();
             }
 
         });
 
-        reference = FirebaseDatabase.getInstance().getReference("sanpham");
-        image_sanpham.buildDrawingCache();
-
-        Bundle extras = new Bundle();
         Intent intent = getIntent();
         String ten = intent.getStringExtra("ten");
         String id = intent.getStringExtra("id");
@@ -84,16 +85,12 @@ public class chiTietSanPham extends AppCompatActivity {
 
         sanPhamSelected = new SanPham(id,ten,hinh,gia,tenth,mota,idth, false, 0);
 
-        MainActivity.HINH = hinh;
-        MainActivity.GIA = gia;
-        MainActivity.TEN = ten;
 
-        if(SanPhamPage.tensp.equals(ten)) {
             Picasso.with(chiTietSanPham.this).load(hinh).into(image_sanpham);
             txttensp.setText(ten);
             txtmotasp.setText(mota);
             txtgiasp.setText("đ"+String.valueOf(gia));
-        }
+
     }
 
     @Override
@@ -106,5 +103,17 @@ public class chiTietSanPham extends AppCompatActivity {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.setStatusBarColor(this.getResources().getColor(R.color.aqua));
         }
+    }
+    private void saveData(){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        // creating a new variable for gson.
+        Gson gson = new Gson();
+        // getting data from gson and storing it in a string.
+        String json = gson.toJson(MainActivity.listGH);
+        //below line is to save data in shared
+        //prefs in the form of string.
+        editor.putString("listGH", json);
+        editor.apply();
     }
 }

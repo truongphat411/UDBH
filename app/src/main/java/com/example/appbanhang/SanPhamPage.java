@@ -34,8 +34,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class SanPhamPage extends AppCompatActivity {
-    public static String tensp;
+public class SanPhamPage extends AppCompatActivity { ;
     GridView gridView;
     TextView txttensp;
     ImageView iconThuongHieu;
@@ -68,10 +67,6 @@ public class SanPhamPage extends AppCompatActivity {
                 Log.d("TAG", "onItemClick: ");
                 reference = FirebaseDatabase.getInstance().getReference().child("sanpham");
                 SanPham sanPhamItem = list.get(position);
-                tensp = sanPhamItem.getTenSP();
-                MainActivity.TEN = sanPhamItem.getTenSP();
-                MainActivity.HINH = sanPhamItem.getHinhSP();
-                MainActivity.GIA = sanPhamItem.getGiaSP();
                 Intent intent = new Intent(SanPhamPage.this, chiTietSanPham.class);
                 intent.putExtra("id", sanPhamItem.getID());
                 intent.putExtra("ten", sanPhamItem.getTenSP());
@@ -163,8 +158,5 @@ public class SanPhamPage extends AppCompatActivity {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.setStatusBarColor(this.getResources().getColor(R.color.aqua));
         }
-    }
-    private void setImage(String hinh){
-
     }
 }

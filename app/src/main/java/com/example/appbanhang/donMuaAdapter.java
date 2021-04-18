@@ -26,7 +26,6 @@ public class donMuaAdapter extends RecyclerView.Adapter<donMuaAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        Log.d("MTL", "getItemCount: " + sanphamList.size());
         return sanphamList.size();
     }
 
@@ -52,7 +51,6 @@ public class donMuaAdapter extends RecyclerView.Adapter<donMuaAdapter.ViewHolder
         holder.txtgiadonmua.setText(String.valueOf(sanphamList.get(position).getGia())+"đ");
         holder.txtsoluongdonmua.setText("X"+String.valueOf(sanphamList.get(position).getSoluong()));
     }
-
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView hinh_donmua;
         TextView txttendonmua,txtgiadonmua,txtsoluongdonmua;

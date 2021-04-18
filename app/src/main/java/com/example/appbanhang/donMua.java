@@ -19,7 +19,7 @@ public class donMua extends AppCompatActivity {
     ImageButton imBack;
     TabLayout tabLayout;
     ViewPager viewPager;
-     String idHD;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +27,8 @@ public class donMua extends AppCompatActivity {
         tabLayout = findViewById(R.id.tablayout);
         imBack = findViewById(R.id.imgb);
         viewPager = findViewById(R.id.viewpaper);
+        Intent intent = getIntent();
+        String idHD = intent.getStringExtra("idHD");
         imBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,8 +36,8 @@ public class donMua extends AppCompatActivity {
             }
         });
         donMuaAdapter = new donMuaViewPaperAdapter(getSupportFragmentManager());
-        donMuaAdapter.addFragment(new FragmentTaoDon(),"Tạo đơn");
-        donMuaAdapter.addFragment(new FragmentChoXacNhan(),"Chờ xác nhận");
+        donMuaAdapter.addFragment(new FragmentChoXacNhan(),"Tạo đơn");
+        donMuaAdapter.addFragment(new FragmentChoLayHang(),"Chờ xác nhận");
         donMuaAdapter.addFragment(new FragmentDangGiao(),"Đang giao");
         donMuaAdapter.addFragment(new FragmentDaGiao(),"Đã giao");
         donMuaAdapter.addFragment(new FragmentDaHuy(),"Đã hủy");

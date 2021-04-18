@@ -5,11 +5,10 @@
     android:background="@color/aliceblue"
     android:id="@+id/framedanggiao"
     android:layout_height="match_parent">
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Đang giao"
-        android:gravity="center"
-        android:textSize="50sp"
+        android:id="@+id/listDangGiao"
+        android:background="@color/aliceblue"
         />
 </FrameLayout>

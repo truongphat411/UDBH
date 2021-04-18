@@ -28,8 +28,6 @@ import java.util.Calendar;
 public class giohangthongtin extends Fragment {
     EditText edthoten,edtsodienthoai,edtdiachi;
     Button btnHoanTat;
-    SanPham sanpham;
-    HoaDon hoaDon;
     ChiTietHoaDon chiTietHoaDon;
     DatabaseReference referenceHD;
     DatabaseReference referenceCTHD;
@@ -64,7 +62,7 @@ public class giohangthongtin extends Fragment {
                     String keyHD = referenceHD.push().getKey();
                     String ngaytaodon = sdf.format(myCalendar.getTime());
                     String ngayhoanthanh = "";
-                    String trangthai = "Tạo đơn";
+                    String trangthai = "Chờ Xác Nhận";
                     HoaDon hoaDon = new HoaDon(keyHD,gioHangTinhTien.TT,ngaytaodon,ngayhoanthanh,hoten,sodienthoai,diachi,trangthai,MainActivity.id);
                     referenceHD.child(keyHD).setValue(hoaDon);
                     Toast.makeText(view.getContext(), "Tạo đơn hàng thành công", Toast.LENGTH_LONG).show();

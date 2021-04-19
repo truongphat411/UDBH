@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.appbanhang.models.LichSuTruyCap;
 import com.example.appbanhang.models.User;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -33,7 +34,8 @@ public class FragmentDangKy extends Fragment {
     final Calendar myCalendar= Calendar.getInstance();
     FirebaseDatabase rootNode;
     DatabaseReference reference;
-
+    DatabaseReference referenceLSTC;
+    LichSuTruyCap lichSuTruyCap;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,7 +48,7 @@ public class FragmentDangKy extends Fragment {
         cbnam = view.findViewById(R.id.cbnam);
         cbnu = view.findViewById(R.id.cbnu);
         btnDangKy = view.findViewById(R.id.btnDangKy);
-
+        referenceLSTC = FirebaseDatabase.getInstance().getReference().child("lichsutruycap");
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -87,7 +89,9 @@ public class FragmentDangKy extends Fragment {
                     return;
                 }else {
                     Calendar calendar = Calendar.getInstance();
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                    SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
+                    SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                    String ngaygio = sdf2.format(calendar.getTime());
                     rootNode = FirebaseDatabase.getInstance();
                     reference = rootNode.getReference().child("taikhoan");
                     //get all the values
@@ -98,7 +102,7 @@ public class FragmentDangKy extends Fragment {
                     String bcryptHashString = BCrypt.withDefaults().hashToString(12, matkhau.toCharArray());
                     String diachi = edtdiachi.getText().toString().trim();
                     String ngaysinh = edtngaysinh.getText().toString().trim();
-                    String ngaythamgia = sdf.format(calendar.getTime());
+                    String ngaythamgia = sdf1.format(calendar.getTime());
                     String tenLoai = "client";
                     String gioitinh = "";
                     if (cbnam.isChecked()) {
@@ -108,6 +112,9 @@ public class FragmentDangKy extends Fragment {
                     }
                     User user = new User(key,hoten, sodienthoai, bcryptHashString, diachi, ngaysinh, gioitinh,tenLoai,ngaythamgia,true);
                     reference.child(key).setValue(user);
+                    String keyLSTC = referenceLSTC.push().getKey();
+                    lichSuTruyCap = new LichSuTruyCap(hoten, sodienthoai, ngaygio, "Tạo Tài Khoản");
+                    referenceLSTC.child(keyLSTC).setValue(lichSuTruyCap);
                     Toast.makeText(view.getContext(), "Đăng Ký Thành Công", Toast.LENGTH_LONG).show();
                     getActivity().finish();
                 }

@@ -19,12 +19,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appbanhang.models.LichSuTruyCap;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class chiTietUser extends AppCompatActivity {
     EditText edthoten, edtsodienthoai, edtdiachi, edtngaysinh;
@@ -34,6 +38,8 @@ public class chiTietUser extends AppCompatActivity {
     private DatabaseReference reference;
     String hoten,ngaysinh,diachi,sodienthoai,gioitinh;
     boolean hoatdong;
+    DatabaseReference referenceLSTC;
+    LichSuTruyCap lichSuTruyCap;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +49,7 @@ public class chiTietUser extends AppCompatActivity {
         cbNam.setEnabled(false);
         cbNu.setEnabled(false);
         reference = FirebaseDatabase.getInstance().getReference().child("taikhoan");
+        referenceLSTC = FirebaseDatabase.getInstance().getReference().child("lichsutruycap");
         if(intent.hasExtra("hoten") && intent.hasExtra("sodienthoai") && intent.hasExtra("diachi") && intent.hasExtra("ngaysinh") && intent.hasExtra("gioitinh"))
         {
              ngaysinh = intent.getStringExtra("ngaysinh");
@@ -72,18 +79,23 @@ public class chiTietUser extends AppCompatActivity {
             public void onClick(View v) {
 
                 Query query = reference.orderByChild("sodienthoai").equalTo(sodienthoai);
-
                 query.addValueEventListener(new ValueEventListener() {
                     @SuppressLint("ResourceAsColor")
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for(DataSnapshot ds : snapshot.getChildren()) {
                             if (snapshot.exists()) {
+                                Calendar calendar = Calendar.getInstance();
+                                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                                String ngaygio = sdf.format(calendar.getTime());
                                 String key = ds.getKey();
                                 reference.child(key).child("hoatdong").setValue(false);
                                 btnKhoaTaiKhoan.setEnabled(false);
                                 btnKhoaTaiKhoan.setBackgroundColor(getResources().getColor(R.color.grey));
                                 Toast.makeText(chiTietUser.this, "Đã khóa tài khoản", Toast.LENGTH_SHORT).show();
+                                String keyLSTC = referenceLSTC.push().getKey();
+                                lichSuTruyCap = new LichSuTruyCap(hoten, sodienthoai, ngaygio, "Đã khóa tài khoản");
+                                referenceLSTC.child(keyLSTC).setValue(lichSuTruyCap);
                                 query.removeEventListener(this);
                             }
                         }
@@ -106,11 +118,17 @@ public class chiTietUser extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for(DataSnapshot ds : snapshot.getChildren()) {
                             if (snapshot.exists()) {
+                                Calendar calendar = Calendar.getInstance();
+                                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                                String ngaygio = sdf.format(calendar.getTime());
                                 String key = ds.getKey();
                                 reference.child(key).child("hoatdong").setValue(true);
                                 btnKhoaTaiKhoan.setEnabled(true);
                                 btnKhoaTaiKhoan.setBackgroundColor(getResources().getColor(R.color.aqua));
                                 Toast.makeText(chiTietUser.this, "Đã mở khóa tài khoản", Toast.LENGTH_SHORT).show();
+                                String keyLSTC = referenceLSTC.push().getKey();
+                                lichSuTruyCap = new LichSuTruyCap(hoten, sodienthoai, ngaygio, "Đã mở khóa tài khoản");
+                                referenceLSTC.child(keyLSTC).setValue(lichSuTruyCap);
                                 query.removeEventListener(this);
                             }
                         }
@@ -164,7 +182,6 @@ public class chiTietUser extends AppCompatActivity {
                     }
                     query.removeEventListener(this);
                 }
-                Log.d("MTL", "onDataChange: " + count);
             }
 
             @Override

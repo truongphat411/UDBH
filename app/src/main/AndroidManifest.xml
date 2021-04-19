@@ -27,7 +27,7 @@
         <activity android:name=".QLND"/>
         <activity android:name=".chiTietUser"/>
         <activity android:name=".donMua"/>
-
+        <activity android:name=".QLDH"/>
     </application>
 
 </manifest>

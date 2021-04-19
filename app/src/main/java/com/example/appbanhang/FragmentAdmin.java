@@ -60,6 +60,13 @@ public class FragmentAdmin  extends Fragment {
                 restartApp();
             }
         });
+        txtQLDH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), QLDH.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -76,4 +83,5 @@ public class FragmentAdmin  extends Fragment {
         editor.clear();
         editor.commit();
     }
+
 }

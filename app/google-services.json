@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "1000146048842",
-    "firebase_url": "https://appbanhang-e8274-default-rtdb.firebaseio.com",
-    "project_id": "appbanhang-e8274",
-    "storage_bucket": "appbanhang-e8274.appspot.com"
+    "project_number": "904119773541",
+    "firebase_url": "https://udbh-35c1f-default-rtdb.firebaseio.com",
+    "project_id": "udbh-35c1f",
+    "storage_bucket": "udbh-35c1f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1000146048842:android:f2c435c1a9ade3915f93b3",
+        "mobilesdk_app_id": "1:904119773541:android:70e7b5f609b7ee149cd98c",
         "android_client_info": {
           "package_name": "com.example.appbanhang"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1000146048842-q7brh0r6vs0n62e43gh6jl9lg1ki8q41.apps.googleusercontent.com",
+          "client_id": "904119773541-q7tj9gj05v8gdhkis76e8aqctd0nlk48.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD6E2W1YoYuBE75DMLx9vOsBRj4_2rwxjE"
+          "current_key": "AIzaSyB2wufNPSkiYSyqz_w5nBY4X0cN2fhyfl4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1000146048842-q7brh0r6vs0n62e43gh6jl9lg1ki8q41.apps.googleusercontent.com",
+              "client_id": "904119773541-q7tj9gj05v8gdhkis76e8aqctd0nlk48.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

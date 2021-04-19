@@ -19,6 +19,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class LSTC extends AppCompatActivity {
     DatabaseReference reference;
     ImageButton imback;
     ListView listView;
-    LichSuTruyCap truyCap;
+    DatabaseReference referenceTK;
     LichSuTruyCapAdapter lichSuTruyCapAdapter;
     ArrayList<LichSuTruyCap> truyCapArrayList;
     @Override
@@ -44,6 +45,7 @@ public class LSTC extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listLS);
         Log.d("MTP", "DataFromFirebaseListener: 3");
         reference = FirebaseDatabase.getInstance().getReference().child("lichsutruycap");
+        referenceTK = FirebaseDatabase.getInstance().getReference().child("taikhoan");
         Log.d("MTP", "DataFromFirebaseListener: 2");
         getDataFromFireBase();
         lichSuTruyCapAdapter = new LichSuTruyCapAdapter(LSTC.this,truyCapArrayList);
@@ -57,18 +59,34 @@ public class LSTC extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.getChildren() != null){
-                    for(DataSnapshot ds : snapshot.getChildren()){
-                        Log.d("MTP", "DataFromFirebaseListener: 5");
-                        String childKey = ds.getKey();
+                if(snapshot.getChildren() != null) {
+                    for (DataSnapshot danhsach : snapshot.getChildren()) {
+                        String childKey = danhsach.getKey();
                         String tenFromDatabase = snapshot.child(childKey).child("tenUser").getValue(String.class);
                         String sodienthoaiFromDatabase = snapshot.child(childKey).child("sodienthoaiUser").getValue(String.class);
                         String ngaygioFromDatabase = snapshot.child(childKey).child("ngaygio").getValue(String.class);
                         String trangthaiFromDatabase = snapshot.child(childKey).child("trangthai").getValue(String.class);
-                            LichSuTruyCap truyCap = new LichSuTruyCap(tenFromDatabase, sodienthoaiFromDatabase, ngaygioFromDatabase, trangthaiFromDatabase);
-                            truyCapArrayList.add(truyCap);
+                        referenceTK.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for (DataSnapshot ds : snapshot.getChildren()) {
+                                    String key = ds.getKey();
+                                    String sodienthoai = snapshot.child(key).child("sodienthoai").getValue(String.class);
+                                    if (sodienthoaiFromDatabase.equals(sodienthoai)) {
+                                        LichSuTruyCap truyCap = new LichSuTruyCap(tenFromDatabase, sodienthoaiFromDatabase, ngaygioFromDatabase, trangthaiFromDatabase);
+                                        truyCapArrayList.add(truyCap);
+                                    }
+                                }
+                                lichSuTruyCapAdapter.notifyDataSetChanged();
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+
+                        });
                     }
-                    lichSuTruyCapAdapter.notifyDataSetChanged();
                 }
             }
 
@@ -88,3 +106,18 @@ public class LSTC extends AppCompatActivity {
         }
     }
 }
+//                        Query query = referenceTK.orderByChild("sodienthoai").equalTo(sodienthoaiFromDatabase);
+//                        query.addListenerForSingleValueEvent(new ValueEventListener() {
+//                            @Override
+//                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                                for (DataSnapshot ds : snapshot.getChildren()) {
+//                                    if (snapshot.exists()){
+//                                        LichSuTruyCap truyCap = new LichSuTruyCap(tenFromDatabase, sodienthoaiFromDatabase, ngaygioFromDatabase, trangthaiFromDatabase);
+//                                        truyCapArrayList.add(truyCap);
+//                                    }else {
+//                                        reference.getRef().removeValue();
+//                                    }
+//                                }
+//
+//                                lichSuTruyCapAdapter.notifyDataSetChanged();
+//                            }

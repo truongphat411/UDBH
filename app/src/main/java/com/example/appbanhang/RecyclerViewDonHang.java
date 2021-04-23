@@ -2,11 +2,13 @@ package com.example.appbanhang;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,9 +35,23 @@ public class RecyclerViewDonHang extends RecyclerView.Adapter<RecyclerViewDonHan
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
         holder.txtmadonhang.setText("Mã đơn hàng: "+hoaDonArrayList.get(position).getId());
         holder.txtngaydukien.setText("Hàng sẽ được xác nhận trước: "+hoaDonArrayList.get(position).getNgaytaodon());
         holder.txttongtien.setText(String.valueOf(hoaDonArrayList.get(position).getTongtien())+"đ");
+        holder.rlItemHD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext,CTHoaDon.class);
+                intent.putExtra("idHD",hoaDonArrayList.get(position).getId());
+                intent.putExtra("tongtien",hoaDonArrayList.get(position).getTongtien());
+                intent.putExtra("hoten",hoaDonArrayList.get(position).getHoten());
+                intent.putExtra("diachi",hoaDonArrayList.get(position).getDiachi());
+                intent.putExtra("sodienthoai",hoaDonArrayList.get(position).getSodienthoai());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -45,11 +61,13 @@ public class RecyclerViewDonHang extends RecyclerView.Adapter<RecyclerViewDonHan
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView txtmadonhang,txttongtien,txtngaydukien;
+        RelativeLayout rlItemHD;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtmadonhang = itemView.findViewById(R.id.txtmadonhang);
             txttongtien = itemView.findViewById(R.id.txttongtiendonhang);
             txtngaydukien = itemView.findViewById(R.id.txtngaydk);
+            rlItemHD = itemView.findViewById(R.id.rlItemHD);
         }
     }
 }

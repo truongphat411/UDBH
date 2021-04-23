@@ -61,7 +61,8 @@ public class gioHangTinhTien extends Fragment {
         this.txtUnchecked = txtUnchecked;
         this.toolbar = toolbar;
     }
-
+    public gioHangTinhTien(){
+    }
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Nullable
     @Override

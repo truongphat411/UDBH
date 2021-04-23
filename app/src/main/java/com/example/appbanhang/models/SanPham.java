@@ -13,7 +13,6 @@ public class SanPham {
     public String tenSP;
     public String hinhSP;
     public int giaSP;
-    public String giaSPStr;
     public boolean isYeuThich;
     public int getSoluong() {
         return soluong;

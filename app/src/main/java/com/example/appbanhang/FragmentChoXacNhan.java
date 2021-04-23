@@ -64,7 +64,6 @@ public class FragmentChoXacNhan extends Fragment {
                         isTaiKhoan.set(true);
                     }
                     if(isTaiKhoan.get() == true){
-                        Log.d("MTP", "onDataChange: 11");
                         HoaDon hd = new HoaDon(key,tongtien,ngayTaoDon,"",tenUser,sodienthoai,diachi,trangthai,idUser);
                         listCXN.add(hd);
                     }

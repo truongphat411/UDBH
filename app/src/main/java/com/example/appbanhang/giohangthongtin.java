@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.appbanhang.models.ChiTietHoaDon;
 import com.example.appbanhang.models.HoaDon;
@@ -73,6 +74,7 @@ public class giohangthongtin extends Fragment {
                         chiTietHoaDon = new ChiTietHoaDon(keyCTHD,idSP,keyHD,soluong);
                         referenceCTHD.child(keyCTHD).setValue(chiTietHoaDon);
                     });
+                    MainActivity.listGH.clear();
                     Intent intent = new Intent(getActivity(),donMua.class);
                     intent.putExtra("idHD",keyHD);
                     startActivity(intent);
@@ -113,5 +115,16 @@ public class giohangthongtin extends Fragment {
             edthoten.setError(null);
             return true;
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+//        if(MainActivity.listGH.size() == 0){
+//            gioHangTinhTien fragment = new gioHangTinhTien();
+//            FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+//            fragmentTransaction.replace(R.id.framelayoutGioHang, fragment);
+//            fragmentTransaction.commit();
+//        }
     }
 }

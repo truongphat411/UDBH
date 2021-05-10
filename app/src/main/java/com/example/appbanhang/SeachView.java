@@ -1,23 +1,32 @@
 package com.example.appbanhang;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -26,14 +35,20 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.transition.Visibility;
 
 import com.example.appbanhang.models.SanPham;
 import com.example.appbanhang.models.ThuongHieu;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -42,49 +57,46 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class SeachView extends AppCompatActivity {
     ImageButton imb;
-    ListView listView;
-    EditText txtSearch;
     DatabaseReference reference;
-    ArrayList<String> arrayList = new ArrayList<>();
-    ArrayAdapter<String> arrayAdapter;
-    ArrayList<SanPham> sanpham = new ArrayList<SanPham>();
-    sanPhamAdapter adapter;
-    public ArrayList<SanPham> list = new ArrayList<SanPham>();
-
+    ArrayList<SanPham> list = new ArrayList<>();
+    RecyclerView_Search adapter;
+    EditText editText;
+    RecyclerView recyclerView;
+    FirebaseRecyclerOptions<SanPham> options;
     @RequiresApi(api = Build.VERSION_CODES.M)
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.searchview);
-        listView = findViewById(R.id.listview);
-        imb =  findViewById(R.id.imgb);
+        imb = findViewById(R.id.imgb);
         imb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        Intent intent = getIntent();
-        EditText editText = (EditText) findViewById(R.id.txtSearch);
+        reference = FirebaseDatabase.getInstance().getReference().child("sanpham");
+        editText = findViewById(R.id.edtSearch);
         editText.requestFocus();
-        if (savedInstanceState != null) {
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-        } else {
-            InputMethodManager imm = (InputMethodManager) getSystemService(
-                    Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
-        }
-//        arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,android.R.id.text1,listViewItems);
-//        listView.setAdapter(arrayAdapter);
+        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                boolean handled = false;
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    handled = true;
+                }
+                return handled;
+            }
+        });
+        loadDataFromFirebase();
+
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                (SeachView.this).arrayAdapter.getFilter().filter(s);
+                adapter.getFilter().filter(s);
             }
 
             @Override
@@ -92,80 +104,36 @@ public class SeachView extends AppCompatActivity {
 
             }
         });
-        reference = FirebaseDatabase.getInstance().getReference().child("danhmuc");
-        reference.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String ten = snapshot.child("tenDM").getValue(String.class);
-                arrayList.add(ten);
-                arrayAdapter = new ArrayAdapter<String>(SeachView.this, android.R.layout.simple_list_item_1, arrayList);
-                listView.setAdapter(arrayAdapter);
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
-
-    public void DataFromFirebaseListener() {
+    private void loadDataFromFirebase(){
+        list = new ArrayList<>();
         reference.addValueEventListener(new ValueEventListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    // TODO: handle the post
-                    String key = ds.getKey();
-                    String hinhsp = ds.child("hinhSP").getValue(String.class);
-                    String tensp = ds.child("tenSP").getValue(String.class);
-                    int giasp = ds.child("giaSP").getValue(Integer.class);
-                    String tenth = ds.child("tenTH").getValue(String.class);
-                    String motasp = ds.child("motaSP").getValue(String.class);
-                    String giaSPStr = ds.child("giaSPStr").getValue(String.class);
-                    int idTH = ds.child("idTH").getValue(Integer.class);
-
-                    AtomicBoolean isDaTonTai = new AtomicBoolean(false);
-                    sanpham.forEach(sanpham -> {
-                        if (sanpham.getID() == key) {
-                            isDaTonTai.set(true);
-                        }
-                    });
-                    if (isDaTonTai.get() == false) {
-                        SanPham sp = new SanPham(key, tensp, hinhsp, giasp, tenth, motasp, idTH,false, 0);
-                        if (HomePage.ten.equals(tenth)) {
-                            list.add(sp);
-                        }
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot ds : dataSnapshot.getChildren()){
+                        String key = ds.getKey();
+                        String ten = dataSnapshot.child(key).child("tenSP").getValue(String.class);
+                        int gia = dataSnapshot.child(key).child("giaSP").getValue(Integer.class);
+                        String mota = dataSnapshot.child(key).child("motaSP").getValue(String.class);
+                        String hinh = dataSnapshot.child(key).child("hinhSP").getValue(String.class);
+                            SanPham sanPham = new SanPham(key, ten, hinh, gia, "", mota, 0, false, 0);
+                            list.add(sanPham);
                     }
-                }
-                adapter.notifyDataSetChanged();
+                    recyclerView = findViewById(R.id.recyclerSearch);
+                    recyclerView.setHasFixedSize(true);
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(SeachView.this);
+                    adapter = new RecyclerView_Search(SeachView.this, list);
+                    recyclerView.setLayoutManager(layoutManager);
+                    recyclerView.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
             }
-
-
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                // ...
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }
-
-    @Override
+            @Override
     protected void onStart() {
         super.onStart();
         getSupportActionBar().hide();

@@ -71,12 +71,13 @@ public class chiTietSanPham extends AppCompatActivity {
                 }
                 saveData();
             }
-
         });
-
         Intent intent = getIntent();
         String ten = intent.getStringExtra("ten");
+
         String id = intent.getStringExtra("id");
+        Log.d("XXXXXXXX", "onClick: w2 " + id);
+
         String hinh = intent.getStringExtra("hinh");
         int gia = intent.getIntExtra("gia",0);
         String mota = intent.getStringExtra("mota");

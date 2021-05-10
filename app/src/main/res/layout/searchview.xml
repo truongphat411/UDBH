@@ -17,19 +17,23 @@
             android:background="@color/aqua"
             android:src="@drawable/back_icon" />
         <EditText
-            android:id="@+id/txtSearch"
+            android:id="@+id/edtSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/search_bar_drawable"
             android:hint="Bánh,Kẹo,...."
             android:layout_margin="10dp"
-            android:textColorHint="@color/black"
             android:layout_toRightOf="@+id/imgb"
+            android:padding="15dp"
+            android:inputType="text"
+            android:imeOptions="actionSearch"
             android:textSize="15dp"/>
     </RelativeLayout>
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:id="@+id/listview"
-        android:layout_height="wrap_content"
+        android:id="@+id/recyclerSearch"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:padding="4dp"
         android:layout_below="@+id/top"/>
 </RelativeLayout>

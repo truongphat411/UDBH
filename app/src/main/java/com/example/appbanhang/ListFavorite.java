@@ -21,7 +21,6 @@ import com.example.appbanhang.models.SanPham;
 public class ListFavorite extends Fragment {
     GridView gridView;
     sanPhamAdapter adapter;
-    private String ten,gia,hinh;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,7 +39,7 @@ public class ListFavorite extends Fragment {
                 intent.putExtra("ten",spYT.getTenSP());
                 intent.putExtra("mota",spYT.getMotaSP());
                 intent.putExtra("gia",spYT.getGiaSP());
-                getContext().startActivity(intent);
+                getActivity().startActivity(intent);
             }
         });
         return view;

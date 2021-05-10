@@ -38,6 +38,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation group: 'at.favre.lib', name: 'bcrypt', version: '0.9.0'
     implementation 'com.google.firebase:firebase-database:19.7.0'
+    implementation 'com.firebaseui:firebase-ui-database:4.3.2'
     testImplementation 'junit:junit:4.+'
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation 'com.github.vipulasri:timelineview:1.1.5'

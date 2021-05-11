@@ -99,7 +99,6 @@ public class SanPhamPage extends AppCompatActivity { ;
                     int giasp = ds.child("giaSP").getValue(Integer.class);
                     String tenth = ds.child("tenTH").getValue(String.class);
                     String motasp = ds.child("motaSP").getValue(String.class);
-                    String giaSPStr = ds.child("giaSPStr").getValue(String.class);
                     int idTH = ds.child("idTH").getValue(Integer.class);
 
                     AtomicBoolean isDaTonTai = new AtomicBoolean(false);
@@ -130,7 +129,7 @@ public class SanPhamPage extends AppCompatActivity { ;
                     /// nó phải cùng thương hiệu với homepage khi click vào
                     if (isDaTonTai.get() == false && isThuongHieu.get() == true) {
                         /// -> them vao
-                        SanPham sp = new SanPham(key, tensp, hinhsp, giasp, tenth, motasp, idTH, isYeuThich.get(), 0);
+                        SanPham sp = new SanPham(key, tensp, hinhsp, giasp, tenth, motasp, idTH, isYeuThich.get(), 0,0);
                         list.add(sp);
 //                        if (HomePage.ten.equals(tenth)) {
 //                            list.add(sp);

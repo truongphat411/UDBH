@@ -14,6 +14,16 @@ public class SanPham {
     public String hinhSP;
     public int giaSP;
     public boolean isYeuThich;
+
+    public int getSoluongKho() {
+        return soluongKho;
+    }
+
+    public void setSoluongKho(int soluongKho) {
+        this.soluongKho = soluongKho;
+    }
+
+    public int soluongKho;
     public int getSoluong() {
         return soluong;
     }
@@ -50,7 +60,7 @@ public class SanPham {
         this.motaSP = motaSP;
     }
 
-    public SanPham(String ID, String tenSP, String hinhSP, int giaSP, String tenTH, String motaSP,int idTH,boolean isYeuThich, int soluong) {
+    public SanPham(String ID, String tenSP, String hinhSP, int giaSP, String tenTH, String motaSP,int idTH,boolean isYeuThich, int soluong,int soluongKho) {
         this.ID = ID;
         this.tenSP = tenSP;
         this.hinhSP = hinhSP;
@@ -60,6 +70,7 @@ public class SanPham {
         this.idTH = idTH;
         this.isYeuThich = isYeuThich;
         this.soluong = soluong;
+        this.soluongKho = soluongKho;
     }
 
     public String getTenSP() {

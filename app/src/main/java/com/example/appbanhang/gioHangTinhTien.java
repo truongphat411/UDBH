@@ -30,7 +30,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class gioHangTinhTien extends Fragment {
     Button btnNhapThongTin;
-    String haha = "\u2713";
     EditText edtHoten,edtSDT,edtDiaChi;
     ListView lvgh;
     TextView txttongtien;
@@ -101,8 +100,8 @@ public class gioHangTinhTien extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        txtChecked.setBackgroundResource(R.drawable.circle);
-        txtUnchecked.setBackgroundResource(R.drawable.circle2);
+//        txtChecked.setBackgroundResource(R.drawable.circle);
+//        txtUnchecked.setBackgroundResource(R.drawable.circle2);
         gioHangAdapter.notifyDataSetChanged();
         MainActivity.listGH.forEach(sanPham -> {
             tongtien += (sanPham.getSoluong()*sanPham.getGiaSP());

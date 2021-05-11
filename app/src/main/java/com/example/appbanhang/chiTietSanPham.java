@@ -84,7 +84,7 @@ public class chiTietSanPham extends AppCompatActivity {
         String tenth = intent.getStringExtra("tenth");
         int idth = intent.getIntExtra("idTH",0);
 
-        sanPhamSelected = new SanPham(id,ten,hinh,gia,tenth,mota,idth, false, 0);
+        sanPhamSelected = new SanPham(id,ten,hinh,gia,tenth,mota,idth, false, 0,0);
 
 
             Picasso.with(chiTietSanPham.this).load(hinh).into(image_sanpham);

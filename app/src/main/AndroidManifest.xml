@@ -29,6 +29,8 @@
         <activity android:name=".donMua"/>
         <activity android:name=".QLDH"/>
         <activity android:name=".CTHoaDon"/>
+        <activity android:name=".activity_capnhat"/>
+        <activity android:name=".activity_capnhatsanpham"/>
     </application>
 
 </manifest>

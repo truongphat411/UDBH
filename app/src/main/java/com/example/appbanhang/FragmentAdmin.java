@@ -67,6 +67,13 @@ public class FragmentAdmin  extends Fragment {
                 startActivity(intent);
             }
         });
+        txtCNSP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), activity_capnhat.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
     @RequiresApi(api = Build.VERSION_CODES.M)

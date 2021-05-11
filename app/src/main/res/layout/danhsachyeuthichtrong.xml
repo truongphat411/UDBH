@@ -21,17 +21,6 @@
         android:textSize="20sp"
         android:gravity="center"
         />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="75dp"
-        android:paddingRight="75dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_margin="10dp"
-        android:backgroundTint="@color/aqua"
-        android:text="TIẾP TỤC MUA SẮM"
-        android:layout_gravity="center"
-        android:textColor="@color/black"/>
+
 
 </LinearLayout>

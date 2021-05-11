@@ -88,11 +88,10 @@ public class FragmentDonMua extends Fragment {
                             String giaSPStr = ds.child("giaSPStr").getValue(String.class);
                             int idTH = ds.child("idTH").getValue(Integer.class);
                             String idSP = String.valueOf(idSPFb);
-                            SanPham sp = new SanPham(idSP, tensp, hinhsp, giasp, tenth, motasp, idTH, false, 0);
+                            SanPham sp = new SanPham(idSP, tensp, hinhsp, giasp, tenth, motasp, idTH, false, 0,0);
                             listSP.add(sp);
                         }
 
-                        Log.d("MTL", "DataFromFirebaseListener: 2");
 
                         for (ChiTietHoaDon itemChiTiet : chiTietHoaDons) {
                             for(SanPham itemSanPham : listSP){
@@ -106,7 +105,6 @@ public class FragmentDonMua extends Fragment {
                                 }
                             }
                         }
-                        Log.d("MTL", "onDataChange: "+ listSanPhamDonMua.size());
                         adapter.notifyDataSetChanged();
                     }
 
@@ -115,7 +113,6 @@ public class FragmentDonMua extends Fragment {
 
                     }
                 });
-                Log.d("MTL", "DataFromFirebaseListener: 1");
             }
 
             @Override

@@ -37,7 +37,6 @@ public class donMuaAdapter extends RecyclerView.Adapter<donMuaAdapter.ViewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Log.d("MTL", "onCreateViewHolder: ");
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.itemdonmua,parent,false);
         return new ViewHolder(view);
     }

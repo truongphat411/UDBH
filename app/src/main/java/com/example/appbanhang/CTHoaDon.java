@@ -92,7 +92,7 @@ public class CTHoaDon extends AppCompatActivity {
                                     isSanPham.set(true);
                                 }
                                 if(isHoaDon.get() && isSanPham.get()){
-                                    SanPham sanPham = new SanPham(key,tensp,hinhsp,soluong*giasp,"","",0,false,soluong);
+                                    SanPham sanPham = new SanPham(key,tensp,hinhsp,soluong*giasp,"","",0,false,soluong,0);
                                     list.add(sanPham);
                                 }
                             }

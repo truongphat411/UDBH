@@ -71,7 +71,7 @@ public class CTHoaDon extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds : snapshot.getChildren()){
                     String key = ds.getKey();
-                    String idSP = snapshot.child(key).child("idSP").getValue(String.class);
+                    int idSP = snapshot.child(key).child("idSP").getValue(Integer.class);
                     String idHDFromDatabase = snapshot.child(key).child("idHD").getValue(String.class);
                     int soluong = snapshot.child(key).child("soluong").getValue(Integer.class);
 
@@ -92,7 +92,7 @@ public class CTHoaDon extends AppCompatActivity {
                                     isSanPham.set(true);
                                 }
                                 if(isHoaDon.get() && isSanPham.get()){
-                                    SanPham sanPham = new SanPham(key,tensp,hinhsp,soluong*giasp,"","",0,false,soluong,0);
+                                    SanPham sanPham = new SanPham(Integer.parseInt(key),tensp,hinhsp,soluong*giasp,"","",0,false,soluong,0);
                                     list.add(sanPham);
                                 }
                             }

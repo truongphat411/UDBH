@@ -69,7 +69,7 @@ public class FragmentDonMua extends Fragment {
                 Log.d("MTL", "DataFromFirebaseListener: 3");
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     String key = ds.getKey();
-                    String idSP = ds.child("idSP").getValue(String.class);
+                    int idSP = ds.child("idSP").getValue(Integer.class);
                     String idHD = ds.child("idHD").getValue(String.class);
                     int soluong = ds.child("soluong").getValue(Integer.class);
                     chiTietHoaDons.add(new ChiTietHoaDon(key,idSP,idHD,soluong));
@@ -87,7 +87,7 @@ public class FragmentDonMua extends Fragment {
                             String motasp = ds.child("motaSP").getValue(String.class);
                             String giaSPStr = ds.child("giaSPStr").getValue(String.class);
                             int idTH = ds.child("idTH").getValue(Integer.class);
-                            String idSP = String.valueOf(idSPFb);
+                            int idSP = idSPFb;
                             SanPham sp = new SanPham(idSP, tensp, hinhsp, giasp, tenth, motasp, idTH, false, 0,0);
                             listSP.add(sp);
                         }
@@ -95,7 +95,7 @@ public class FragmentDonMua extends Fragment {
 
                         for (ChiTietHoaDon itemChiTiet : chiTietHoaDons) {
                             for(SanPham itemSanPham : listSP){
-                                if(itemChiTiet.getIdSP().equals(itemSanPham.getID())){
+                                if(itemChiTiet.getIdSP() == (itemSanPham.getID())){
                                     String tenSP = itemSanPham.getTenSP();
                                     String hinhSP = itemSanPham.getHinhSP();
                                     int giaSP = itemSanPham.getGiaSP();

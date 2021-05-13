@@ -31,6 +31,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -90,7 +92,7 @@ public class SanPhamPage extends AppCompatActivity { ;
         reference.addValueEventListener(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     // TODO: handle the post
                     String key = ds.getKey();
@@ -109,7 +111,7 @@ public class SanPhamPage extends AppCompatActivity { ;
                     list.forEach(sanpham -> {
                         /// so sánh id thương hiệu (idthuong hieu la khóa ngoại) để lấy ra được danh sách theo thương hiệu
                         /// check key de khong bi trung
-                        if (sanpham.getID() == key) {
+                        if (sanpham.getID() == Integer.parseInt(key)) {
                             isDaTonTai.set(true);
                         }
                     });
@@ -120,7 +122,7 @@ public class SanPhamPage extends AppCompatActivity { ;
 
                     /// danh sach yeu thich
                     MainActivity.listYT.forEach(sanPhamYT -> {
-                        if (key == sanPhamYT.getID()) {
+                        if (Integer.parseInt(key) == sanPhamYT.getID()) {
                             isYeuThich.set(true);
                         }
                     });
@@ -129,12 +131,8 @@ public class SanPhamPage extends AppCompatActivity { ;
                     /// nó phải cùng thương hiệu với homepage khi click vào
                     if (isDaTonTai.get() == false && isThuongHieu.get() == true) {
                         /// -> them vao
-                        SanPham sp = new SanPham(key, tensp, hinhsp, giasp, tenth, motasp, idTH, isYeuThich.get(), 0,0);
+                        SanPham sp = new SanPham(Integer.parseInt(key), tensp, hinhsp, giasp, tenth, motasp, idTH, isYeuThich.get(), 0,0);
                         list.add(sp);
-//                        if (HomePage.ten.equals(tenth)) {
-//                            list.add(sp);
-//                        }
-                        /// chỉ cần chưa tồn tại thì add thôi chưa hiểu so sánh tên làm gì
                     }
                 }
                 adapter.notifyDataSetChanged();

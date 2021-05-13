@@ -88,7 +88,6 @@ public class SeachView extends AppCompatActivity {
             }
         });
         loadDataFromFirebase();
-
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -116,7 +115,7 @@ public class SeachView extends AppCompatActivity {
                         int gia = dataSnapshot.child(key).child("giaSP").getValue(Integer.class);
                         String mota = dataSnapshot.child(key).child("motaSP").getValue(String.class);
                         String hinh = dataSnapshot.child(key).child("hinhSP").getValue(String.class);
-                            SanPham sanPham = new SanPham(key, ten, hinh, gia, "", mota, 0, false, 0,0);
+                            SanPham sanPham = new SanPham(Integer.parseInt(key), ten, hinh, gia, "", mota, 0, false, 0,0);
                             list.add(sanPham);
                     }
                     recyclerView = findViewById(R.id.recyclerSearch);

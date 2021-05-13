@@ -56,7 +56,7 @@ public class chiTietSanPham extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 MainActivity.listGH.forEach(sanphamGH -> {
-                    if (sanphamGH.getID().equals(sanPhamSelected.getID())) {
+                    if (sanphamGH.getID() == sanPhamSelected.getID()) {
                         sanPhamSelected = sanphamGH;
                     }
                 });
@@ -75,7 +75,7 @@ public class chiTietSanPham extends AppCompatActivity {
         Intent intent = getIntent();
         String ten = intent.getStringExtra("ten");
 
-        String id = intent.getStringExtra("id");
+        int id = intent.getIntExtra("id",0);
         Log.d("XXXXXXXX", "onClick: w2 " + id);
 
         String hinh = intent.getStringExtra("hinh");

@@ -39,6 +39,8 @@ dependencies {
     implementation group: 'at.favre.lib', name: 'bcrypt', version: '0.9.0'
     implementation 'com.google.firebase:firebase-database:19.7.0'
     implementation 'com.firebaseui:firebase-ui-database:4.3.2'
+    implementation 'com.google.firebase:firebase-storage:19.2.2'
+    implementation 'org.jetbrains:annotations:15.0'
     testImplementation 'junit:junit:4.+'
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation 'com.github.vipulasri:timelineview:1.1.5'

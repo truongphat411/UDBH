@@ -96,12 +96,13 @@ public class gioHangTinhTien extends Fragment {
         return view;
     }
 
+    @SuppressLint({"UseCompatLoadingForDrawables", "SetTextI18n"})
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onResume() {
         super.onResume();
-//        txtChecked.setBackgroundResource(R.drawable.circle);
-//        txtUnchecked.setBackgroundResource(R.drawable.circle2);
+        txtChecked.setImageDrawable(getResources().getDrawable(R.drawable.circle));
+        txtUnchecked.setImageDrawable(getResources().getDrawable(R.drawable.circle2));
         gioHangAdapter.notifyDataSetChanged();
         MainActivity.listGH.forEach(sanPham -> {
             tongtien += (sanPham.getSoluong()*sanPham.getGiaSP());

@@ -1,5 +1,6 @@
 package com.example.appbanhang;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,6 +31,7 @@ public class Fragment_CapNhatSanPham extends Fragment {
     DatabaseReference reference;
     ArrayList<SanPham> list;
     RecyclerView_CapnhatSanPham adapter;
+    public static boolean isCapnhat = false;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,6 +42,15 @@ public class Fragment_CapNhatSanPham extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
         loadData();
+        btnthemSP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),activity_capnhatsanpham.class);
+                isCapnhat = true;
+                startActivity(intent);
+
+            }
+        });
          return view;
     }
     private void loadData(){
@@ -51,8 +62,8 @@ public class Fragment_CapNhatSanPham extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds : snapshot.getChildren()){
                     String key = ds.getKey();
-                    String tensp = ds.child("tenSP").getValue(String.class);
                     String hinhsp = ds.child("hinhSP").getValue(String.class);
+                    String tensp = ds.child("tenSP").getValue(String.class);
                     int giasp = ds.child("giaSP").getValue(Integer.class);
                     String tenth = ds.child("tenTH").getValue(String.class);
                     String motasp = ds.child("motaSP").getValue(String.class);
@@ -61,13 +72,13 @@ public class Fragment_CapNhatSanPham extends Fragment {
                     AtomicBoolean isSanPham = new AtomicBoolean();
 
                     list.forEach(sanPham -> {
-                        if(sanPham.getID() == key){
+                        if(sanPham.getID() == Integer.parseInt(key)){
                             isSanPham.set(true);
                         }
                     });
 
                     if(!isSanPham.get()){
-                        SanPham sp = new SanPham(key, tensp, hinhsp, giasp, tenth, motasp, idTH, false, 0,0);
+                        SanPham sp = new SanPham(Integer.parseInt(key), tensp, hinhsp, giasp, tenth, motasp, idTH, false, 0,0);
                         list.add(sp);
                     }
                 }

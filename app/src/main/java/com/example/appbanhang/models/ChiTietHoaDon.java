@@ -1,7 +1,7 @@
 package com.example.appbanhang.models;
 
 public class ChiTietHoaDon {
-    public ChiTietHoaDon(String id, String idSP, String idHD, int soluong) {
+    public ChiTietHoaDon(String id, int idSP, String idHD, int soluong) {
         this.id = id;
         this.idSP = idSP;
         this.idHD = idHD;
@@ -16,11 +16,11 @@ public class ChiTietHoaDon {
         this.id = id;
     }
 
-    public String getIdSP() {
+    public int getIdSP() {
         return idSP;
     }
 
-    public void setIdSP(String idSP) {
+    public void setIdSP(int idSP) {
         this.idSP = idSP;
     }
 
@@ -41,7 +41,7 @@ public class ChiTietHoaDon {
     }
 
     private String id;
-    private String idSP;
+    private int idSP;
     private String idHD;
     private int soluong;
 }

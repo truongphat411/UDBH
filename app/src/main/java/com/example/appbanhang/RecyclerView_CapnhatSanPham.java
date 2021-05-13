@@ -49,6 +49,7 @@ public class RecyclerView_CapnhatSanPham extends RecyclerView.Adapter<RecyclerVi
                 intent.putExtra("soluongKho",sanphamArrayList.get(position).getSoluongKho());
                 intent.putExtra("hinhSP",sanphamArrayList.get(position).getHinhSP());
                 intent.putExtra("idTH",sanphamArrayList.get(position).getIdTH());
+                Fragment_CapNhatSanPham.isCapnhat = false;
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
             }

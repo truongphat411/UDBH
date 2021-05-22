@@ -67,18 +67,18 @@ public class Fragment_CapNhatSanPham extends Fragment {
                     int giasp = ds.child("giaSP").getValue(Integer.class);
                     String tenth = ds.child("tenTH").getValue(String.class);
                     String motasp = ds.child("motaSP").getValue(String.class);
-                    int idTH = ds.child("idTH").getValue(Integer.class);
-
+                    String idTH = ds.child("idTH").getValue(String.class);
+                    int soluongKho = ds.child("soluongKho").getValue(Integer.class);
                     AtomicBoolean isSanPham = new AtomicBoolean();
 
                     list.forEach(sanPham -> {
-                        if(sanPham.getID() == Integer.parseInt(key)){
+                        if(sanPham.getID().equals(key)){
                             isSanPham.set(true);
                         }
                     });
 
                     if(!isSanPham.get()){
-                        SanPham sp = new SanPham(Integer.parseInt(key), tensp, hinhsp, giasp, tenth, motasp, idTH, false, 0,0);
+                        SanPham sp = new SanPham(key, tensp, hinhsp, giasp, tenth, motasp, idTH,soluongKho);
                         list.add(sp);
                     }
                 }
@@ -92,5 +92,11 @@ public class Fragment_CapNhatSanPham extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadData();
     }
 }

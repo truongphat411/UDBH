@@ -1,10 +1,10 @@
 package com.example.appbanhang.models;
 
 public class ThuongHieu {
-    public int getID() {
+    public String getID() {
         return ID;
     }
-    public void setID(int ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 
@@ -24,11 +24,11 @@ public class ThuongHieu {
         HinhTH = hinhTH;
     }
 
-    public int ID;
+    public String ID;
     public String TenTH;
     public String HinhTH;
 
-    public ThuongHieu(int ID, String tenTH, String hinhTH) {
+    public ThuongHieu(String ID, String tenTH, String hinhTH) {
         this.ID = ID;
         TenTH = tenTH;
         HinhTH = hinhTH;

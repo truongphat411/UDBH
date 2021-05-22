@@ -69,7 +69,7 @@ public class FragmentDonMua extends Fragment {
                 Log.d("MTL", "DataFromFirebaseListener: 3");
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     String key = ds.getKey();
-                    int idSP = ds.child("idSP").getValue(Integer.class);
+                    String idSP = ds.child("idSP").getValue(String.class);
                     String idHD = ds.child("idHD").getValue(String.class);
                     int soluong = ds.child("soluong").getValue(Integer.class);
                     chiTietHoaDons.add(new ChiTietHoaDon(key,idSP,idHD,soluong));
@@ -77,25 +77,24 @@ public class FragmentDonMua extends Fragment {
                 referenceSP.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        Log.d("MTL", "DataFromFirebaseListener: 4");
                         for (DataSnapshot ds : snapshot.getChildren()) {
-                            int idSPFb = ds.child("idSP").getValue(Integer.class);
+                            String idSPFb = ds.child("idSP").getValue(String.class);
                             String hinhsp = ds.child("hinhSP").getValue(String.class);
                             String tensp = ds.child("tenSP").getValue(String.class);
                             int giasp = ds.child("giaSP").getValue(Integer.class);
                             String tenth = ds.child("tenTH").getValue(String.class);
                             String motasp = ds.child("motaSP").getValue(String.class);
-                            String giaSPStr = ds.child("giaSPStr").getValue(String.class);
-                            int idTH = ds.child("idTH").getValue(Integer.class);
-                            int idSP = idSPFb;
-                            SanPham sp = new SanPham(idSP, tensp, hinhsp, giasp, tenth, motasp, idTH, false, 0,0);
+                            int soluongKho = ds.child("soluongKho").getValue(Integer.class);
+                            String idTH = ds.child("idTH").getValue(String.class);
+                            String idSP = idSPFb;
+                            SanPham sp = new SanPham(idSP, tensp, hinhsp, giasp, tenth, motasp, idTH,soluongKho);
                             listSP.add(sp);
                         }
 
 
                         for (ChiTietHoaDon itemChiTiet : chiTietHoaDons) {
                             for(SanPham itemSanPham : listSP){
-                                if(itemChiTiet.getIdSP() == (itemSanPham.getID())){
+                                if((itemChiTiet.getIdSP()).equals(itemSanPham.getID())){
                                     String tenSP = itemSanPham.getTenSP();
                                     String hinhSP = itemSanPham.getHinhSP();
                                     int giaSP = itemSanPham.getGiaSP();

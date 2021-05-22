@@ -39,14 +39,11 @@ public class HomePage extends Fragment {
     public HomePage(){
 
     }
-    public static String ten;
     TextView txtSearch;
     GridView gridView;
-    ArrayList<ThuongHieu> thuongHieuArrayList= new ArrayList<ThuongHieu>();
+    ArrayList<ThuongHieu> thuongHieuArrayList= new ArrayList<>();
     DatabaseReference reference;
-    ThuongHieu thuongHieu;
     CustomAdapter customAdapter;
-    ArrayAdapter<String> arrayAdapter;
 
     @Nullable
     @Override
@@ -54,20 +51,11 @@ public class HomePage extends Fragment {
         View view = inflater.inflate(R.layout.home, container , false);
         gridView = view.findViewById(R.id.grid_view);
         txtSearch = view.findViewById(R.id.txtSearch);
-
-
-
-
-
         reference = FirebaseDatabase.getInstance().getReference().child("thuonghieu");
         /// lắng nghe sự thay đổi của data trên firebase
         DataFromFirebaseListener();
         customAdapter = new CustomAdapter(getActivity(), thuongHieuArrayList);
         gridView.setAdapter(customAdapter);
-
-
-
-
         txtSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,12 +89,12 @@ public class HomePage extends Fragment {
                     String tenTH = ds.child("tenTH").getValue(String.class);
                     AtomicBoolean isDaTonTai = new AtomicBoolean(false);
                     thuongHieuArrayList.forEach(thuongHieu -> {
-                        if(thuongHieu.getID() == Integer.parseInt(key)){
+                        if((thuongHieu.getID()).equals(key)){
                             isDaTonTai.set(true);
                         }
                     });
-                    if(isDaTonTai.get() == false){
-                        ThuongHieu thuongHieu = new ThuongHieu(Integer.parseInt(key) , tenTH, hinhTH);
+                    if(!isDaTonTai.get()){
+                        ThuongHieu thuongHieu = new ThuongHieu(key , tenTH, hinhTH);
                         thuongHieuArrayList.add(thuongHieu);
                     }
                 }

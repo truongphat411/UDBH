@@ -39,6 +39,7 @@ public class ListFavorite extends Fragment {
                 intent.putExtra("ten",spYT.getTenSP());
                 intent.putExtra("mota",spYT.getMotaSP());
                 intent.putExtra("gia",spYT.getGiaSP());
+                intent.putExtra("soluongKho",spYT.getSoluongKho());
                 getActivity().startActivity(intent);
             }
         });

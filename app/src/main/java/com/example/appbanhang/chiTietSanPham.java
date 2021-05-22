@@ -74,17 +74,15 @@ public class chiTietSanPham extends AppCompatActivity {
         });
         Intent intent = getIntent();
         String ten = intent.getStringExtra("ten");
-
-        int id = intent.getIntExtra("id",0);
-        Log.d("XXXXXXXX", "onClick: w2 " + id);
-
+        String id = intent.getStringExtra("id");
         String hinh = intent.getStringExtra("hinh");
         int gia = intent.getIntExtra("gia",0);
         String mota = intent.getStringExtra("mota");
         String tenth = intent.getStringExtra("tenth");
-        int idth = intent.getIntExtra("idTH",0);
+        String idth = intent.getStringExtra("idTH");
+        int soluongKho = intent.getIntExtra("soluongKho",0);
 
-        sanPhamSelected = new SanPham(id,ten,hinh,gia,tenth,mota,idth, false, 0,0);
+        sanPhamSelected = new SanPham(id,ten,hinh,gia,tenth,mota,idth,soluongKho);
 
 
             Picasso.with(chiTietSanPham.this).load(hinh).into(image_sanpham);

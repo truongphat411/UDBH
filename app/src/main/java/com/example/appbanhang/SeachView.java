@@ -74,7 +74,6 @@ public class SeachView extends AppCompatActivity {
                 finish();
             }
         });
-        reference = FirebaseDatabase.getInstance().getReference().child("sanpham");
         editText = findViewById(R.id.edtSearch);
         editText.requestFocus();
         editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -106,16 +105,19 @@ public class SeachView extends AppCompatActivity {
     }
     private void loadDataFromFirebase(){
         list = new ArrayList<>();
+        reference = FirebaseDatabase.getInstance().getReference().child("sanpham");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for (DataSnapshot ds : dataSnapshot.getChildren()){
                         String key = ds.getKey();
-                        String ten = dataSnapshot.child(key).child("tenSP").getValue(String.class);
-                        int gia = dataSnapshot.child(key).child("giaSP").getValue(Integer.class);
-                        String mota = dataSnapshot.child(key).child("motaSP").getValue(String.class);
-                        String hinh = dataSnapshot.child(key).child("hinhSP").getValue(String.class);
-                            SanPham sanPham = new SanPham(Integer.parseInt(key), ten, hinh, gia, "", mota, 0, false, 0,0);
+                        String ten = ds.child("tenSP").getValue(String.class);
+                        int gia = ds.child("giaSP").getValue(Integer.class);
+                        String mota = ds.child("motaSP").getValue(String.class);
+                        String hinh = ds.child("hinhSP").getValue(String.class);
+                        String idTH = ds.child("idTH").getValue(String.class);
+                        int soluongKho = ds.child("soluongKho").getValue(Integer.class);
+                            SanPham sanPham = new SanPham(key, ten, hinh, gia, idTH, mota, "",soluongKho);
                             list.add(sanPham);
                     }
                     recyclerView = findViewById(R.id.recyclerSearch);

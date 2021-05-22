@@ -69,7 +69,7 @@ public class giohangthongtin extends Fragment {
                     Toast.makeText(view.getContext(), "Tạo đơn hàng thành công", Toast.LENGTH_LONG).show();
                     MainActivity.listGH.forEach(sanPham -> {
                         String keyCTHD = referenceCTHD.push().getKey();
-                        int idSP = sanPham.getID();
+                        String idSP = sanPham.getID();
                         int soluong = sanPham.getSoluong();
                         chiTietHoaDon = new ChiTietHoaDon(keyCTHD,idSP,keyHD,soluong);
                         referenceCTHD.child(keyCTHD).setValue(chiTietHoaDon);

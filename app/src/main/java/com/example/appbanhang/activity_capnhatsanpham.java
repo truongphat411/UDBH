@@ -58,7 +58,7 @@ public class activity_capnhatsanpham extends AppCompatActivity {
     EditText edttenSP,edtgiaSP,edtmotaSP,edtmathuonghieu,edtsoluongKho;
     ImageView imvhinhSP;
     Button btncapnhatSP,btnxoaSP;
-    int idSP;
+    String idSP;
     DatabaseReference reference;
     ImageButton imgBack,imgcamera;
     public static final int CAMERA_PERM_CODE = 101;
@@ -66,22 +66,24 @@ public class activity_capnhatsanpham extends AppCompatActivity {
     public static final int GALLERY_REQUEST_CODE = 105;
     String currentPhotoPath;
     StorageReference storageReference;
-    int maxid = 0;
+    String hinhSP;
+    Thread thread;
+    AddThread addThread;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chitietcapnhat);
         storageReference = FirebaseStorage.getInstance().getReferenceFromUrl("gs://udbh-35c1f.appspot.com");
         anhxa();
-        reference = FirebaseDatabase.getInstance().getReference().child("sanpham");
         btncapnhatSP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!Fragment_CapNhatSanPham.isCapnhat){
                     CapNhatSP();
                 }else {
-                    count();
-                    themSP();
+                    addThread = new AddThread();
+                    thread = new Thread(addThread);
+                    thread.start();
                 }
             }
         });
@@ -105,8 +107,6 @@ public class activity_capnhatsanpham extends AppCompatActivity {
             }
         });
     }
-
-
     private void anhxa() {
         edttenSP = findViewById(R.id.edttenSP);
         edtgiaSP = findViewById(R.id.edtgiaSP);
@@ -127,7 +127,7 @@ public class activity_capnhatsanpham extends AppCompatActivity {
     private void loadData(){
         Intent intent = getIntent();
         edttenSP.setText(intent.getStringExtra("tenSP"));
-        idSP =  intent.getIntExtra("idSP",0);
+        idSP =  intent.getStringExtra("idSP");
         edtgiaSP.setText(String.valueOf(intent.getIntExtra("giaSP",0)));
         edtmotaSP.setText(intent.getStringExtra("motaSP"));
         edtsoluongKho.setText(String.valueOf(intent.getIntExtra("soluongKho",0)));
@@ -157,21 +157,6 @@ public class activity_capnhatsanpham extends AppCompatActivity {
             }
         });
     }
-    private void count(){
-        reference = FirebaseDatabase.getInstance().getReference().child("sanpham");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    maxid = (int) snapshot.getChildrenCount();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-            }
-        });
-    }
     private void XoaSP() {
         reference = FirebaseDatabase.getInstance().getReference().child("sanpham");
         Query query = reference.orderByChild("idSP").equalTo(idSP);
@@ -189,21 +174,11 @@ public class activity_capnhatsanpham extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }
     private void themSP(){
-        reference = FirebaseDatabase.getInstance().getReference().child("sanpham");
-        String tenSP = edttenSP.getText().toString().trim();
-        int giaSP = Integer.parseInt(edtgiaSP.getText().toString().trim());
-        String motaSP = edtmotaSP.getText().toString().trim();
-        int idTH = Integer.parseInt(edtmathuonghieu.getText().toString().trim());
-        int soluongKho = Integer.parseInt(edtsoluongKho.getText().toString().trim());
-        SanPham sanPham = new SanPham((int) (maxid+1),tenSP,"",giaSP,"",motaSP,idTH,false,0,soluongKho);
-        reference.child(String.valueOf(maxid+1)).setValue(sanPham);
-        Toast.makeText(activity_capnhatsanpham.this,"Thêm sản phẩm thành công",Toast.LENGTH_SHORT).show();
-        finish();
+
     }
     private void askCameraPermissions(){
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
@@ -262,7 +237,8 @@ public class activity_capnhatsanpham extends AppCompatActivity {
                 image.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        Log.d("tag", "onSuccess: Uploaded Image URl is " + uri.toString());
+                        Log.d("hihi", "onSuccess: Uploaded Image URl is " + uri.toString());
+                        hinhSP = uri.toString();
                     }
                 });
                 Toast.makeText(activity_capnhatsanpham.this, "Image Is Uploaded.", Toast.LENGTH_SHORT).show();
@@ -270,7 +246,7 @@ public class activity_capnhatsanpham extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(activity_capnhatsanpham.this, "Upload Failled.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity_capnhatsanpham.this, "Upload Failled.",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -309,6 +285,27 @@ public class activity_capnhatsanpham extends AppCompatActivity {
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                     startActivityForResult(takePictureIntent, CAMERA_REQUEST_CODE);
                 }
+            }
+        }
+        class AddThread implements Runnable{
+            @Override
+            public void run() {
+                try{
+                    reference = FirebaseDatabase.getInstance().getReference().child("sanpham");
+                    String key = reference.push().getKey();
+                    String tenSP = edttenSP.getText().toString().trim();
+                    int giaSP = Integer.parseInt(edtgiaSP.getText().toString().trim());
+                    String motaSP = edtmotaSP.getText().toString().trim();
+                    String idTH = edtmathuonghieu.getText().toString().trim();
+                    int soluongKho = Integer.parseInt(edtsoluongKho.getText().toString().trim());
+                    SanPham sanPham = new SanPham(key,tenSP,hinhSP,giaSP,"",motaSP,idTH,soluongKho);
+                    reference.child(key).setValue(sanPham);
+                    Toast.makeText(activity_capnhatsanpham.this,"Thêm sản phẩm thành công",Toast.LENGTH_SHORT).show();
+                    finish();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
             }
         }
     @Override

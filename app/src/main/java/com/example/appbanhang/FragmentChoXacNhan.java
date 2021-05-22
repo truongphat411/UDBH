@@ -23,6 +23,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class FragmentChoXacNhan extends Fragment {
@@ -50,7 +51,6 @@ public class FragmentChoXacNhan extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()) {
-                    Log.d("MTP", "onDataChange: 10");
                     String key = ds.child("id").getValue(String.class);
                     String idUser = ds.child("idUser").getValue(String.class);
                     String ngayTaoDon = ds.child("ngaytaodon").getValue(String.class);
@@ -63,7 +63,7 @@ public class FragmentChoXacNhan extends Fragment {
                     if(idUser.equals(MainActivity.id)){
                         isTaiKhoan.set(true);
                     }
-                    if(isTaiKhoan.get() == true){
+                    if(isTaiKhoan.get()){
                         HoaDon hd = new HoaDon(key,tongtien,ngayTaoDon,"",tenUser,sodienthoai,diachi,trangthai,idUser);
                         listCXN.add(hd);
                     }
@@ -71,11 +71,10 @@ public class FragmentChoXacNhan extends Fragment {
                 }
                 if(listCXN.size() == 0){
                     donHangTrong fragment = new donHangTrong();
-                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    FragmentTransaction fragmentTransaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.frameChoXacNhan, fragment);
                     fragmentTransaction.commit();
                 }
-                Log.d("MTP", "onDataChange: 9");
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

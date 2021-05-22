@@ -87,12 +87,15 @@ public class CTHoaDon extends AppCompatActivity {
                                 String hinhsp = ds.child("hinhSP").getValue(String.class);
                                 String tensp = ds.child("tenSP").getValue(String.class);
                                 int giasp = ds.child("giaSP").getValue(Integer.class);
+                                String idTH = ds.child("idTH").getValue(String.class);
+                                String motaSP = ds.child("motaSP").getValue(String.class);
+                                int soluongKho = ds.child("soluongKho").getValue(Integer.class);
                                 AtomicBoolean isSanPham = new AtomicBoolean();
                                 if(key.equals(idSP)){
                                     isSanPham.set(true);
                                 }
                                 if(isHoaDon.get() && isSanPham.get()){
-                                    SanPham sanPham = new SanPham(Integer.parseInt(key),tensp,hinhsp,soluong*giasp,"","",0,false,soluong,0);
+                                    SanPham sanPham = new SanPham(key,tensp,hinhsp,soluong*giasp,"",motaSP,idTH,soluongKho);
                                     list.add(sanPham);
                                 }
                             }

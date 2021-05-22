@@ -43,7 +43,7 @@ public class SanPhamPage extends AppCompatActivity { ;
     DatabaseReference reference;
     public ArrayList<SanPham> list = new ArrayList<SanPham>();
     sanPhamAdapter adapter;
-    int thuongHieuID;
+    String thuongHieuID;
     ImageButton imageBack;
     String thuongHieuHinh;
     @Override
@@ -53,7 +53,7 @@ public class SanPhamPage extends AppCompatActivity { ;
         iconThuongHieu = findViewById(R.id.iconThuongHieu);
         imageBack = (ImageButton) findViewById(R.id.imgBack);
         Bundle bundle = getIntent().getExtras();
-        thuongHieuID = bundle.getInt("id");
+        thuongHieuID = bundle.getString("id");
         thuongHieuHinh = bundle.getString("hinh");
         gridView = findViewById(R.id.grid_view_sanpham);
         Uri myUri = Uri.parse(thuongHieuHinh);
@@ -77,6 +77,7 @@ public class SanPhamPage extends AppCompatActivity { ;
                 intent.putExtra("mota", sanPhamItem.getMotaSP());
                 intent.putExtra("tenth", sanPhamItem.getTenTH());
                 intent.putExtra("idTH",sanPhamItem.getIdTH());
+                intent.putExtra("soluongKho",sanPhamItem.getSoluongKho());
                 startActivity(intent);
             }
         });
@@ -101,8 +102,8 @@ public class SanPhamPage extends AppCompatActivity { ;
                     int giasp = ds.child("giaSP").getValue(Integer.class);
                     String tenth = ds.child("tenTH").getValue(String.class);
                     String motasp = ds.child("motaSP").getValue(String.class);
-                    int idTH = ds.child("idTH").getValue(Integer.class);
-
+                    String idTH = ds.child("idTH").getValue(String.class);
+                    int soluongKho = ds.child("soluongKho").getValue(Integer.class);
                     AtomicBoolean isDaTonTai = new AtomicBoolean(false);
                     AtomicBoolean isYeuThich = new AtomicBoolean(false);
                     AtomicBoolean isThuongHieu = new AtomicBoolean(false);
@@ -111,27 +112,27 @@ public class SanPhamPage extends AppCompatActivity { ;
                     list.forEach(sanpham -> {
                         /// so sánh id thương hiệu (idthuong hieu la khóa ngoại) để lấy ra được danh sách theo thương hiệu
                         /// check key de khong bi trung
-                        if (sanpham.getID() == Integer.parseInt(key)) {
+                        if (sanpham.getID().equals(key)) {
                             isDaTonTai.set(true);
                         }
                     });
                     /// check thương hiệu click từ homepage
-                    if(thuongHieuID == idTH){
+                    if(thuongHieuID.equals(idTH)){
                         isThuongHieu.set(true);
                     }
 
                     /// danh sach yeu thich
                     MainActivity.listYT.forEach(sanPhamYT -> {
-                        if (Integer.parseInt(key) == sanPhamYT.getID()) {
+                        if (key.equals(sanPhamYT.getID())) {
                             isYeuThich.set(true);
                         }
                     });
 
                     /// nó phải chưa được tồn tại
                     /// nó phải cùng thương hiệu với homepage khi click vào
-                    if (isDaTonTai.get() == false && isThuongHieu.get() == true) {
+                    if (!isDaTonTai.get() && isThuongHieu.get()) {
                         /// -> them vao
-                        SanPham sp = new SanPham(Integer.parseInt(key), tensp, hinhsp, giasp, tenth, motasp, idTH, isYeuThich.get(), 0,0);
+                        SanPham sp = new SanPham(key, tensp, hinhsp, giasp, tenth, motasp, idTH,soluongKho);
                         list.add(sp);
                     }
                 }

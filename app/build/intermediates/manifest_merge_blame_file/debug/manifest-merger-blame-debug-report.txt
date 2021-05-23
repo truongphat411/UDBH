@@ -1,0 +1,187 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.appbanhang"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="30" />
+9-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+11-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:4:5-79
+11-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:4:22-76
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:5:5-66
+12-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:5:22-64
+13    <uses-permission android:name="android.permission.CAMERA" />
+13-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:6:5-64
+13-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:6:22-62
+14    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+14-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:7:5-79
+14-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:7:22-77
+15    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+15-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:8:5-80
+15-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:8:22-78
+16
+17    <application
+17-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:9:5-47:19
+18        android:allowBackup="true"
+18-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:10:9-35
+19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+19-->[androidx.core:core:1.3.1] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\0fd693cbeda8be952cfd72e782f62993\core-1.3.1\AndroidManifest.xml:24:18-86
+20        android:debuggable="true"
+21        android:icon="@mipmap/ic_launcher"
+21-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:11:9-43
+22        android:label="@string/app_name"
+22-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:12:9-41
+23        android:roundIcon="@mipmap/ic_launcher_round"
+23-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:13:9-54
+24        android:supportsRtl="true"
+24-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:14:9-35
+25        android:testOnly="true"
+26        android:theme="@style/Theme.AppBanHang" >
+26-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:15:9-48
+27        <activity android:name="com.example.appbanhang.WellComeApp" >
+27-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:16:9-22:20
+27-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:16:19-46
+28            <intent-filter>
+28-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:17:13-20:29
+29                <action android:name="android.intent.action.MAIN" />
+29-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:18:17-69
+29-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:18:25-66
+30
+31                <category android:name="android.intent.category.LAUNCHER" />
+31-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:19:17-77
+31-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:19:27-74
+32            </intent-filter>
+33        </activity>
+34        <activity android:name="com.example.appbanhang.MainActivity" />
+34-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:23:9-50
+34-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:23:19-47
+35        <activity android:name="com.example.appbanhang.FormDNDK" />
+35-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:24:9-46
+35-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:24:19-43
+36        <activity android:name="com.example.appbanhang.SeachView" />
+36-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:25:9-47
+36-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:25:19-44
+37        <activity android:name="com.example.appbanhang.SanPhamPage" />
+37-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:26:9-49
+37-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:26:19-46
+38        <activity android:name="com.example.appbanhang.chiTietSanPham" />
+38-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:27:9-52
+38-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:27:19-49
+39        <activity android:name="com.example.appbanhang.FormTTCN" />
+39-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:28:9-46
+39-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:28:19-43
+40        <activity android:name="com.example.appbanhang.LSTC" />
+40-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:29:9-41
+40-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:29:19-39
+41        <activity android:name="com.example.appbanhang.QLND" />
+41-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:30:9-41
+41-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:30:19-39
+42        <activity android:name="com.example.appbanhang.chiTietUser" />
+42-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:31:9-48
+42-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:31:19-46
+43        <activity android:name="com.example.appbanhang.donMua" />
+43-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:32:9-43
+43-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:32:19-41
+44        <activity android:name="com.example.appbanhang.QLDH" />
+44-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:33:9-41
+44-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:33:19-39
+45        <activity android:name="com.example.appbanhang.CTHoaDon" />
+45-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:34:9-45
+45-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:34:19-43
+46        <activity android:name="com.example.appbanhang.activity_capnhat" />
+46-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:35:9-53
+46-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:35:19-51
+47        <activity android:name="com.example.appbanhang.activity_capnhatsanpham" />
+47-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:36:9-60
+47-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:36:19-58
+48        <activity android:name="com.example.appbanhang.Activity_ThemSP" />
+48-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:37:9-52
+48-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:37:19-50
+49
+50        <provider
+50-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:38:9-46:20
+51            android:name="androidx.core.content.FileProvider"
+51-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:39:13-62
+52            android:authorities="net.smallacademy.android.fileprovider"
+52-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:40:13-72
+53            android:exported="false"
+53-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:41:13-37
+54            android:grantUriPermissions="true" >
+54-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:42:13-47
+55            <meta-data
+55-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:43:13-45:53
+56                android:name="android.support.FILE_PROVIDER_PATHS"
+56-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:44:17-67
+57                android:resource="@xml/file_paths" />
+57-->C:\Users\Admin\AndroidStudioProjects\UDBH-master\app\src\main\AndroidManifest.xml:45:17-51
+58        </provider>
+59
+60        <service
+60-->[com.google.firebase:firebase-database:19.7.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\24ac034c76dfb1b3647cba84ddb1672b\jetified-firebase-database-19.7.0\AndroidManifest.xml:29:9-35:19
+61            android:name="com.google.firebase.components.ComponentDiscoveryService"
+61-->[com.google.firebase:firebase-database:19.7.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\24ac034c76dfb1b3647cba84ddb1672b\jetified-firebase-database-19.7.0\AndroidManifest.xml:30:13-84
+62            android:directBootAware="true"
+62-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:35:13-43
+63            android:exported="false" >
+63-->[com.google.firebase:firebase-database:19.7.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\24ac034c76dfb1b3647cba84ddb1672b\jetified-firebase-database-19.7.0\AndroidManifest.xml:31:13-37
+64            <meta-data
+64-->[com.google.firebase:firebase-database:19.7.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\24ac034c76dfb1b3647cba84ddb1672b\jetified-firebase-database-19.7.0\AndroidManifest.xml:32:13-34:85
+65                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+65-->[com.google.firebase:firebase-database:19.7.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\24ac034c76dfb1b3647cba84ddb1672b\jetified-firebase-database-19.7.0\AndroidManifest.xml:33:17-109
+66                android:value="com.google.firebase.components.ComponentRegistrar" />
+66-->[com.google.firebase:firebase-database:19.7.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\24ac034c76dfb1b3647cba84ddb1672b\jetified-firebase-database-19.7.0\AndroidManifest.xml:34:17-82
+67            <meta-data
+67-->[com.google.firebase:firebase-storage:19.2.2] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\2463fd9af60315f94ca6b2e1beadb579\jetified-firebase-storage-19.2.2\AndroidManifest.xml:33:13-35:85
+68                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+68-->[com.google.firebase:firebase-storage:19.2.2] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\2463fd9af60315f94ca6b2e1beadb579\jetified-firebase-storage-19.2.2\AndroidManifest.xml:34:17-107
+69                android:value="com.google.firebase.components.ComponentRegistrar" />
+69-->[com.google.firebase:firebase-storage:19.2.2] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\2463fd9af60315f94ca6b2e1beadb579\jetified-firebase-storage-19.2.2\AndroidManifest.xml:35:17-82
+70            <!--
+71                This registrar is not defined in the dynamic-module-support sdk itself to allow non-firebase
+72                clients to use it as well, by defining this registrar in their own core/common library.
+73            -->
+74            <meta-data
+74-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:43:13-45:85
+75                android:name="com.google.firebase.components:com.google.firebase.dynamicloading.DynamicLoadingRegistrar"
+75-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:44:17-121
+76                android:value="com.google.firebase.components.ComponentRegistrar" />
+76-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:45:17-82
+77        </service>
+78
+79        <activity
+79-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\97762cadcf6efc2fd07f9a69ce6d22a4\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+80            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+80-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\97762cadcf6efc2fd07f9a69ce6d22a4\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+81            android:exported="false"
+81-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\97762cadcf6efc2fd07f9a69ce6d22a4\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+82            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+82-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\97762cadcf6efc2fd07f9a69ce6d22a4\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+83
+84        <provider
+84-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:26:9-31:39
+85            android:name="com.google.firebase.provider.FirebaseInitProvider"
+85-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:27:13-77
+86            android:authorities="com.example.appbanhang.firebaseinitprovider"
+86-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:28:13-72
+87            android:directBootAware="true"
+87-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:29:13-43
+88            android:exported="false"
+88-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:30:13-37
+89            android:initOrder="100" />
+89-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:31:13-36
+90
+91        <meta-data
+91-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\673ad0707d733aa5817b98bae7b95b87\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+92            android:name="com.google.android.gms.version"
+92-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\673ad0707d733aa5817b98bae7b95b87\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+93            android:value="@integer/google_play_services_version" />
+93-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\673ad0707d733aa5817b98bae7b95b87\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+94    </application>
+95
+96</manifest>

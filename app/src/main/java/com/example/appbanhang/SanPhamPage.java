@@ -70,7 +70,7 @@ public class SanPhamPage extends AppCompatActivity { ;
                 reference = FirebaseDatabase.getInstance().getReference().child("sanpham");
                 SanPham sanPhamItem = list.get(position);
                 Intent intent = new Intent(SanPhamPage.this, chiTietSanPham.class);
-                intent.putExtra("id", sanPhamItem.getID());
+                intent.putExtra("id", sanPhamItem.getIdSP());
                 intent.putExtra("ten", sanPhamItem.getTenSP());
                 intent.putExtra("hinh", sanPhamItem.getHinhSP());
                 intent.putExtra("gia", sanPhamItem.getGiaSP());
@@ -112,7 +112,7 @@ public class SanPhamPage extends AppCompatActivity { ;
                     list.forEach(sanpham -> {
                         /// so sánh id thương hiệu (idthuong hieu la khóa ngoại) để lấy ra được danh sách theo thương hiệu
                         /// check key de khong bi trung
-                        if (sanpham.getID().equals(key)) {
+                        if (sanpham.getIdSP().equals(key)) {
                             isDaTonTai.set(true);
                         }
                     });
@@ -123,7 +123,7 @@ public class SanPhamPage extends AppCompatActivity { ;
 
                     /// danh sach yeu thich
                     MainActivity.listYT.forEach(sanPhamYT -> {
-                        if (key.equals(sanPhamYT.getID())) {
+                        if (key.equals(sanPhamYT.getIdSP())) {
                             isYeuThich.set(true);
                         }
                     });

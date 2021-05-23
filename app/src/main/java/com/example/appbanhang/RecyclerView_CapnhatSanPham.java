@@ -43,13 +43,12 @@ public class RecyclerView_CapnhatSanPham extends RecyclerView.Adapter<RecyclerVi
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, activity_capnhatsanpham.class);
                 intent.putExtra("tenSP",sanphamArrayList.get(position).getTenSP());
-                intent.putExtra("idSP",sanphamArrayList.get(position).getID());
+                intent.putExtra("idSP",sanphamArrayList.get(position).getIdSP());
                 intent.putExtra("giaSP",sanphamArrayList.get(position).getGiaSP());
                 intent.putExtra("motaSP",sanphamArrayList.get(position).getMotaSP());
                 intent.putExtra("soluongKho",sanphamArrayList.get(position).getSoluongKho());
                 intent.putExtra("hinhSP",sanphamArrayList.get(position).getHinhSP());
                 intent.putExtra("idTH",sanphamArrayList.get(position).getIdTH());
-                Fragment_CapNhatSanPham.isCapnhat = false;
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
             }

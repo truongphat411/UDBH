@@ -54,7 +54,7 @@ public class RecyclerView_Search extends RecyclerView.Adapter<RecyclerView_Searc
 
                 Intent intent = new Intent(mcontext,chiTietSanPham.class);
                 intent.putExtra("ten",filterList.get(position).getTenSP());
-                intent.putExtra("id",filterList.get(position).getID());
+                intent.putExtra("id",filterList.get(position).getIdSP());
                 intent.putExtra("hinh",filterList.get(position).getHinhSP());
                 intent.putExtra("gia",filterList.get(position).getGiaSP());
                 intent.putExtra("mota",filterList.get(position).getMotaSP());

@@ -94,7 +94,7 @@ public class FragmentDonMua extends Fragment {
 
                         for (ChiTietHoaDon itemChiTiet : chiTietHoaDons) {
                             for(SanPham itemSanPham : listSP){
-                                if((itemChiTiet.getIdSP()).equals(itemSanPham.getID())){
+                                if((itemChiTiet.getIdSP()).equals(itemSanPham.getIdSP())){
                                     String tenSP = itemSanPham.getTenSP();
                                     String hinhSP = itemSanPham.getHinhSP();
                                     int giaSP = itemSanPham.getGiaSP();

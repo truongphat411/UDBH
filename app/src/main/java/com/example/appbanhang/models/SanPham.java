@@ -1,15 +1,18 @@
 package com.example.appbanhang.models;
 
 public class SanPham {
-    public String getID() {
-        return ID;
+
+
+    public String idSP;
+
+    public String getIdSP() {
+        return idSP;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setIdSP(String idSP) {
+        this.idSP = idSP;
     }
 
-    public String ID;
     public String tenSP;
     public String hinhSP;
     public int giaSP;
@@ -60,8 +63,8 @@ public class SanPham {
         this.motaSP = motaSP;
     }
 
-    public SanPham(String ID, String tenSP, String hinhSP, int giaSP, String tenTH, String motaSP,String idTH,int soluongKho) {
-        this.ID = ID;
+    public SanPham(String idSP, String tenSP, String hinhSP, int giaSP, String tenTH, String motaSP,String idTH,int soluongKho) {
+        this.idSP = idSP;
         this.tenSP = tenSP;
         this.hinhSP = hinhSP;
         this.giaSP = giaSP;

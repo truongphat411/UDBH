@@ -167,11 +167,7 @@ public class chiTietUser extends AppCompatActivity {
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int count = 0;
-
                 for(DataSnapshot ds : snapshot.getChildren()){
-                    count ++;
-                    String key = ds.getKey();
                     DataSnapshot childHoatDong = ds.child("hoatdong");
                     Boolean isHoatdong = childHoatDong.getValue(boolean.class);
                     if(!isHoatdong){

@@ -26,11 +26,11 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.appbanhang.models.SanPham;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class gioHangTinhTien extends Fragment {
     Button btnNhapThongTin;
-    EditText edtHoten,edtSDT,edtDiaChi;
     ListView lvgh;
     TextView txttongtien;
     private int tongtien = 0;
@@ -76,11 +76,11 @@ public class gioHangTinhTien extends Fragment {
         btnNhapThongTin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (MainActivity.dadangnhap == true && MainActivity.listGH.size() == 0) {
+                if (MainActivity.dadangnhap&& MainActivity.listGH.size() == 0) {
                     Toast.makeText(getActivity(), "Giỏ hàng đang trống", Toast.LENGTH_SHORT).show();
                 } else if(MainActivity.dadangnhap && MainActivity.listGH.size() > 0){
                     giohangthongtin fragment = new giohangthongtin();
-                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    FragmentTransaction fragmentTransaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.framelayoutGioHang, fragment);
                     fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();

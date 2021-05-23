@@ -35,6 +35,8 @@ public class chiTietSanPham extends AppCompatActivity {
     Button btnThemGioHang;
     SanPham sanPhamSelected;
     public static final  String SHARED_PREFS = "sharedPrefs";
+    private int soluongKho;
+    @RequiresApi(api = Build.VERSION_CODES.N)
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chitietsanpham);
@@ -51,12 +53,27 @@ public class chiTietSanPham extends AppCompatActivity {
             }
         });
         btnThemGioHang = findViewById(R.id.btnthemGioHang);
+        loadData();
+/*        MainActivity.listGH.forEach(sanPham -> {
+            if(sanPham.getIdSP().equals(sanPhamSelected.getIdSP()) && sanPham.getSoluong() >= soluongKho){
+                btnThemGioHang.setEnabled(false);
+                btnThemGioHang.setBackgroundColor(getResources().getColor(R.color.grey));
+                Toast.makeText(chiTietSanPham.this, "Sản phẩm hiện đã hết.", Toast.LENGTH_SHORT).show();
+            }else {
+                btnThemGioHang.setEnabled(true);
+                btnThemGioHang.setBackgroundColor(getResources().getColor(R.color.aqua));
+            }
+        });
+        if(soluongKho == 0){
+            btnThemGioHang.setEnabled(false);
+            btnThemGioHang.setBackgroundColor(getResources().getColor(R.color.grey));
+        }*/
         btnThemGioHang.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
                 MainActivity.listGH.forEach(sanphamGH -> {
-                    if (sanphamGH.getID() == sanPhamSelected.getID()) {
+                    if (sanphamGH.getIdSP().equals(sanPhamSelected.getIdSP())) {
                         sanPhamSelected = sanphamGH;
                     }
                 });
@@ -72,6 +89,8 @@ public class chiTietSanPham extends AppCompatActivity {
                 saveData();
             }
         });
+    }
+    private void loadData(){
         Intent intent = getIntent();
         String ten = intent.getStringExtra("ten");
         String id = intent.getStringExtra("id");
@@ -80,18 +99,16 @@ public class chiTietSanPham extends AppCompatActivity {
         String mota = intent.getStringExtra("mota");
         String tenth = intent.getStringExtra("tenth");
         String idth = intent.getStringExtra("idTH");
-        int soluongKho = intent.getIntExtra("soluongKho",0);
+        soluongKho = intent.getIntExtra("soluongKho",0);
 
         sanPhamSelected = new SanPham(id,ten,hinh,gia,tenth,mota,idth,soluongKho);
 
 
-            Picasso.with(chiTietSanPham.this).load(hinh).into(image_sanpham);
-            txttensp.setText(ten);
-            txtmotasp.setText(mota);
-            txtgiasp.setText("đ"+String.valueOf(gia));
-
+        Picasso.with(chiTietSanPham.this).load(hinh).into(image_sanpham);
+        txttensp.setText(ten);
+        txtmotasp.setText(mota);
+        txtgiasp.setText("đ"+String.valueOf(gia));
     }
-
     @Override
     protected void onStart() {
         super.onStart();

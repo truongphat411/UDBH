@@ -58,6 +58,7 @@ public class gioHangAdapter extends BaseAdapter {
         super.notifyDataSetChanged();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @SuppressLint({"SetTextI18n", "InflateParams"})
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -76,7 +77,7 @@ public class gioHangAdapter extends BaseAdapter {
         Button button = convertView.findViewById(R.id.btncong);
         TextView textView2 = convertView.findViewById(R.id.txtsoluong);
         textView2.setText("số lượng: " + currentItem.getSoluong());
-        Button button2= convertView.findViewById(R.id.btntru);
+        Button button2 = convertView.findViewById(R.id.btntru);
         button.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @SuppressLint("SetTextI18n")

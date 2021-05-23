@@ -45,10 +45,8 @@ public class Fragment_CapNhatSanPham extends Fragment {
         btnthemSP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),activity_capnhatsanpham.class);
-                isCapnhat = true;
+                Intent intent = new Intent(getActivity(),Activity_ThemSP.class);
                 startActivity(intent);
-
             }
         });
          return view;
@@ -72,7 +70,7 @@ public class Fragment_CapNhatSanPham extends Fragment {
                     AtomicBoolean isSanPham = new AtomicBoolean();
 
                     list.forEach(sanPham -> {
-                        if(sanPham.getID().equals(key)){
+                        if(sanPham.getIdSP().equals(key)){
                             isSanPham.set(true);
                         }
                     });

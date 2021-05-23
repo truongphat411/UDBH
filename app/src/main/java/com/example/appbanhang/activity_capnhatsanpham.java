@@ -67,8 +67,6 @@ public class activity_capnhatsanpham extends AppCompatActivity {
     String currentPhotoPath;
     StorageReference storageReference;
     String hinhSP;
-    Thread thread;
-    AddThread addThread;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,13 +76,7 @@ public class activity_capnhatsanpham extends AppCompatActivity {
         btncapnhatSP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!Fragment_CapNhatSanPham.isCapnhat){
                     CapNhatSP();
-                }else {
-                    addThread = new AddThread();
-                    thread = new Thread(addThread);
-                    thread.start();
-                }
             }
         });
         btnxoaSP.setOnClickListener(new View.OnClickListener() {
@@ -118,11 +110,7 @@ public class activity_capnhatsanpham extends AppCompatActivity {
         btnxoaSP = findViewById(R.id.btnxoaSP);
         imgBack = findViewById(R.id.imgBack);
         imgcamera = findViewById(R.id.imgcamera);
-        if(!Fragment_CapNhatSanPham.isCapnhat){
-            loadData();
-        }else {
-            btnxoaSP.setVisibility(View.GONE);
-        }
+        loadData();
     }
     private void loadData(){
         Intent intent = getIntent();
@@ -133,7 +121,7 @@ public class activity_capnhatsanpham extends AppCompatActivity {
         edtsoluongKho.setText(String.valueOf(intent.getIntExtra("soluongKho",0)));
         Uri myUri = Uri.parse(intent.getStringExtra("hinhSP"));
         Picasso.with(activity_capnhatsanpham.this).load(myUri).placeholder(R.drawable.image).into(imvhinhSP);
-        edtmathuonghieu.setText(String.valueOf(intent.getIntExtra("idTH",0)));
+        edtmathuonghieu.setText(intent.getStringExtra("idTH"));
     }
     private void CapNhatSP(){
         reference = FirebaseDatabase.getInstance().getReference().child("sanpham");
@@ -151,7 +139,6 @@ public class activity_capnhatsanpham extends AppCompatActivity {
                     finish();
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
@@ -176,9 +163,6 @@ public class activity_capnhatsanpham extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-    }
-    private void themSP(){
-
     }
     private void askCameraPermissions(){
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
@@ -285,27 +269,6 @@ public class activity_capnhatsanpham extends AppCompatActivity {
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                     startActivityForResult(takePictureIntent, CAMERA_REQUEST_CODE);
                 }
-            }
-        }
-        class AddThread implements Runnable{
-            @Override
-            public void run() {
-                try{
-                    reference = FirebaseDatabase.getInstance().getReference().child("sanpham");
-                    String key = reference.push().getKey();
-                    String tenSP = edttenSP.getText().toString().trim();
-                    int giaSP = Integer.parseInt(edtgiaSP.getText().toString().trim());
-                    String motaSP = edtmotaSP.getText().toString().trim();
-                    String idTH = edtmathuonghieu.getText().toString().trim();
-                    int soluongKho = Integer.parseInt(edtsoluongKho.getText().toString().trim());
-                    SanPham sanPham = new SanPham(key,tenSP,hinhSP,giaSP,"",motaSP,idTH,soluongKho);
-                    reference.child(key).setValue(sanPham);
-                    Toast.makeText(activity_capnhatsanpham.this,"Thêm sản phẩm thành công",Toast.LENGTH_SHORT).show();
-                    finish();
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-
             }
         }
     @Override

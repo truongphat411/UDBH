@@ -34,7 +34,7 @@ public class ListFavorite extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 SanPham spYT = MainActivity.listYT.get(position);
                 Intent intent = new Intent(getContext(),chiTietSanPham.class);
-                intent.putExtra("id", spYT.getID());
+                intent.putExtra("id", spYT.getIdSP());
                 intent.putExtra("hinh",spYT.getHinhSP());
                 intent.putExtra("ten",spYT.getTenSP());
                 intent.putExtra("mota",spYT.getMotaSP());

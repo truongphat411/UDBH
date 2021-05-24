@@ -20,9 +20,11 @@ import java.util.ArrayList;
 public class Recycler_ChiTietDonHang extends RecyclerView.Adapter<Recycler_ChiTietDonHang.ViewHolder>{
     private Context mContext;
     private ArrayList<SanPham> sanpham;
-    public Recycler_ChiTietDonHang(Context mContext,ArrayList<SanPham> sanpham){
+    private ArrayList<ChiTietHoaDon> chitiet;
+    public Recycler_ChiTietDonHang(Context mContext,ArrayList<SanPham> sanpham,ArrayList<ChiTietHoaDon> chitiet){
         this.mContext = mContext;
         this.sanpham = sanpham;
+        this.chitiet = chitiet;
     }
     @NonNull
     @Override
@@ -36,7 +38,7 @@ public class Recycler_ChiTietDonHang extends RecyclerView.Adapter<Recycler_ChiTi
         String url = sanpham.get(position).hinhSP;
         Picasso.with(mContext).load(url).into(holder.imvHinhSP);
         holder.txtTenSP.setText(sanpham.get(position).getTenSP());
-        holder.txtSoluong.setText("X"+sanpham.get(position).getSoluong());
+        holder.txtSoluong.setText("X"+chitiet.get(position).getSoluong());
         holder.txtGiaSP.setText(sanpham.get(position).getGiaSP()+"đ");
     }
 

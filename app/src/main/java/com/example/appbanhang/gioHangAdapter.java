@@ -78,12 +78,22 @@ public class gioHangAdapter extends BaseAdapter {
         TextView textView2 = convertView.findViewById(R.id.txtsoluong);
         textView2.setText("số lượng: " + currentItem.getSoluong());
         Button button2 = convertView.findViewById(R.id.btntru);
+        MainActivity.listGH.forEach(sp -> {
+            if(sp.getIdSP().equals(currentItem.getIdSP()) && sp.getSoluong() >= currentItem.getSoluongKho()){
+                button.setEnabled(false);
+                button.setBackgroundColor(context.getResources().getColor(R.color.grey));
+            }
+        });
         button.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 currentItem.setSoluong(currentItem.getSoluong()+1);
+                if(currentItem.getSoluong() >= currentItem.getSoluongKho()){
+                    button.setEnabled(false);
+                    button.setBackgroundColor(context.getResources().getColor(R.color.grey));
+                }
                 textView2.setText("số lượng: " + currentItem.getSoluong());
                 MainActivity.listGH.forEach(sanPham -> {
                     tongtien += (sanPham.getSoluong()*sanPham.getGiaSP());
@@ -99,6 +109,8 @@ public class gioHangAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 if(currentItem.getSoluong() > 1) {
+                    button.setEnabled(true);
+                    button.setBackgroundColor(context.getResources().getColor(R.color.aqua));
                     currentItem.setSoluong(currentItem.getSoluong() - 1);
                     textView2.setText("số lượng: " + currentItem.getSoluong());
                     notifyDataSetChanged();

@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appbanhang.models.ChiTietHoaDon;
 import com.example.appbanhang.models.SanPham;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,7 +36,8 @@ public class CTHoaDon extends AppCompatActivity {
     Button btnHuyDonHang;
     DatabaseReference referenceCTHD,referenceSP;
     Recycler_ChiTietDonHang adapter;
-    ArrayList<SanPham> list;
+    ArrayList<SanPham> listSP;
+    ArrayList<ChiTietHoaDon> listCTDH;
     String idHD;
     int tongtien;
     @Override
@@ -54,7 +56,7 @@ public class CTHoaDon extends AppCompatActivity {
         DataFromFirebaseListener();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(CTHoaDon.this);
         recyclerChiTietDonHang.setLayoutManager(linearLayoutManager);
-        adapter = new Recycler_ChiTietDonHang(CTHoaDon.this , list);
+        adapter = new Recycler_ChiTietDonHang(CTHoaDon.this , listSP,listCTDH);
         recyclerChiTietDonHang.setAdapter(adapter);
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,15 +67,16 @@ public class CTHoaDon extends AppCompatActivity {
     }
 
     private void DataFromFirebaseListener() {
-        list = new ArrayList<SanPham>();
+        listSP = new ArrayList<>();
+        listCTDH = new ArrayList<>();
         referenceCTHD.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds : snapshot.getChildren()){
-                    String key = ds.getKey();
-                    int idSP = snapshot.child(key).child("idSP").getValue(Integer.class);
-                    String idHDFromDatabase = snapshot.child(key).child("idHD").getValue(String.class);
-                    int soluong = snapshot.child(key).child("soluong").getValue(Integer.class);
+                    String keyCT = ds.getKey();
+                    String idSP = ds.child("idSP").getValue(String.class);
+                    String idHDFromDatabase = ds.child("idHD").getValue(String.class);
+                    int soluong = ds.child("soluong").getValue(Integer.class);
 
                     AtomicBoolean isHoaDon = new AtomicBoolean();
                     if(idHD.equals(idHDFromDatabase)){
@@ -91,12 +94,15 @@ public class CTHoaDon extends AppCompatActivity {
                                 String motaSP = ds.child("motaSP").getValue(String.class);
                                 int soluongKho = ds.child("soluongKho").getValue(Integer.class);
                                 AtomicBoolean isSanPham = new AtomicBoolean();
+                                assert key != null;
                                 if(key.equals(idSP)){
                                     isSanPham.set(true);
                                 }
                                 if(isHoaDon.get() && isSanPham.get()){
+                                    ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon(keyCT,key,idHD,soluong);
+                                    listCTDH.add(chiTietHoaDon);
                                     SanPham sanPham = new SanPham(key,tensp,hinhsp,soluong*giasp,"",motaSP,idTH,soluongKho);
-                                    list.add(sanPham);
+                                    listSP.add(sanPham);
                                 }
                             }
                             adapter.notifyDataSetChanged();

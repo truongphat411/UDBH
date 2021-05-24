@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -145,24 +147,33 @@ public class activity_capnhatsanpham extends AppCompatActivity {
         });
     }
     private void XoaSP() {
-        reference = FirebaseDatabase.getInstance().getReference().child("sanpham");
-        Query query = reference.orderByChild("idSP").equalTo(idSP);
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
+        DialogInterface.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    for(DataSnapshot ds : snapshot.getChildren()){
-                        ds.getRef().removeValue();
-                    }
-                    Toast.makeText(activity_capnhatsanpham.this,"Xóa sản phẩm thành công",Toast.LENGTH_SHORT).show();
-                    finish();
+            public void onClick(DialogInterface dialog, int which) {
+                if (which == DialogInterface.BUTTON_POSITIVE) {
+                    reference = FirebaseDatabase.getInstance().getReference().child("sanpham");
+                    Query query = reference.orderByChild("idSP").equalTo(idSP);
+                    query.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                for (DataSnapshot ds : snapshot.getChildren()) {
+                                    ds.getRef().removeValue();
+                                }
+                                Toast.makeText(activity_capnhatsanpham.this, "Xóa sản phẩm thành công", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
                 }
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
+        };
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity_capnhatsanpham.this);
+        builder.setMessage("Bạn muốn xóa sản phẩm?").setPositiveButton("Yes", onClickListener)
+                .setNegativeButton("No", onClickListener).show();
     }
     private void askCameraPermissions(){
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){

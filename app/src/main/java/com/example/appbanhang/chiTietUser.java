@@ -171,10 +171,12 @@ public class chiTietUser extends AppCompatActivity {
                     DataSnapshot childHoatDong = ds.child("hoatdong");
                     Boolean isHoatdong = childHoatDong.getValue(boolean.class);
                     if(!isHoatdong){
+                        btnMoKhoaTaiKhoan.setEnabled(true);
                         btnKhoaTaiKhoan.setEnabled(false);
                         btnKhoaTaiKhoan.setBackgroundColor(getResources().getColor(R.color.grey));
                     }else {
                         btnKhoaTaiKhoan.setEnabled(true);
+                        btnMoKhoaTaiKhoan.setEnabled(false);
                     }
                     query.removeEventListener(this);
                 }
@@ -186,10 +188,5 @@ public class chiTietUser extends AppCompatActivity {
             }
         });
 
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
     }
 }

@@ -60,7 +60,6 @@ public class QLDH extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()) {
-                    Log.d("MTP", "onDataChange: 10");
                     String key = ds.child("id").getValue(String.class);
                     String idUser = ds.child("idUser").getValue(String.class);
                     String ngayTaoDon = ds.child("ngaytaodon").getValue(String.class);

@@ -35,7 +35,6 @@ public class chiTietSanPham extends AppCompatActivity {
     Button btnThemGioHang;
     SanPham sanPhamSelected;
     public static final  String SHARED_PREFS = "sharedPrefs";
-    private int soluongKho;
     @RequiresApi(api = Build.VERSION_CODES.N)
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,20 +53,17 @@ public class chiTietSanPham extends AppCompatActivity {
         });
         btnThemGioHang = findViewById(R.id.btnthemGioHang);
         loadData();
-/*        MainActivity.listGH.forEach(sanPham -> {
-            if(sanPham.getIdSP().equals(sanPhamSelected.getIdSP()) && sanPham.getSoluong() >= soluongKho){
+        MainActivity.listGH.forEach(sanPham -> {
+            if(sanPham.getIdSP().equals(sanPhamSelected.getIdSP()) && sanPham.getSoluong() >= sanPhamSelected.getSoluongKho()){
                 btnThemGioHang.setEnabled(false);
                 btnThemGioHang.setBackgroundColor(getResources().getColor(R.color.grey));
                 Toast.makeText(chiTietSanPham.this, "Sản phẩm hiện đã hết.", Toast.LENGTH_SHORT).show();
-            }else {
-                btnThemGioHang.setEnabled(true);
-                btnThemGioHang.setBackgroundColor(getResources().getColor(R.color.aqua));
             }
         });
-        if(soluongKho == 0){
+        if(sanPhamSelected.getSoluongKho() == 0){
             btnThemGioHang.setEnabled(false);
             btnThemGioHang.setBackgroundColor(getResources().getColor(R.color.grey));
-        }*/
+        }
         btnThemGioHang.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
@@ -86,6 +82,11 @@ public class chiTietSanPham extends AppCompatActivity {
                     sanPhamSelected.setSoluong(sanPhamSelected.getSoluong() + 1);
                     Toast.makeText(chiTietSanPham.this, "thêm giỏ hàng thành công", Toast.LENGTH_SHORT).show();
                 }
+                if(sanPhamSelected.getSoluong() >= sanPhamSelected.getSoluongKho()){
+                    btnThemGioHang.setEnabled(false);
+                    btnThemGioHang.setBackgroundColor(getResources().getColor(R.color.grey));
+                    Toast.makeText(chiTietSanPham.this, "Sản phẩm hiện đã hết.", Toast.LENGTH_SHORT).show();
+                }
                 saveData();
             }
         });
@@ -99,7 +100,7 @@ public class chiTietSanPham extends AppCompatActivity {
         String mota = intent.getStringExtra("mota");
         String tenth = intent.getStringExtra("tenth");
         String idth = intent.getStringExtra("idTH");
-        soluongKho = intent.getIntExtra("soluongKho",0);
+        int soluongKho = intent.getIntExtra("soluongKho",0);
 
         sanPhamSelected = new SanPham(id,ten,hinh,gia,tenth,mota,idth,soluongKho);
 

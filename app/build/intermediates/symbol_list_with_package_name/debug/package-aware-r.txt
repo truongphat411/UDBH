@@ -1797,10 +1797,12 @@ id btnNhapThongTin
 id btnRetry
 id btncapnhatSP
 id btncong
+id btnhuyDH
 id btnthemGioHang
 id btnthemSP
 id btnthemTH
 id btntru
+id btnxacnhanDH
 id btnxemLSTC
 id btnxoaSP
 id buttonPanel
@@ -1902,10 +1904,9 @@ id flip
 id floating
 id forever
 id formdoimatkhau
-id frameChoXacNhan
 id frameDaGiao
 id frameDaHuy
-id framecholayhang
+id framechoxacnhan
 id framedanggiao
 id framelayoutFavorite
 id framelayoutGioHang
@@ -1973,7 +1974,6 @@ id light
 id line1
 id line3
 id linear
-id listChoLayHang
 id listChoXacNhan
 id listDaGiao
 id listDaHuy
@@ -2297,6 +2297,7 @@ layout activity_capnhatsanpham
 layout activity_chitietcapnhat
 layout activity_main
 layout activity_themsanpham
+layout admin_qldh
 layout chitietdonhang
 layout chitietsanpham
 layout custom_dialog
@@ -2326,7 +2327,6 @@ layout fragment_dang_nhap
 layout fragment_sanpham
 layout fragment_thuonghieu
 layout fragmentadmin
-layout fragmentcholayhang
 layout fragmentchoxacnhan
 layout fragmentchuacodonhang
 layout fragmentchuacodonmua
@@ -2337,6 +2337,7 @@ layout fragmentdahuy
 layout fragmentdanggiao
 layout fragmentdonhang
 layout fragmentdonmua
+layout fragmentlistchoxacnhan
 layout giohang
 layout giohangthongtin
 layout giohangtinhtien

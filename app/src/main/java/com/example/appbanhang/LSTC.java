@@ -59,9 +59,9 @@ public class LSTC extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.getChildren() != null) {
                     for (DataSnapshot danhsach : snapshot.getChildren()) {
                         String childKey = danhsach.getKey();
+                        assert childKey != null;
                         String tenFromDatabase = snapshot.child(childKey).child("tenUser").getValue(String.class);
                         String sodienthoaiFromDatabase = snapshot.child(childKey).child("sodienthoaiUser").getValue(String.class);
                         String ngaygioFromDatabase = snapshot.child(childKey).child("ngaygio").getValue(String.class);
@@ -87,7 +87,6 @@ public class LSTC extends AppCompatActivity {
 
                         });
                     }
-                }
             }
 
             @Override

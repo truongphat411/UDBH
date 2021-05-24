@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,18 +34,64 @@ public class CTHoaDon extends AppCompatActivity {
     ImageButton imgBack;
     TextView txtTenNhanHang,txtSoDienThoaiNhanHang,txtDiaChiNhanHang;
     RecyclerView recyclerChiTietDonHang;
-    Button btnHuyDonHang;
+    Button btnXacNhan,btnHuy;
     DatabaseReference referenceCTHD,referenceSP;
     Recycler_ChiTietDonHang adapter;
     ArrayList<SanPham> listSP;
     ArrayList<ChiTietHoaDon> listCTDH;
     String idHD;
     int tongtien;
+    DatabaseReference referenceHD;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chitietdonhang);
         anhxa();
+        btnHuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String trangthai = "Đã Hủy";
+                referenceHD = FirebaseDatabase.getInstance().getReference().child("hoadon");
+                Query query = referenceHD.orderByChild("id").equalTo(idHD);
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()){
+                            referenceHD.child(idHD).child("trangthai").setValue(trangthai.trim());
+                            Toast.makeText(CTHoaDon.this,"Đã hủy đơn hàng",Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
+        btnXacNhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String trangthai = "Đang Giao";
+                referenceHD = FirebaseDatabase.getInstance().getReference().child("hoadon");
+                Query query = referenceHD.orderByChild("id").equalTo(idHD);
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()){
+                            referenceHD.child(idHD).child("trangthai").setValue(trangthai.trim());
+                            Toast.makeText(CTHoaDon.this,"Đang giao đơn hàng",Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
         Intent intent = getIntent();
         idHD = intent.getStringExtra("idHD");
         tongtien = intent.getIntExtra("tongtien",0);
@@ -65,7 +112,6 @@ public class CTHoaDon extends AppCompatActivity {
             }
         });
     }
-
     private void DataFromFirebaseListener() {
         listSP = new ArrayList<>();
         listCTDH = new ArrayList<>();
@@ -129,7 +175,11 @@ public class CTHoaDon extends AppCompatActivity {
         txtSoDienThoaiNhanHang = findViewById(R.id.txtSoDienThoaiNhanHang);
         txtDiaChiNhanHang = findViewById(R.id.txtDiaChiNhanHang);
         recyclerChiTietDonHang = findViewById(R.id.RecyclerChiTietDonHang);
-        btnHuyDonHang = findViewById(R.id.btnHuyDonHang);
+        btnXacNhan = findViewById(R.id.btnxacnhanDH);
+        btnHuy = findViewById(R.id.btnhuyDH);
+        if(MainActivity.tenLoai.equals("client")){
+            btnXacNhan.setVisibility(View.GONE);
+        }
     }
 
     @Override

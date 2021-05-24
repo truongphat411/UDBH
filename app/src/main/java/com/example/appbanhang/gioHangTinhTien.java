@@ -36,30 +36,6 @@ public class gioHangTinhTien extends Fragment {
     private int tongtien = 0;
     public static int TT;
     gioHangAdapter gioHangAdapter;
-
-    public ImageView getTxtChecked() {
-        return txtChecked;
-    }
-
-    public void setTxtChecked(ImageView txtChecked) {
-        this.txtChecked = txtChecked;
-    }
-
-    public ImageView getTxtUnchecked() {
-        return txtUnchecked;
-    }
-
-    public void setTxtUnchecked(ImageView txtUnchecked) {
-        this.txtUnchecked = txtUnchecked;
-    }
-
-    ImageView txtChecked, txtUnchecked;
-    Toolbar toolbar;
-    public  gioHangTinhTien(ImageView txtChecked, ImageView txtUnchecked, Toolbar toolbar){
-        this.txtChecked = txtChecked;
-        this.txtUnchecked = txtUnchecked;
-        this.toolbar = toolbar;
-    }
     public gioHangTinhTien(){
     }
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -84,8 +60,8 @@ public class gioHangTinhTien extends Fragment {
                     fragmentTransaction.replace(R.id.framelayoutGioHang, fragment);
                     fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();
-                    txtChecked.setBackgroundResource(R.drawable.circle);
-                    txtUnchecked.setBackgroundResource(R.drawable.circle);
+                    GioHangPage.txtChecked.setBackgroundResource(R.drawable.circle);
+                    GioHangPage.txtUnchecked.setBackgroundResource(R.drawable.circle);
                 }else {
                     Intent intent = new Intent(getActivity(), FormDNDK.class);
                     startActivity(intent);
@@ -101,8 +77,8 @@ public class gioHangTinhTien extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-//        txtChecked.setImageDrawable(getResources().getDrawable(R.drawable.circle));
-//        txtUnchecked.setImageDrawable(getResources().getDrawable(R.drawable.circle2));
+        GioHangPage.txtChecked.setBackgroundResource(R.drawable.circle);
+        GioHangPage.txtUnchecked.setBackgroundResource(R.drawable.circle2);
         gioHangAdapter.notifyDataSetChanged();
         MainActivity.listGH.forEach(sanPham -> {
             tongtien += (sanPham.getSoluong()*sanPham.getGiaSP());
@@ -111,6 +87,4 @@ public class gioHangTinhTien extends Fragment {
         });
         tongtien = 0;
     }
-
-
 }

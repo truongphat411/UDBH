@@ -36,8 +36,7 @@ public class donMua extends AppCompatActivity {
             }
         });
         donMuaAdapter = new donMuaViewPaperAdapter(getSupportFragmentManager());
-        donMuaAdapter.addFragment(new FragmentChoXacNhan(),"Tạo đơn");
-        donMuaAdapter.addFragment(new FragmentChoLayHang(),"Chờ xác nhận");
+        donMuaAdapter.addFragment(new FragmentChoXacNhan(),"Chờ Xác Nhận");
         donMuaAdapter.addFragment(new FragmentDangGiao(),"Đang giao");
         donMuaAdapter.addFragment(new FragmentDaGiao(),"Đã giao");
         donMuaAdapter.addFragment(new FragmentDaHuy(),"Đã hủy");

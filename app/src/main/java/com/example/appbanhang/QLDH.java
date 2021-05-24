@@ -11,11 +11,14 @@ import android.widget.ImageButton;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.appbanhang.models.HoaDon;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,33 +30,44 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class QLDH extends AppCompatActivity {
-    public static ArrayList<HoaDon> listQLDH;
+/*    public static ArrayList<HoaDon> listQLDH;
     ImageButton imb;
     RecyclerView recyclerView;
     DatabaseReference reference;
-    RecyclerViewDonHang adapter;
-
+    RecyclerViewDonHang adapter;*/
+    FragmentPager_AdminQLDH adapter;
+    ImageButton imBack;
+    TabLayout tabLayout;
+    ViewPager viewPager;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.qldh);
-        imb = findViewById(R.id.imgb);
-        recyclerView = findViewById(R.id.recyclerViewQLDH);
-        imb.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.admin_qldh);
+        tabLayout = findViewById(R.id.tablayout);
+        imBack = findViewById(R.id.imgb);
+        viewPager = findViewById(R.id.viewpaper);
+        adapter = new FragmentPager_AdminQLDH(getSupportFragmentManager());
+        adapter.addFragment(new FragmentChoXacNhan(),"Chờ Xác Nhận");
+        adapter.addFragment(new FragmentDangGiao(),"Đang giao");
+        adapter.addFragment(new FragmentDaGiao(),"Đã giao");
+        viewPager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(viewPager);
+        imBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+      /*  recyclerView = findViewById(R.id.recyclerViewQLDH);
+
         reference = FirebaseDatabase.getInstance().getReference().child("hoadon");
         DataFromFirebaseListener();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(QLDH.this);
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new RecyclerViewDonHang(QLDH.this, listQLDH);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);*/
     }
-
-    private void DataFromFirebaseListener() {
+/*    private void DataFromFirebaseListener() {
         listQLDH = new ArrayList<HoaDon>();
         Query query = reference.orderByChild("trangthai").equalTo("Chờ Xác Nhận");
         query.addValueEventListener(new ValueEventListener() {
@@ -79,7 +93,7 @@ public class QLDH extends AppCompatActivity {
             }
 
             });
-    }
+    }*/
 
     @Override
     protected void onStart() {

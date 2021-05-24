@@ -29,6 +29,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.example.appbanhang.models.HoaDon;
 import com.example.appbanhang.models.SanPham;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     ViewPager viewPager;
     public static  ArrayList<SanPham> listGH = new ArrayList<>();
     public static  ArrayList<SanPham> listYT = new ArrayList<>();
+    public static ArrayList<HoaDon> listCXN = new ArrayList<>();
     public static String id;
     public static Boolean dadangnhap = false;
     public static String hoten;

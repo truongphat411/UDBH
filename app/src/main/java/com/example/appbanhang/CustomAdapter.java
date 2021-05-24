@@ -54,16 +54,7 @@ public class CustomAdapter extends BaseAdapter {
         }
 
         ImageView imageView = convertView.findViewById(R.id.image_view);
-
-        /// url của firebase
         String url = thuongHieuArrayList.get(position).HinhTH;
-        Log.d("MTL", "getView: " + url);
-        /// get image url firebase
-//        imageView.setImageDrawable(LoadImageFromWebOperations(url));
-
-        /// đây là image từ trong project (Resource)
-        //imageView.setImageResource(Integer.parseInt(imageUrl.get(position)));
-
         Picasso.with(context).load(url).into(imageView);
         return convertView;
     }

@@ -20,10 +20,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 public class GioHangPage extends Fragment {
-    public GioHangPage(){
-
-    }
-
     public ImageView getTxtChecked() {
         return txtChecked;
     }
@@ -39,9 +35,8 @@ public class GioHangPage extends Fragment {
     public void setTxtUnchecked(ImageView txtUnchecked) {
         this.txtUnchecked = txtUnchecked;
     }
-    Toolbar toolbarGioHang;
-    ImageView txtChecked, txtUnchecked;
-    String edthoten,edtSDT,edtDiaChi;
+
+    public static ImageView txtChecked,txtUnchecked;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -49,7 +44,7 @@ public class GioHangPage extends Fragment {
         txtChecked = view.findViewById(R.id.txtChecked);
         txtUnchecked = view.findViewById(R.id.txtUnchecked);
         if (savedInstanceState == null){
-            gioHangTinhTien fragment = new gioHangTinhTien(txtChecked,txtUnchecked,toolbarGioHang);
+            gioHangTinhTien fragment = new gioHangTinhTien();
             FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
             fragmentTransaction.add(R.id.framelayoutGioHang,fragment);
             fragmentTransaction.commit();
@@ -57,4 +52,16 @@ public class GioHangPage extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(MainActivity.listGH.size() == 0){
+            txtChecked.setImageDrawable(getResources().getDrawable(R.drawable.circle));
+            txtUnchecked.setImageDrawable(getResources().getDrawable(R.drawable.circle2));
+            gioHangTinhTien fragment = new gioHangTinhTien();
+            FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.add(R.id.framelayoutGioHang,fragment);
+            fragmentTransaction.commit();
+        }
+    }
 }

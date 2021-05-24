@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,12 +37,6 @@ public class FragmentChoXacNhan extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragmentchoxacnhan,container,false);
         recyclerView = view.findViewById(R.id.listChoXacNhan);
-        reference = FirebaseDatabase.getInstance().getReference().child("hoadon");
-        DataFromFirebaseListener();
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getActivity());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        adapter = new RecyclerViewDonHang(getActivity() , listCXN);
-        recyclerView.setAdapter(adapter);
         return view;
     }
     private void DataFromFirebaseListener() {
@@ -72,13 +67,12 @@ public class FragmentChoXacNhan extends Fragment {
                 if(listCXN.size() == 0){
                     donHangTrong fragment = new donHangTrong();
                     FragmentTransaction fragmentTransaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.frameChoXacNhan, fragment);
+                    fragmentTransaction.replace(R.id.framechoxacnhan, fragment);
                     fragmentTransaction.commit();
                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }
@@ -86,5 +80,11 @@ public class FragmentChoXacNhan extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        reference = FirebaseDatabase.getInstance().getReference().child("hoadon");
+        DataFromFirebaseListener();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getActivity());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        adapter = new RecyclerViewDonHang(getActivity() , listCXN);
+        recyclerView.setAdapter(adapter);
     }
 }

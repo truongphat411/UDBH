@@ -1,6 +1,8 @@
 package com.example.appbanhang;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,9 +24,11 @@ import com.example.appbanhang.models.HoaDon;
 import com.example.appbanhang.models.SanPham;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class giohangthongtin extends Fragment {
     EditText edthoten,edtsodienthoai,edtdiachi;
@@ -34,6 +38,7 @@ public class giohangthongtin extends Fragment {
     DatabaseReference referenceCTHD;
     final Calendar myCalendar= Calendar.getInstance();
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    public static final  String SHARED_PREFS = "sharedPrefs";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -61,10 +66,12 @@ public class giohangthongtin extends Fragment {
                     return;
                 }else {
                     String keyHD = referenceHD.push().getKey();
+                    myCalendar.add(Calendar.DATE,2);
                     String ngaytaodon = sdf.format(myCalendar.getTime());
                     String ngayhoanthanh = "";
                     String trangthai = "Chờ Xác Nhận";
                     HoaDon hoaDon = new HoaDon(keyHD,gioHangTinhTien.TT,ngaytaodon,ngayhoanthanh,hoten,sodienthoai,diachi,trangthai,MainActivity.id);
+                    MainActivity.listCXN.add(hoaDon);
                     referenceHD.child(keyHD).setValue(hoaDon);
                     Toast.makeText(view.getContext(), "Tạo đơn hàng thành công", Toast.LENGTH_LONG).show();
                     MainActivity.listGH.forEach(sanPham -> {
@@ -75,6 +82,7 @@ public class giohangthongtin extends Fragment {
                         referenceCTHD.child(keyCTHD).setValue(chiTietHoaDon);
                     });
                     MainActivity.listGH.clear();
+                    saveData();
                     Intent intent = new Intent(getActivity(),donMua.class);
                     intent.putExtra("idHD",keyHD);
                     startActivity(intent);
@@ -85,7 +93,6 @@ public class giohangthongtin extends Fragment {
     }
     private Boolean validateDiaChi (){
         String val = edtdiachi.getText().toString();
-
         if(val.isEmpty()){
             edtdiachi.setError("Vui lòng nhập địa chỉ");
             return false;
@@ -120,11 +127,17 @@ public class giohangthongtin extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-//        if(MainActivity.listGH.size() == 0){
-//            gioHangTinhTien fragment = new gioHangTinhTien();
-//            FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-//            fragmentTransaction.replace(R.id.framelayoutGioHang, fragment);
-//            fragmentTransaction.commit();
-//        }
+    }
+    private void saveData(){
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        // creating a new variable for gson.
+        Gson gson = new Gson();
+        // getting data from gson and storing it in a string.
+        String json = gson.toJson(MainActivity.listGH);
+        //below line is to save data in shared
+        //prefs in the form of string.
+        editor.putString("listGH", json);
+        editor.apply();
     }
 }

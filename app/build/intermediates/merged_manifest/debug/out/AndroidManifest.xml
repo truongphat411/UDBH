@@ -46,6 +46,8 @@
         <activity android:name="com.example.appbanhang.activity_capnhat" />
         <activity android:name="com.example.appbanhang.activity_capnhatsanpham" />
         <activity android:name="com.example.appbanhang.Activity_ThemSP" />
+        <activity android:name="com.example.appbanhang.activity_capnhatthuonghieu" />
+        <activity android:name="com.example.appbanhang.Activity_ThemTH" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -1785,6 +1785,7 @@ id blocking
 id bottom
 id bottom_navigation
 id bounce
+id btnDaGiao
 id btnDangKy
 id btnDangNhap
 id btnDangXuat
@@ -1796,6 +1797,7 @@ id btnMoTaiKhoan
 id btnNhapThongTin
 id btnRetry
 id btncapnhatSP
+id btncapnhatTH
 id btncong
 id btnhuyDH
 id btnthemGioHang
@@ -1805,6 +1807,7 @@ id btntru
 id btnxacnhanDH
 id btnxemLSTC
 id btnxoaSP
+id btnxoaTH
 id buttonPanel
 id cache_measures
 id can_we
@@ -1885,6 +1888,7 @@ id edtngaysinh
 id edtsodienthoai
 id edtsoluongkho
 id edttenSP
+id edttenthuonghieu
 id end
 id end_padder
 id enterAlways
@@ -1956,8 +1960,10 @@ id imgcamera
 id imgyeuthich
 id imvHSP
 id imvHinhSP
+id imvHinhTH
 id imvLocation
 id imvhinhSP
+id imvhinhTH
 id imvuser
 id info
 id invisible
@@ -2054,6 +2060,7 @@ id recyclerThuongHieu
 id recyclerViewDonMua
 id recyclerViewQLDH
 id relative_capnhatsanpham
+id relative_capnhatthuonghieu
 id relative_item_search
 id reverseSawtooth
 id right
@@ -2295,8 +2302,10 @@ layout abc_tooltip
 layout activity_capnhapthuonghieu
 layout activity_capnhatsanpham
 layout activity_chitietcapnhat
+layout activity_chitietthuonghieu
 layout activity_main
 layout activity_themsanpham
+layout activity_themthuonghieu
 layout admin_qldh
 layout chitietdonhang
 layout chitietsanpham
@@ -2343,6 +2352,7 @@ layout giohangthongtin
 layout giohangtinhtien
 layout home
 layout item_capnhatsanpham
+layout item_capnhatthuonghieu
 layout item_chitietdonhang
 layout item_giohang
 layout item_sanpham

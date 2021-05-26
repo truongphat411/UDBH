@@ -54,7 +54,7 @@ public class CustomAdapter extends BaseAdapter {
         }
 
         ImageView imageView = convertView.findViewById(R.id.image_view);
-        String url = thuongHieuArrayList.get(position).HinhTH;
+        String url = thuongHieuArrayList.get(position).getHinhTH();
         Picasso.with(context).load(url).into(imageView);
         return convertView;
     }

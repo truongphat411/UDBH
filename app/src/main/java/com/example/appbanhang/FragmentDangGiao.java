@@ -49,7 +49,6 @@ public class FragmentDangGiao extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()) {
-                    Log.d("MTP", "onDataChange: 10");
                     String key = ds.child("id").getValue(String.class);
                     String idUser = ds.child("idUser").getValue(String.class);
                     String ngayTaoDon = ds.child("ngaytaodon").getValue(String.class);
@@ -62,8 +61,7 @@ public class FragmentDangGiao extends Fragment {
                     if (idUser.equals(MainActivity.id)) {
                         isTaiKhoan.set(true);
                     }
-                    if (isTaiKhoan.get() == true) {
-                        Log.d("MTP", "onDataChange: 11");
+                    if (isTaiKhoan.get()) {
                         HoaDon hd = new HoaDon(key, tongtien, ngayTaoDon, "", tenUser, sodienthoai, diachi, trangthai, idUser);
                         listDG.add(hd);
                     }
@@ -75,9 +73,7 @@ public class FragmentDangGiao extends Fragment {
                     fragmentTransaction.replace(R.id.framedanggiao, fragment);
                     fragmentTransaction.commit();
                 }
-                Log.d("MTP", "onDataChange: 9");
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

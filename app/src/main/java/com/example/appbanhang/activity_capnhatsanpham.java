@@ -100,6 +100,12 @@ public class activity_capnhatsanpham extends AppCompatActivity {
                 startActivityForResult(gallery, GALLERY_REQUEST_CODE);
             }
         });
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
     private void anhxa() {
         edttenSP = findViewById(R.id.edttenSP);
@@ -136,7 +142,7 @@ public class activity_capnhatsanpham extends AppCompatActivity {
                     reference.child(String.valueOf(idSP)).child("giaSP").setValue(Integer.parseInt(edtgiaSP.getText().toString().trim()));
                     reference.child(String.valueOf(idSP)).child("motaSP").setValue(edtmotaSP.getText().toString().trim());
                     reference.child(String.valueOf(idSP)).child("soluongKho").setValue(Integer.parseInt(edtsoluongKho.getText().toString().trim()));
-                    reference.child(String.valueOf(idSP)).child("idTH").setValue(Integer.parseInt(edtmathuonghieu.getText().toString().trim()));
+                    reference.child(String.valueOf(idSP)).child("idTH").setValue(edtmathuonghieu.getText().toString().trim());
                     Toast.makeText(activity_capnhatsanpham.this,"Cập nhật thành công",Toast.LENGTH_SHORT).show();
                     finish();
                 }

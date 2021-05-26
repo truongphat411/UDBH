@@ -21,6 +21,19 @@ com/example/appbanhang/FormDNDK.java
 com/example/appbanhang/donMuaAdapter.java
  com.example.appbanhang.donMuaAdapter
  com.example.appbanhang.donMuaAdapter$ViewHolder
+com/example/appbanhang/activity_capnhatthuonghieu.java
+ com.example.appbanhang.activity_capnhatthuonghieu
+ com.example.appbanhang.activity_capnhatthuonghieu$1
+ com.example.appbanhang.activity_capnhatthuonghieu$2
+ com.example.appbanhang.activity_capnhatthuonghieu$3
+ com.example.appbanhang.activity_capnhatthuonghieu$4
+ com.example.appbanhang.activity_capnhatthuonghieu$5
+ com.example.appbanhang.activity_capnhatthuonghieu$6
+ com.example.appbanhang.activity_capnhatthuonghieu$7
+ com.example.appbanhang.activity_capnhatthuonghieu$7$1
+ com.example.appbanhang.activity_capnhatthuonghieu$8
+ com.example.appbanhang.activity_capnhatthuonghieu$9
+ com.example.appbanhang.activity_capnhatthuonghieu$9$1
 com/example/appbanhang/models/User.java
  com.example.appbanhang.models.User
 com/example/appbanhang/FragmentDangGiao.java
@@ -35,15 +48,13 @@ com/example/appbanhang/FragmentChuaDangNhap.java
 com/example/appbanhang/sanPhamAdapter.java
  com.example.appbanhang.sanPhamAdapter
  com.example.appbanhang.sanPhamAdapter$1
-com/example/appbanhang/capnhatViewPaperAdapter.java
- com.example.appbanhang.capnhatViewPaperAdapter
+com/example/appbanhang/Fragment_AdminChoXacNhan.java
+ com.example.appbanhang.Fragment_AdminChoXacNhan
 com/example/appbanhang/models/ChiTietHoaDon.java
  com.example.appbanhang.models.ChiTietHoaDon
-com/example/appbanhang/HomePage.java
- com.example.appbanhang.HomePage
- com.example.appbanhang.HomePage$1
- com.example.appbanhang.HomePage$2
- com.example.appbanhang.HomePage$3
+com/example/appbanhang/Recycler_ChiTietDonHang.java
+ com.example.appbanhang.Recycler_ChiTietDonHang
+ com.example.appbanhang.Recycler_ChiTietDonHang$ViewHolder
 com/example/appbanhang/NetworkChangeListener.java
  com.example.appbanhang.NetworkChangeListener
  com.example.appbanhang.NetworkChangeListener$1
@@ -58,8 +69,19 @@ com/example/appbanhang/Common.java
 com/example/appbanhang/ListFavorite.java
  com.example.appbanhang.ListFavorite
  com.example.appbanhang.ListFavorite$1
-com/example/appbanhang/activity_capnhat.java
- com.example.appbanhang.activity_capnhat
+com/example/appbanhang/activity_capnhatsanpham.java
+ com.example.appbanhang.activity_capnhatsanpham
+ com.example.appbanhang.activity_capnhatsanpham$1
+ com.example.appbanhang.activity_capnhatsanpham$2
+ com.example.appbanhang.activity_capnhatsanpham$3
+ com.example.appbanhang.activity_capnhatsanpham$4
+ com.example.appbanhang.activity_capnhatsanpham$5
+ com.example.appbanhang.activity_capnhatsanpham$6
+ com.example.appbanhang.activity_capnhatsanpham$7
+ com.example.appbanhang.activity_capnhatsanpham$7$1
+ com.example.appbanhang.activity_capnhatsanpham$8
+ com.example.appbanhang.activity_capnhatsanpham$9
+ com.example.appbanhang.activity_capnhatsanpham$9$1
 com/example/appbanhang/models/ThuongHieu.java
  com.example.appbanhang.models.ThuongHieu
 com/example/appbanhang/FragmentDaGiao.java
@@ -84,11 +106,9 @@ com/example/appbanhang/models/HoaDon.java
  com.example.appbanhang.models.HoaDon
 com/example/appbanhang/MePage.java
  com.example.appbanhang.MePage
-com/example/appbanhang/QLND.java
- com.example.appbanhang.QLND
- com.example.appbanhang.QLND$1
- com.example.appbanhang.QLND$2
- com.example.appbanhang.QLND$3
+com/example/appbanhang/QLDH.java
+ com.example.appbanhang.QLDH
+ com.example.appbanhang.QLDH$1
 com/example/appbanhang/models/SanPhamDonMua.java
  com.example.appbanhang.models.SanPhamDonMua
 com/example/appbanhang/FragmentChuaCoDonHang.java
@@ -100,11 +120,11 @@ com/example/appbanhang/MainActivity.java
  com.example.appbanhang.MainActivity$3
 com/example/appbanhang/PageAdapter.java
  com.example.appbanhang.PageAdapter
-com/example/appbanhang/SanPhamPage.java
- com.example.appbanhang.SanPhamPage
- com.example.appbanhang.SanPhamPage$1
- com.example.appbanhang.SanPhamPage$2
- com.example.appbanhang.SanPhamPage$3
+com/example/appbanhang/gioHangAdapter.java
+ com.example.appbanhang.gioHangAdapter
+ com.example.appbanhang.gioHangAdapter$1
+ com.example.appbanhang.gioHangAdapter$2
+ com.example.appbanhang.gioHangAdapter$2$1
 com/example/appbanhang/WellComeApp.java
  com.example.appbanhang.WellComeApp
  com.example.appbanhang.WellComeApp$1
@@ -144,8 +164,15 @@ com/example/appbanhang/FragmentDaDangNhap.java
  com.example.appbanhang.FragmentDaDangNhap$3
 com/example/appbanhang/CustomAdapter.java
  com.example.appbanhang.CustomAdapter
-com/example/appbanhang/Fragment_CapNhatThuongHieu.java
- com.example.appbanhang.Fragment_CapNhatThuongHieu
+com/example/appbanhang/Recyclerview_CapnhatThuongHieu.java
+ com.example.appbanhang.Recyclerview_CapnhatThuongHieu
+ com.example.appbanhang.Recyclerview_CapnhatThuongHieu$1
+ com.example.appbanhang.Recyclerview_CapnhatThuongHieu$ViewHolder
+com/example/appbanhang/QLND.java
+ com.example.appbanhang.QLND
+ com.example.appbanhang.QLND$1
+ com.example.appbanhang.QLND$2
+ com.example.appbanhang.QLND$3
 com/example/appbanhang/models/LichSuTruyCap.java
  com.example.appbanhang.models.LichSuTruyCap
 com/example/appbanhang/FormTTCN.java
@@ -182,11 +209,21 @@ com/example/appbanhang/Activity_ThemSP.java
  com.example.appbanhang.Activity_ThemSP$3
  com.example.appbanhang.Activity_ThemSP$4
  com.example.appbanhang.Activity_ThemSP$5
- com.example.appbanhang.Activity_ThemSP$5$1
+ com.example.appbanhang.Activity_ThemSP$6
+ com.example.appbanhang.Activity_ThemSP$6$1
 com/example/appbanhang/RecyclerView_CapnhatSanPham.java
  com.example.appbanhang.RecyclerView_CapnhatSanPham
  com.example.appbanhang.RecyclerView_CapnhatSanPham$1
  com.example.appbanhang.RecyclerView_CapnhatSanPham$ViewHolder
+com/example/appbanhang/Activity_ThemTH.java
+ com.example.appbanhang.Activity_ThemTH
+ com.example.appbanhang.Activity_ThemTH$1
+ com.example.appbanhang.Activity_ThemTH$2
+ com.example.appbanhang.Activity_ThemTH$3
+ com.example.appbanhang.Activity_ThemTH$4
+ com.example.appbanhang.Activity_ThemTH$5
+ com.example.appbanhang.Activity_ThemTH$6
+ com.example.appbanhang.Activity_ThemTH$6$1
 com/example/appbanhang/chiTietUser.java
  com.example.appbanhang.chiTietUser
  com.example.appbanhang.chiTietUser$1
@@ -197,11 +234,13 @@ com/example/appbanhang/chiTietUser.java
  com.example.appbanhang.chiTietUser$4
 com/example/appbanhang/donHangTrong.java
  com.example.appbanhang.donHangTrong
-com/example/appbanhang/gioHangAdapter.java
- com.example.appbanhang.gioHangAdapter
- com.example.appbanhang.gioHangAdapter$1
- com.example.appbanhang.gioHangAdapter$2
- com.example.appbanhang.gioHangAdapter$2$1
+com/example/appbanhang/FragmentAdmin.java
+ com.example.appbanhang.FragmentAdmin
+ com.example.appbanhang.FragmentAdmin$1
+ com.example.appbanhang.FragmentAdmin$2
+ com.example.appbanhang.FragmentAdmin$3
+ com.example.appbanhang.FragmentAdmin$4
+ com.example.appbanhang.FragmentAdmin$5
 com/example/appbanhang/models/SanPham.java
  com.example.appbanhang.models.SanPham
 com/example/appbanhang/SeachView.java
@@ -216,30 +255,21 @@ com/example/appbanhang/donMuaViewPaperAdapter.java
  com.example.appbanhang.donMuaViewPaperAdapter
 com/example/appbanhang/BuildConfig.java
  com.example.appbanhang.BuildConfig
-com/example/appbanhang/activity_capnhatsanpham.java
- com.example.appbanhang.activity_capnhatsanpham
- com.example.appbanhang.activity_capnhatsanpham$1
- com.example.appbanhang.activity_capnhatsanpham$2
- com.example.appbanhang.activity_capnhatsanpham$3
- com.example.appbanhang.activity_capnhatsanpham$4
- com.example.appbanhang.activity_capnhatsanpham$5
- com.example.appbanhang.activity_capnhatsanpham$6
- com.example.appbanhang.activity_capnhatsanpham$6$1
- com.example.appbanhang.activity_capnhatsanpham$7
- com.example.appbanhang.activity_capnhatsanpham$8
- com.example.appbanhang.activity_capnhatsanpham$8$1
-com/example/appbanhang/Recycler_ChiTietDonHang.java
- com.example.appbanhang.Recycler_ChiTietDonHang
- com.example.appbanhang.Recycler_ChiTietDonHang$ViewHolder
-com/example/appbanhang/Fragment_AdminChoXacNhan.java
- com.example.appbanhang.Fragment_AdminChoXacNhan
-com/example/appbanhang/FragmentAdmin.java
- com.example.appbanhang.FragmentAdmin
- com.example.appbanhang.FragmentAdmin$1
- com.example.appbanhang.FragmentAdmin$2
- com.example.appbanhang.FragmentAdmin$3
- com.example.appbanhang.FragmentAdmin$4
- com.example.appbanhang.FragmentAdmin$5
-com/example/appbanhang/QLDH.java
- com.example.appbanhang.QLDH
- com.example.appbanhang.QLDH$1
+com/example/appbanhang/SanPhamPage.java
+ com.example.appbanhang.SanPhamPage
+ com.example.appbanhang.SanPhamPage$1
+ com.example.appbanhang.SanPhamPage$2
+ com.example.appbanhang.SanPhamPage$3
+com/example/appbanhang/Fragment_CapNhatThuongHieu.java
+ com.example.appbanhang.Fragment_CapNhatThuongHieu
+ com.example.appbanhang.Fragment_CapNhatThuongHieu$1
+com/example/appbanhang/capnhatViewPaperAdapter.java
+ com.example.appbanhang.capnhatViewPaperAdapter
+com/example/appbanhang/HomePage.java
+ com.example.appbanhang.HomePage
+ com.example.appbanhang.HomePage$1
+ com.example.appbanhang.HomePage$2
+ com.example.appbanhang.HomePage$3
+com/example/appbanhang/activity_capnhat.java
+ com.example.appbanhang.activity_capnhat
+ com.example.appbanhang.activity_capnhat$1

@@ -69,8 +69,8 @@ public class HomePage extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ThuongHieu thuongHieuItem = thuongHieuArrayList.get(position);
                 Intent intent = new Intent(getActivity(), SanPhamPage.class);
-                intent.putExtra("id", thuongHieuItem.ID);
-                intent.putExtra("hinh",thuongHieuItem.HinhTH);
+                intent.putExtra("id", thuongHieuItem.getID());
+                intent.putExtra("hinh",thuongHieuItem.getHinhTH());
                 startActivity(intent);
             }
 

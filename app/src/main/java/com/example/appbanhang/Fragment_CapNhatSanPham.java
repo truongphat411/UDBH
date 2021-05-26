@@ -38,10 +38,10 @@ public class Fragment_CapNhatSanPham extends Fragment {
          View view = inflater.inflate(R.layout.fragment_sanpham,container,false);
          recyclerView = view.findViewById(R.id.recyclerSanPham);
          btnthemSP = view.findViewById(R.id.btnthemSP);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setHasFixedSize(true);
-        loadData();
+         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+         recyclerView.setLayoutManager(linearLayoutManager);
+         recyclerView.setHasFixedSize(true);
+         loadData();
         btnthemSP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

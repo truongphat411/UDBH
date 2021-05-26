@@ -1,9 +1,18 @@
 package com.example.appbanhang.models;
 
 public class ThuongHieu {
+    public void setHinhTH(String hinhTH) {
+        HinhTH = hinhTH;
+    }
+
+    private String ID;
+    private String TenTH;
+    private String HinhTH;
+
     public String getID() {
         return ID;
     }
+
     public void setID(String ID) {
         this.ID = ID;
     }
@@ -20,17 +29,9 @@ public class ThuongHieu {
         return HinhTH;
     }
 
-    public void setHinhTH(String hinhTH) {
-        HinhTH = hinhTH;
-    }
-
-    public String ID;
-    public String TenTH;
-    public String HinhTH;
-
     public ThuongHieu(String ID, String tenTH, String hinhTH) {
         this.ID = ID;
-        TenTH = tenTH;
-        HinhTH = hinhTH;
+        this.TenTH = tenTH;
+        this.HinhTH = hinhTH;
     }
 }

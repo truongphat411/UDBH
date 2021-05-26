@@ -62,7 +62,6 @@ public class CTHoaDon extends AppCompatActivity {
                             finish();
                         }
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 

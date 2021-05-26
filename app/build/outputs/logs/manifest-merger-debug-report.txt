@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-49:12
-INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-49:12
-INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-49:12
-INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-49:12
+ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-51:12
 MERGED from [com.google.android.material:material:1.2.1] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\cd32ea4d282c6484817a7b579f3ffa2a\material-1.2.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\006b46906b2f770011761845d9282045\constraintlayout-2.0.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.2.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\e7700bf3fcf4236768ca476b82b72080\appcompat-1.2.0\AndroidManifest.xml:17:1-24:12
@@ -58,20 +58,20 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Admin\.g
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\a16ef9f377ada6515a2739603d983dff\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\8275c6f89d23e4cfe8d5dd5efa714638\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [pl.droidsonroids.relinker:relinker:1.4.1] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\cd2a866581270811f5ca2b888cf5de5b\jetified-relinker-1.4.1\AndroidManifest.xml:2:1-7:12
-INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-49:12
-INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-49:12
-INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-51:12
 	package
 		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:3:5-37
 		INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-49:12
+		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-51:12
 		INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-49:12
+		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-51:12
 		INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:11-69
@@ -106,7 +106,7 @@ ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifes
 	android:name
 		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:8:22-78
 application
-ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:9:5-47:19
+ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:9:5-49:19
 MERGED from [com.google.android.material:material:1.2.1] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\cd32ea4d282c6484817a7b579f3ffa2a\material-1.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.2.1] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\cd32ea4d282c6484817a7b579f3ffa2a\material-1.2.1\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\006b46906b2f770011761845d9282045\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
@@ -217,22 +217,30 @@ activity#com.example.appbanhang.Activity_ThemSP
 ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:37:9-52
 	android:name
 		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:37:19-50
+activity#com.example.appbanhang.activity_capnhatthuonghieu
+ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:38:9-63
+	android:name
+		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:38:19-61
+activity#com.example.appbanhang.Activity_ThemTH
+ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:39:9-52
+	android:name
+		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:39:19-50
 provider#androidx.core.content.FileProvider
-ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:38:9-46:20
+ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:40:9-48:20
 	android:grantUriPermissions
-		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:42:13-47
+		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:44:13-47
 	android:authorities
-		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:40:13-72
+		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:42:13-72
 	android:exported
-		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:41:13-37
+		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:43:13-37
 	android:name
-		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:39:13-62
+		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:41:13-62
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:43:13-45:53
+ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:45:13-47:53
 	android:resource
-		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:45:17-51
+		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:47:17-51
 	android:name
-		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:44:17-67
+		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:46:17-67
 uses-sdk
 INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml

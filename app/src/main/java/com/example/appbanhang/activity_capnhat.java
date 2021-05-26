@@ -2,6 +2,7 @@ package com.example.appbanhang;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -32,6 +33,12 @@ public class activity_capnhat extends AppCompatActivity {
         adapter.addFragment(new Fragment_CapNhatThuongHieu(),"Thương Hiệu");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void anhxa() {

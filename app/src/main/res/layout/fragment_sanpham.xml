@@ -4,8 +4,6 @@
         android:layout_height="match_parent"
         android:background="@color/aliceblue"
         android:orientation="vertical">
-
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerSanPham"
             android:layout_width="match_parent"

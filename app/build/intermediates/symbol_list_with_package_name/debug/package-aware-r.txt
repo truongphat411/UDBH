@@ -1632,6 +1632,7 @@ drawable giff
 drawable giohang
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
+drawable hide_password
 drawable home_icon
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -1683,6 +1684,7 @@ drawable placeholder
 drawable search_bar_drawable
 drawable search_icon
 drawable shadow_shape
+drawable show_password
 drawable smallcircle
 drawable smallcircle2
 drawable smile
@@ -1785,7 +1787,6 @@ id blocking
 id bottom
 id bottom_navigation
 id bounce
-id btnDaGiao
 id btnDangKy
 id btnDangNhap
 id btnDangXuat
@@ -1799,7 +1800,8 @@ id btnRetry
 id btncapnhatSP
 id btncapnhatTH
 id btncong
-id btnhuyDH
+id btndagiaoDH
+id btndahuyDH
 id btnthemGioHang
 id btnthemSP
 id btnthemTH
@@ -1908,6 +1910,10 @@ id flip
 id floating
 id forever
 id formdoimatkhau
+id frameADMINchoxacnhan
+id frameADMINdagiao
+id frameADMINdahuy
+id frameADMINdanggiao
 id frameDaGiao
 id frameDaHuy
 id framechoxacnhan
@@ -1953,6 +1959,7 @@ id image_menu
 id image_sanpham
 id image_sp
 id image_view
+id imbPassword
 id imgAndroid
 id imgBack
 id imgb
@@ -2309,6 +2316,7 @@ layout activity_themthuonghieu
 layout admin_qldh
 layout chitietdonhang
 layout chitietsanpham
+layout cthoadon_admin
 layout custom_dialog
 layout dangnhapvadangky
 layout danhsachyeuthichtrong
@@ -2331,6 +2339,10 @@ layout donhangtrong
 layout donmua
 layout favorite
 layout formttcn
+layout fragment_adminchoxacnhan
+layout fragment_admindagiao
+layout fragment_admindahuy
+layout fragment_admindanggiao
 layout fragment_dang_ky
 layout fragment_dang_nhap
 layout fragment_sanpham

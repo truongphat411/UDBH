@@ -30,11 +30,6 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class QLDH extends AppCompatActivity {
-/*    public static ArrayList<HoaDon> listQLDH;
-    ImageButton imb;
-    RecyclerView recyclerView;
-    DatabaseReference reference;
-    RecyclerViewDonHang adapter;*/
     FragmentPager_AdminQLDH adapter;
     ImageButton imBack;
     TabLayout tabLayout;
@@ -47,9 +42,10 @@ public class QLDH extends AppCompatActivity {
         imBack = findViewById(R.id.imgb);
         viewPager = findViewById(R.id.viewpaper);
         adapter = new FragmentPager_AdminQLDH(getSupportFragmentManager());
-        adapter.addFragment(new FragmentChoXacNhan(),"Chờ Xác Nhận");
-        adapter.addFragment(new FragmentDangGiao(),"Đang giao");
-        adapter.addFragment(new FragmentDaGiao(),"Đã giao");
+        adapter.addFragment(new Fragment_AdminChoXacNhan(),"Chờ Xác Nhận");
+        adapter.addFragment(new Fragment_AdminDangGiao(),"Đang giao");
+        adapter.addFragment(new Fragment_AdminDaGiao(),"Đã giao");
+        adapter.addFragment(new Fragment_AdminDaHuy(),"Đã giao");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
         imBack.setOnClickListener(new View.OnClickListener() {

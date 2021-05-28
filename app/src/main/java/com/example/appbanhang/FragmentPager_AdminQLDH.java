@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class FragmentPager_AdminQLDH extends FragmentPagerAdapter {
     ArrayList<Fragment> mFragmentList;
     ArrayList<String> mFragmentTittleList;
-    private String[] tabTitles = new String[]{"Chờ xác nhận","Đang giao","Đã giao"};
+    private String[] tabTitles = new String[]{"Chờ xác nhận","Đang giao","Đã giao","Đã Hủy"};
     @Override
     public CharSequence getPageTitle(int position) {
         return tabTitles[position];
@@ -26,18 +26,20 @@ public class FragmentPager_AdminQLDH extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new FragmentChoXacNhan();
+                return new Fragment_AdminChoXacNhan();
             case 1:
-                return new FragmentDangGiao();
+                return new Fragment_AdminDangGiao();
             case 2:
-                return new FragmentDaGiao();
+                return new Fragment_AdminDaGiao();
+            case 3:
+                return new Fragment_AdminDaHuy();
             default:
                 throw new RuntimeException("Invalid tab position");
         }
     }
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
     public void addFragment(Fragment fragment,String title){
         mFragmentList.add(fragment);

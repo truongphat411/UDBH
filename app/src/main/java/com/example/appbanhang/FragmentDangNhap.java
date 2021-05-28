@@ -6,12 +6,16 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.InputType;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,15 +39,18 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 
 public class FragmentDangNhap extends Fragment {
     EditText edtsodienthoai,edtmatkhau;
     Button btnDangNhap;
+    ImageButton imbPassword;
     public static final  String SHARED_PREFS = "sharedPrefs";
     DatabaseReference referenceLSTC;
     LichSuTruyCap lichSuTruyCap;
+    private final AtomicBoolean isCheckPass = new AtomicBoolean();
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,6 +58,21 @@ public class FragmentDangNhap extends Fragment {
         edtsodienthoai = view.findViewById(R.id.edtsodienthoai);
         edtmatkhau = view.findViewById(R.id.edtmatkhau);
         btnDangNhap = view.findViewById(R.id.btnDangNhap);
+        imbPassword = view.findViewById(R.id.imbPassword);
+        imbPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isCheckPass.get()){
+                    imbPassword.setImageResource(R.drawable.show_password);
+                    edtmatkhau.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    isCheckPass.set(true);
+                }else {
+                    imbPassword.setImageResource(R.drawable.hide_password);
+                    edtmatkhau.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    isCheckPass.set(false);
+                }
+            }
+        });
         referenceLSTC = FirebaseDatabase.getInstance().getReference().child("lichsutruycap");
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,17 +93,27 @@ public class FragmentDangNhap extends Fragment {
         if(val.isEmpty()){
             edtsodienthoai.setError("Vui lòng nhập số điện thoại");
             return false;
-        }else {
+        }
+        else if(val.length() != 10){
+            edtsodienthoai.setError("Vui lòng nhập số điện thoại đủ 10 số");
+            return false;
+        }
+        else {
             edtsodienthoai.setError(null);
             return true;
         }
     }
     private Boolean validateMatKhau (){
-        String val = edtsodienthoai.getText().toString();
+        String val = edtmatkhau.getText().toString();
         if(val.isEmpty()){
             edtmatkhau.setError("Vui lòng nhập mật khẩu");
             return false;
-        }else {
+        }
+        else if(val.length() > 15 ){
+            edtmatkhau.setError("Vui lòng nhập số mật khẩu ngắn hơn 15 kí tự");
+            return false;
+        }
+        else {
             edtmatkhau.setError(null);
             return true;
         }
@@ -109,7 +141,7 @@ public class FragmentDangNhap extends Fragment {
                                     String tenLoaiFromDB = snapshot.child(key).child("tenLoai").getValue(String.class);
                                     String ngaythamgiaFromDB = snapshot.child(key).child("ngaythamgia").getValue(String.class);
                                     boolean hoatdong = snapshot.child(key).child("hoatdong").getValue(Boolean.class);
-                                    if (hoatdong == true) {
+                                    if (hoatdong) {
                                         MainActivity.id = id;
                                         MainActivity.dadangnhap = true;
                                         MainActivity.hoten = hotenFromDB;

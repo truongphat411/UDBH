@@ -34,13 +34,14 @@ public class CTHoaDon extends AppCompatActivity {
     ImageButton imgBack;
     TextView txtTenNhanHang,txtSoDienThoaiNhanHang,txtDiaChiNhanHang;
     RecyclerView recyclerChiTietDonHang;
-    Button btnXacNhan,btnHuy;
+    Button btnHuy;
     DatabaseReference referenceCTHD,referenceSP;
     Recycler_ChiTietDonHang adapter;
     ArrayList<SanPham> listSP;
     ArrayList<ChiTietHoaDon> listCTDH;
     String idHD;
     int tongtien;
+    String trangthai;
     DatabaseReference referenceHD;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,29 +59,8 @@ public class CTHoaDon extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.exists()){
                             referenceHD.child(idHD).child("trangthai").setValue(trangthai.trim());
+                            referenceHD.child(idHD).child("ngaytaodon").setValue("".trim());
                             Toast.makeText(CTHoaDon.this,"Đã hủy đơn hàng",Toast.LENGTH_SHORT).show();
-                            finish();
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-            }
-        });
-        btnXacNhan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String trangthai = "Đang Giao";
-                referenceHD = FirebaseDatabase.getInstance().getReference().child("hoadon");
-                Query query = referenceHD.orderByChild("id").equalTo(idHD);
-                query.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.exists()){
-                            referenceHD.child(idHD).child("trangthai").setValue(trangthai.trim());
-                            Toast.makeText(CTHoaDon.this,"Đang giao đơn hàng",Toast.LENGTH_SHORT).show();
                             finish();
                         }
                     }
@@ -97,6 +77,10 @@ public class CTHoaDon extends AppCompatActivity {
         txtTenNhanHang.setText(intent.getStringExtra("hoten"));
         txtSoDienThoaiNhanHang.setText(intent.getStringExtra("sodienthoai"));
         txtDiaChiNhanHang.setText(intent.getStringExtra("diachi"));
+        trangthai = intent.getStringExtra("trangthai");
+        if(!trangthai.equals("Chờ Xác Nhận")){
+            btnHuy.setVisibility(View.GONE);
+        }
         referenceCTHD = FirebaseDatabase.getInstance().getReference().child("chitiethoadon");
         referenceSP = FirebaseDatabase.getInstance().getReference().child("sanpham");
         DataFromFirebaseListener();
@@ -174,13 +158,8 @@ public class CTHoaDon extends AppCompatActivity {
         txtSoDienThoaiNhanHang = findViewById(R.id.txtSoDienThoaiNhanHang);
         txtDiaChiNhanHang = findViewById(R.id.txtDiaChiNhanHang);
         recyclerChiTietDonHang = findViewById(R.id.RecyclerChiTietDonHang);
-        btnXacNhan = findViewById(R.id.btnxacnhanDH);
-        btnHuy = findViewById(R.id.btnhuyDH);
-        if(MainActivity.tenLoai.equals("client")){
-            btnXacNhan.setVisibility(View.GONE);
-        }
+        btnHuy = findViewById(R.id.btndahuyDH);
     }
-
     @Override
     protected void onStart() {
         super.onStart();

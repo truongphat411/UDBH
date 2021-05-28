@@ -106,9 +106,9 @@
 49        <activity android:name="com.example.appbanhang.activity_capnhatthuonghieu" />
 49-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:38:9-63
 49-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:38:19-61
-50        <activity android:name="com.example.appbanhang.Activity_ThemTH" />
-50-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:39:9-52
-50-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:39:19-50
+50        <activity android:name="com.example.appbanhang.CTHoaDon_admin" />
+50-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:39:9-51
+50-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:39:19-49
 51
 52        <provider
 52-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:40:9-48:20

@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/aliceblue"
     >
     <LinearLayout
         android:layout_width="match_parent"
@@ -65,6 +66,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="52dp"
                 android:layout_marginRight="10dp"
+                android:textColor="@color/black"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -76,6 +78,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="52dp"
                 android:layout_marginRight="10dp"
+                android:textColor="@color/black"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -88,6 +91,7 @@
                 android:layout_marginLeft="52dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="5dp"
+                android:textColor="@color/black"
                 />
         </RelativeLayout>
         <View
@@ -100,7 +104,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-            android:background="@color/white"
+            android:background="@color/aliceblue"
             android:id="@+id/RecyclerChiTietDonHang"
             android:layout_width="match_parent"
             android:layout_height="350dp"/>
@@ -115,31 +119,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="20dp"
-                android:id="@+id/btnxacnhanDH"
-                android:text="Xác nhận"
-                android:textColor="@color/black"
-                />
-            <Button
-                android:layout_width="130dp"
-                android:layout_height="70dp"
-                android:layout_toRightOf="@+id/btnxacnhanDH"
-                android:padding="15dp"
+                android:id="@+id/btndahuyDH"
                 android:text="Hủy"
-                android:backgroundTint="@color/aqua"
-                android:textColor="@color/black"
-                android:id="@+id/btnhuyDH"
-                android:layout_margin="20dp"/>
-            <Button
-                android:layout_width="130dp"
-                android:layout_height="70dp"
-                android:backgroundTint="@color/aqua"
-                android:padding="15dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="20dp"
-                android:id="@+id/btnDaGiao"
-                android:text="Đã Giao"
-                android:layout_below="@+id/btnxacnhanDH"
                 android:textColor="@color/black"/>
         </RelativeLayout>
     </LinearLayout>

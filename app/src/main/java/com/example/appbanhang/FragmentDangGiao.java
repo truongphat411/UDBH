@@ -34,12 +34,6 @@ public class FragmentDangGiao extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragmentdanggiao,container,false);
         recyclerView = view.findViewById(R.id.listDangGiao);
-        reference = FirebaseDatabase.getInstance().getReference().child("hoadon");
-        DataFromFirebaseListener();
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getActivity());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        adapter = new RecyclerViewDonHang(getActivity() , listDG);
-        recyclerView.setAdapter(adapter);
         return view;
     }
     private void DataFromFirebaseListener() {
@@ -79,5 +73,16 @@ public class FragmentDangGiao extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        reference = FirebaseDatabase.getInstance().getReference().child("hoadon");
+        DataFromFirebaseListener();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getActivity());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        adapter = new RecyclerViewDonHang(getActivity() , listDG);
+        recyclerView.setAdapter(adapter);
     }
 }

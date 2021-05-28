@@ -221,10 +221,10 @@ activity#com.example.appbanhang.activity_capnhatthuonghieu
 ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:38:9-63
 	android:name
 		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:38:19-61
-activity#com.example.appbanhang.Activity_ThemTH
-ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:39:9-52
+activity#com.example.appbanhang.CTHoaDon_admin
+ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:39:9-51
 	android:name
-		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:39:19-50
+		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:39:19-49
 provider#androidx.core.content.FileProvider
 ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:40:9-48:20
 	android:grantUriPermissions

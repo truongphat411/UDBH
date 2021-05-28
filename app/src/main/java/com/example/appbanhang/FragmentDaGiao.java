@@ -35,12 +35,6 @@ public class FragmentDaGiao extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragmentdagiao,container,false);
         recyclerView = view.findViewById(R.id.listDaGiao);
-        reference = FirebaseDatabase.getInstance().getReference().child("hoadon");
-        DataFromFirebaseListener();
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getActivity());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        adapter = new RecyclerViewDonHang(getActivity() , listDG);
-        recyclerView.setAdapter(adapter);
         return view;
     }
     private void DataFromFirebaseListener() {
@@ -50,7 +44,6 @@ public class FragmentDaGiao extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()) {
-                    Log.d("MTP", "onDataChange: 10");
                     String key = ds.child("id").getValue(String.class);
                     String idUser = ds.child("idUser").getValue(String.class);
                     String ngayTaoDon = ds.child("ngaytaodon").getValue(String.class);
@@ -63,8 +56,7 @@ public class FragmentDaGiao extends Fragment {
                     if (idUser.equals(MainActivity.id)) {
                         isTaiKhoan.set(true);
                     }
-                    if (isTaiKhoan.get() == true) {
-                        Log.d("MTP", "onDataChange: 11");
+                    if (isTaiKhoan.get()) {
                         HoaDon hd = new HoaDon(key, tongtien, ngayTaoDon, "", tenUser, sodienthoai, diachi, trangthai, idUser);
                         listDG.add(hd);
                     }
@@ -76,13 +68,22 @@ public class FragmentDaGiao extends Fragment {
                     fragmentTransaction.replace(R.id.frameDaGiao, fragment);
                     fragmentTransaction.commit();
                 }
-                Log.d("MTP", "onDataChange: 9");
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        reference = FirebaseDatabase.getInstance().getReference().child("hoadon");
+        DataFromFirebaseListener();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getActivity());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        adapter = new RecyclerViewDonHang(getActivity() , listDG);
+        recyclerView.setAdapter(adapter);
     }
 }

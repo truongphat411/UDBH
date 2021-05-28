@@ -8,12 +8,12 @@
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\itemlstc.xml"
     },
     {
-        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
-    },
-    {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_qldh.xml.flat",
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\qldh.xml"
+    },
+    {
+        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher_background.xml.flat",
@@ -36,12 +36,12 @@
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\drawable\\menu.png"
     },
     {
-        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_capnhapthuonghieu.xml.flat",
-        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\activity_capnhapthuonghieu.xml"
-    },
-    {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_capnhapthuonghieu.xml.flat",
+        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\activity_capnhapthuonghieu.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragmentdagiao.xml.flat",
@@ -120,12 +120,12 @@
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\activity_chitietcapnhat.xml"
     },
     {
-        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable_home_icon.xml.flat",
-        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\drawable\\home_icon.xml"
-    },
-    {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_giohangtinhtien.xml.flat",
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\giohangtinhtien.xml"
+    },
+    {
+        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable_home_icon.xml.flat",
+        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\drawable\\home_icon.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_thuonghieu.xml.flat",
@@ -218,6 +218,14 @@
     {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_me.xml.flat",
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\me.xml"
+    },
+    {
+        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_show_password.png.flat",
+        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\drawable-v24\\show_password.png"
+    },
+    {
+        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_hide_password.png.flat",
+        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\drawable-v24\\hide_password.png"
     },
     {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_check_icon.png.flat",
@@ -368,8 +376,20 @@
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_adminchoxacnhan.xml.flat",
+        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\fragment_adminchoxacnhan.xml"
+    },
+    {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_listfavorite.xml.flat",
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\listfavorite.xml"
+    },
+    {
+        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_cthoadon_admin.xml.flat",
+        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\cthoadon_admin.xml"
+    },
+    {
+        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_admindagiao.xml.flat",
+        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\fragment_admindagiao.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_info_contact.png.flat",
@@ -424,6 +444,10 @@
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\activity_themthuonghieu.xml"
     },
     {
+        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_admindanggiao.xml.flat",
+        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\fragment_admindanggiao.xml"
+    },
+    {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragmentchuacodonmua.xml.flat",
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\fragmentchuacodonmua.xml"
     },
@@ -442,6 +466,10 @@
     {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable_placeholder.png.flat",
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\drawable\\placeholder.png"
+    },
+    {
+        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_admindahuy.xml.flat",
+        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\fragment_admindahuy.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_giohang.png.flat",

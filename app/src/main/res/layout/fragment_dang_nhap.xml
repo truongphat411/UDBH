@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/aliceblue"
-    tools:context=".FragmentDangNhap"
-    >
+    tools:context=".FragmentDangNhap">
     <!-- TODO: Update blank fragment layout -->
     <EditText
         android:layout_width="match_parent"
@@ -14,16 +14,32 @@
         android:id="@+id/edtsodienthoai"
         android:inputType="number"
         android:textColor="@color/black"
+        android:maxLength="11"
         android:hint="Số Điện Thoại"/>
+
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:id="@+id/edtmatkhau"
-        android:textColor="@color/black"
-        android:inputType="textPassword"
+        android:layout_width="342dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/edtsodienthoai"
-        android:hint="Mật Khẩu"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Mật Khẩu"
+        android:inputType="textPassword"
+        android:maxLength="16"
+        android:textColor="@color/black" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtsodienthoai"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="23dp"
+        android:background="@color/aliceblue"
+        android:src="@drawable/hide_password"
+        android:id="@+id/imbPassword"
+        />
 
     <Button
         android:layout_width="match_parent"

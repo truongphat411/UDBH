@@ -34,12 +34,6 @@ public class FragmentDaHuy extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragmentdahuy,container,false);
         recyclerView = view.findViewById(R.id.listDaHuy);
-        reference = FirebaseDatabase.getInstance().getReference().child("hoadon");
-        DataFromFirebaseListener();
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getActivity());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        adapter = new RecyclerViewDonHang(getActivity() , listDH);
-        recyclerView.setAdapter(adapter);
         return view;
     }
     private void DataFromFirebaseListener() {
@@ -62,8 +56,7 @@ public class FragmentDaHuy extends Fragment {
                     if (idUser.equals(MainActivity.id)) {
                         isTaiKhoan.set(true);
                     }
-                    if (isTaiKhoan.get() == true) {
-                        Log.d("MTP", "onDataChange: 11");
+                    if (isTaiKhoan.get()) {
                         HoaDon hd = new HoaDon(key, tongtien, ngayTaoDon, "", tenUser, sodienthoai, diachi, trangthai, idUser);
                         listDH.add(hd);
                     }
@@ -83,5 +76,16 @@ public class FragmentDaHuy extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        reference = FirebaseDatabase.getInstance().getReference().child("hoadon");
+        DataFromFirebaseListener();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getActivity());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        adapter = new RecyclerViewDonHang(getActivity() , listDH);
+        recyclerView.setAdapter(adapter);
     }
 }

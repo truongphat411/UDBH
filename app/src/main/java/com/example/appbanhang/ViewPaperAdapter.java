@@ -23,8 +23,9 @@ public class ViewPaperAdapter extends FragmentPagerAdapter {
                 return new GioHangPage();
             case 3:
                 return new MePage();
+            default:
+                return new HomePage();
         }
-        return null;
     }
 
     @Override

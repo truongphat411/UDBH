@@ -82,9 +82,6 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.ic_me:
                         viewPager.setCurrentItem(3);
                         break;
-                    default:
-                        viewPager.setCurrentItem(0);
-                        break;
                 }
                 return true;
             }
@@ -112,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
             }
-
             @Override
             public void onPageSelected(int position) {
 

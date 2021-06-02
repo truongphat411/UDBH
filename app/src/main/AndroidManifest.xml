@@ -37,6 +37,7 @@
         <activity android:name=".Activity_ThemSP"/>
         <activity android:name=".activity_capnhatthuonghieu"/>
         <activity android:name=".CTHoaDon_admin"/>
+        <activity android:name=".ThongKe"/>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="net.smallacademy.android.fileprovider"

@@ -27,7 +27,7 @@
 15-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:8:22-78
 16
 17    <application
-17-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:9:5-49:19
+17-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:9:5-50:19
 18        android:allowBackup="true"
 18-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:10:9-35
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -109,85 +109,88 @@
 50        <activity android:name="com.example.appbanhang.CTHoaDon_admin" />
 50-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:39:9-51
 50-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:39:19-49
-51
-52        <provider
-52-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:40:9-48:20
-53            android:name="androidx.core.content.FileProvider"
-53-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:41:13-62
-54            android:authorities="net.smallacademy.android.fileprovider"
-54-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:42:13-72
-55            android:exported="false"
-55-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:43:13-37
-56            android:grantUriPermissions="true" >
-56-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:44:13-47
-57            <meta-data
-57-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:45:13-47:53
-58                android:name="android.support.FILE_PROVIDER_PATHS"
-58-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:46:17-67
-59                android:resource="@xml/file_paths" />
-59-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:47:17-51
-60        </provider>
-61
-62        <service
-62-->[com.google.firebase:firebase-database:19.7.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\24ac034c76dfb1b3647cba84ddb1672b\jetified-firebase-database-19.7.0\AndroidManifest.xml:29:9-35:19
-63            android:name="com.google.firebase.components.ComponentDiscoveryService"
-63-->[com.google.firebase:firebase-database:19.7.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\24ac034c76dfb1b3647cba84ddb1672b\jetified-firebase-database-19.7.0\AndroidManifest.xml:30:13-84
-64            android:directBootAware="true"
-64-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:35:13-43
-65            android:exported="false" >
-65-->[com.google.firebase:firebase-database:19.7.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\24ac034c76dfb1b3647cba84ddb1672b\jetified-firebase-database-19.7.0\AndroidManifest.xml:31:13-37
-66            <meta-data
-66-->[com.google.firebase:firebase-database:19.7.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\24ac034c76dfb1b3647cba84ddb1672b\jetified-firebase-database-19.7.0\AndroidManifest.xml:32:13-34:85
-67                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
-67-->[com.google.firebase:firebase-database:19.7.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\24ac034c76dfb1b3647cba84ddb1672b\jetified-firebase-database-19.7.0\AndroidManifest.xml:33:17-109
-68                android:value="com.google.firebase.components.ComponentRegistrar" />
-68-->[com.google.firebase:firebase-database:19.7.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\24ac034c76dfb1b3647cba84ddb1672b\jetified-firebase-database-19.7.0\AndroidManifest.xml:34:17-82
-69            <meta-data
-69-->[com.google.firebase:firebase-storage:19.2.2] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\2463fd9af60315f94ca6b2e1beadb579\jetified-firebase-storage-19.2.2\AndroidManifest.xml:33:13-35:85
-70                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
-70-->[com.google.firebase:firebase-storage:19.2.2] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\2463fd9af60315f94ca6b2e1beadb579\jetified-firebase-storage-19.2.2\AndroidManifest.xml:34:17-107
-71                android:value="com.google.firebase.components.ComponentRegistrar" />
-71-->[com.google.firebase:firebase-storage:19.2.2] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\2463fd9af60315f94ca6b2e1beadb579\jetified-firebase-storage-19.2.2\AndroidManifest.xml:35:17-82
-72            <!--
-73                This registrar is not defined in the dynamic-module-support sdk itself to allow non-firebase
-74                clients to use it as well, by defining this registrar in their own core/common library.
-75            -->
-76            <meta-data
-76-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:43:13-45:85
-77                android:name="com.google.firebase.components:com.google.firebase.dynamicloading.DynamicLoadingRegistrar"
-77-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:44:17-121
-78                android:value="com.google.firebase.components.ComponentRegistrar" />
-78-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:45:17-82
-79        </service>
-80
-81        <activity
-81-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\97762cadcf6efc2fd07f9a69ce6d22a4\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
-82            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-82-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\97762cadcf6efc2fd07f9a69ce6d22a4\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
-83            android:exported="false"
-83-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\97762cadcf6efc2fd07f9a69ce6d22a4\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
-84            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-84-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\97762cadcf6efc2fd07f9a69ce6d22a4\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
-85
-86        <provider
-86-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:26:9-31:39
-87            android:name="com.google.firebase.provider.FirebaseInitProvider"
-87-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:27:13-77
-88            android:authorities="com.example.appbanhang.firebaseinitprovider"
-88-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:28:13-72
-89            android:directBootAware="true"
-89-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:29:13-43
-90            android:exported="false"
-90-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:30:13-37
-91            android:initOrder="100" />
-91-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:31:13-36
-92
-93        <meta-data
-93-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\673ad0707d733aa5817b98bae7b95b87\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
-94            android:name="com.google.android.gms.version"
-94-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\673ad0707d733aa5817b98bae7b95b87\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
-95            android:value="@integer/google_play_services_version" />
-95-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\673ad0707d733aa5817b98bae7b95b87\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
-96    </application>
-97
-98</manifest>
+51        <activity android:name="com.example.appbanhang.ThongKe" />
+51-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:40:9-44
+51-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:40:19-42
+52
+53        <provider
+53-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:41:9-49:20
+54            android:name="androidx.core.content.FileProvider"
+54-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:42:13-62
+55            android:authorities="net.smallacademy.android.fileprovider"
+55-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:43:13-72
+56            android:exported="false"
+56-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:44:13-37
+57            android:grantUriPermissions="true" >
+57-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:45:13-47
+58            <meta-data
+58-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:46:13-48:53
+59                android:name="android.support.FILE_PROVIDER_PATHS"
+59-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:47:17-67
+60                android:resource="@xml/file_paths" />
+60-->C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:48:17-51
+61        </provider>
+62
+63        <service
+63-->[com.google.firebase:firebase-database:19.7.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\24ac034c76dfb1b3647cba84ddb1672b\jetified-firebase-database-19.7.0\AndroidManifest.xml:29:9-35:19
+64            android:name="com.google.firebase.components.ComponentDiscoveryService"
+64-->[com.google.firebase:firebase-database:19.7.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\24ac034c76dfb1b3647cba84ddb1672b\jetified-firebase-database-19.7.0\AndroidManifest.xml:30:13-84
+65            android:directBootAware="true"
+65-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:35:13-43
+66            android:exported="false" >
+66-->[com.google.firebase:firebase-database:19.7.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\24ac034c76dfb1b3647cba84ddb1672b\jetified-firebase-database-19.7.0\AndroidManifest.xml:31:13-37
+67            <meta-data
+67-->[com.google.firebase:firebase-database:19.7.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\24ac034c76dfb1b3647cba84ddb1672b\jetified-firebase-database-19.7.0\AndroidManifest.xml:32:13-34:85
+68                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+68-->[com.google.firebase:firebase-database:19.7.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\24ac034c76dfb1b3647cba84ddb1672b\jetified-firebase-database-19.7.0\AndroidManifest.xml:33:17-109
+69                android:value="com.google.firebase.components.ComponentRegistrar" />
+69-->[com.google.firebase:firebase-database:19.7.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\24ac034c76dfb1b3647cba84ddb1672b\jetified-firebase-database-19.7.0\AndroidManifest.xml:34:17-82
+70            <meta-data
+70-->[com.google.firebase:firebase-storage:19.2.2] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\2463fd9af60315f94ca6b2e1beadb579\jetified-firebase-storage-19.2.2\AndroidManifest.xml:33:13-35:85
+71                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+71-->[com.google.firebase:firebase-storage:19.2.2] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\2463fd9af60315f94ca6b2e1beadb579\jetified-firebase-storage-19.2.2\AndroidManifest.xml:34:17-107
+72                android:value="com.google.firebase.components.ComponentRegistrar" />
+72-->[com.google.firebase:firebase-storage:19.2.2] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\2463fd9af60315f94ca6b2e1beadb579\jetified-firebase-storage-19.2.2\AndroidManifest.xml:35:17-82
+73            <!--
+74                This registrar is not defined in the dynamic-module-support sdk itself to allow non-firebase
+75                clients to use it as well, by defining this registrar in their own core/common library.
+76            -->
+77            <meta-data
+77-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:43:13-45:85
+78                android:name="com.google.firebase.components:com.google.firebase.dynamicloading.DynamicLoadingRegistrar"
+78-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:44:17-121
+79                android:value="com.google.firebase.components.ComponentRegistrar" />
+79-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:45:17-82
+80        </service>
+81
+82        <activity
+82-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\97762cadcf6efc2fd07f9a69ce6d22a4\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+83            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+83-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\97762cadcf6efc2fd07f9a69ce6d22a4\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+84            android:exported="false"
+84-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\97762cadcf6efc2fd07f9a69ce6d22a4\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+85            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+85-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\97762cadcf6efc2fd07f9a69ce6d22a4\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+86
+87        <provider
+87-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:26:9-31:39
+88            android:name="com.google.firebase.provider.FirebaseInitProvider"
+88-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:27:13-77
+89            android:authorities="com.example.appbanhang.firebaseinitprovider"
+89-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:28:13-72
+90            android:directBootAware="true"
+90-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:29:13-43
+91            android:exported="false"
+91-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:30:13-37
+92            android:initOrder="100" />
+92-->[com.google.firebase:firebase-common:19.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\6137949eb04c0baf7bc42e782c634fb9\jetified-firebase-common-19.5.0\AndroidManifest.xml:31:13-36
+93
+94        <meta-data
+94-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\673ad0707d733aa5817b98bae7b95b87\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+95            android:name="com.google.android.gms.version"
+95-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\673ad0707d733aa5817b98bae7b95b87\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+96            android:value="@integer/google_play_services_version" />
+96-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\673ad0707d733aa5817b98bae7b95b87\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+97    </application>
+98
+99</manifest>

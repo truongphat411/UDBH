@@ -74,6 +74,13 @@ public class FragmentAdmin  extends Fragment {
                 startActivity(intent);
             }
         });
+        txtQLDT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),ThongKe.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
     @RequiresApi(api = Build.VERSION_CODES.M)

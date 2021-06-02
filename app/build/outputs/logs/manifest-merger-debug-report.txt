@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-51:12
-INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-51:12
-INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-51:12
-INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-51:12
+ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-52:12
 MERGED from [com.google.android.material:material:1.2.1] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\cd32ea4d282c6484817a7b579f3ffa2a\material-1.2.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\006b46906b2f770011761845d9282045\constraintlayout-2.0.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.2.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\e7700bf3fcf4236768ca476b82b72080\appcompat-1.2.0\AndroidManifest.xml:17:1-24:12
@@ -17,6 +17,7 @@ MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Admin\.gradle\caches
 MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\222e134cba2d349f1e4065f697f9cee3\recyclerview-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.github.vipulasri:timelineview:1.1.5] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\329fbe4666541ce45287ba6e88bb041f\jetified-timelineview-1.1.5\AndroidManifest.xml:2:1-11:12
 MERGED from [pl.droidsonroids.gif:android-gif-drawable:1.2.22] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\e8ac15bb17c90713bd05b1d51ed1bde1\jetified-android-gif-drawable-1.2.22\AndroidManifest.xml:2:1-9:12
+MERGED from [com.github.PhilJay:MPAndroidChart:v3.1.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\aa55432d5ddc31b38bdd156b6956051a\jetified-MPAndroidChart-v3.1.0\AndroidManifest.xml:2:1-20:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\795c777fa42a2b7dd69e6943f1778c9f\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\9343bafb14981f23529b908b282099d2\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-database-collection:17.0.1] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\eecee34b17242397bb82e69bb17e15e1\jetified-firebase-database-collection-17.0.1\AndroidManifest.xml:2:1-9:12
@@ -58,20 +59,20 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Admin\.g
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\a16ef9f377ada6515a2739603d983dff\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\8275c6f89d23e4cfe8d5dd5efa714638\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [pl.droidsonroids.relinker:relinker:1.4.1] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\cd2a866581270811f5ca2b888cf5de5b\jetified-relinker-1.4.1\AndroidManifest.xml:2:1-7:12
-INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-51:12
-INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-51:12
-INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-52:12
 	package
 		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:3:5-37
 		INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-51:12
+		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-52:12
 		INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-51:12
+		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:1-52:12
 		INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:2:11-69
@@ -106,7 +107,7 @@ ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifes
 	android:name
 		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:8:22-78
 application
-ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:9:5-49:19
+ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:9:5-50:19
 MERGED from [com.google.android.material:material:1.2.1] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\cd32ea4d282c6484817a7b579f3ffa2a\material-1.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.2.1] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\cd32ea4d282c6484817a7b579f3ffa2a\material-1.2.1\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\006b46906b2f770011761845d9282045\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
@@ -225,22 +226,26 @@ activity#com.example.appbanhang.CTHoaDon_admin
 ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:39:9-51
 	android:name
 		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:39:19-49
+activity#com.example.appbanhang.ThongKe
+ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:40:9-44
+	android:name
+		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:40:19-42
 provider#androidx.core.content.FileProvider
-ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:40:9-48:20
+ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:41:9-49:20
 	android:grantUriPermissions
-		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:44:13-47
+		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:45:13-47
 	android:authorities
-		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:42:13-72
+		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:43:13-72
 	android:exported
-		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:43:13-37
+		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:44:13-37
 	android:name
-		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:41:13-62
+		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:42:13-62
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:45:13-47:53
+ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:46:13-48:53
 	android:resource
-		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:47:17-51
+		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:48:17-51
 	android:name
-		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:46:17-67
+		ADDED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml:47:17-67
 uses-sdk
 INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Admin\AndroidStudioProjects\UDBH\app\src\main\AndroidManifest.xml
@@ -271,6 +276,8 @@ MERGED from [com.github.vipulasri:timelineview:1.1.5] C:\Users\Admin\.gradle\cac
 MERGED from [com.github.vipulasri:timelineview:1.1.5] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\329fbe4666541ce45287ba6e88bb041f\jetified-timelineview-1.1.5\AndroidManifest.xml:7:5-9:41
 MERGED from [pl.droidsonroids.gif:android-gif-drawable:1.2.22] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\e8ac15bb17c90713bd05b1d51ed1bde1\jetified-android-gif-drawable-1.2.22\AndroidManifest.xml:5:5-7:41
 MERGED from [pl.droidsonroids.gif:android-gif-drawable:1.2.22] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\e8ac15bb17c90713bd05b1d51ed1bde1\jetified-android-gif-drawable-1.2.22\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.PhilJay:MPAndroidChart:v3.1.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\aa55432d5ddc31b38bdd156b6956051a\jetified-MPAndroidChart-v3.1.0\AndroidManifest.xml:16:5-18:41
+MERGED from [com.github.PhilJay:MPAndroidChart:v3.1.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\aa55432d5ddc31b38bdd156b6956051a\jetified-MPAndroidChart-v3.1.0\AndroidManifest.xml:16:5-18:41
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\795c777fa42a2b7dd69e6943f1778c9f\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\795c777fa42a2b7dd69e6943f1778c9f\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\9343bafb14981f23529b908b282099d2\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44

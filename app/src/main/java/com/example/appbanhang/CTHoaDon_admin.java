@@ -35,7 +35,7 @@ public class CTHoaDon_admin extends AppCompatActivity {
     ImageButton imgBack;
     TextView txtTenNhanHang,txtSoDienThoaiNhanHang,txtDiaChiNhanHang;
     RecyclerView recyclerChiTietDonHang;
-    Button btnXacNhan,btnDaGiao;
+    Button btnXacNhan,btnDaGiao,btnDaHuy;
     DatabaseReference referenceCTHD,referenceSP;
     Recycler_ChiTietDonHang adapter;
     ArrayList<SanPham> listSP;
@@ -101,6 +101,29 @@ public class CTHoaDon_admin extends AppCompatActivity {
                 });
             }
         });
+        btnDaHuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String trangthai = "Đã Hủy";
+                referenceHD = FirebaseDatabase.getInstance().getReference().child("hoadon");
+                Query query = referenceHD.orderByChild("id").equalTo(idHD);
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()){
+                            referenceHD.child(idHD).child("trangthai").setValue(trangthai.trim());
+                            referenceHD.child(idHD).child("ngaytaodon").setValue("".trim());
+                            Toast.makeText(CTHoaDon_admin.this,"Đã hủy đơn hàng",Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
         Intent intent = getIntent();
         idHD = intent.getStringExtra("idHD");
         tongtien = intent.getIntExtra("tongtien",0);
@@ -116,9 +139,10 @@ public class CTHoaDon_admin extends AppCompatActivity {
             btnXacNhan.setEnabled(false);
             btnXacNhan.setBackgroundColor(getResources().getColor(R.color.grey));
         }
-        if(trangthai.equals("Đã Giao") && trangthai.equals("Đã Hủy")){
+        if(trangthai.equals("Đã Giao".trim()) || trangthai.equals("Đã Hủy")){
             btnXacNhan.setVisibility(View.GONE);
             btnDaGiao.setVisibility(View.GONE);
+            btnDaHuy.setVisibility(View.GONE);
         }
         referenceCTHD = FirebaseDatabase.getInstance().getReference().child("chitiethoadon");
         referenceSP = FirebaseDatabase.getInstance().getReference().child("sanpham");
@@ -199,6 +223,7 @@ public class CTHoaDon_admin extends AppCompatActivity {
         recyclerChiTietDonHang = findViewById(R.id.RecyclerChiTietDonHang);
         btnXacNhan = findViewById(R.id.btnxacnhanDH);
         btnDaGiao = findViewById(R.id.btndagiaoDH);
+        btnDaHuy = findViewById(R.id.btndahuyDH);
     }
 
     @Override

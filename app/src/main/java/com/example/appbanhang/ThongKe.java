@@ -45,10 +45,8 @@ public class ThongKe extends AppCompatActivity {
     BarChart barChart;
     DatabaseReference reference;
     ArrayList<HoaDon> list = new ArrayList<>();
-    private int i;
     private ArrayList<BarEntry> visitors = new ArrayList<>();
     private ArrayList<String> days = new ArrayList<>();
-    private String formattedDate1,formattedDate2;
     private int tongtien;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -57,102 +55,6 @@ public class ThongKe extends AppCompatActivity {
         setContentView(R.layout.thongke);
         barChart = findViewById(R.id.barChart);
         readData();
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private void setBarChart() {
-/*        ArrayList<BarEntry> visitors = new ArrayList<>();
-        ArrayList<String> days = new ArrayList<>();
-        reference = FirebaseDatabase.getInstance().getReference().child("hoadon");*/
-/*        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot ds : snapshot.getChildren()){
-                    String ngayhoanthanh = ds.child("ngayhoanthanh").getValue(String.class);
-                    int tongtien = ds.child("tongtien").getValue(Integer.class);
-                    for(int i = 0;i<=7;i++){
-                        final LocalDate date = LocalDate.now();
-                        final LocalDate dateMinus7Days = date.minusDays(i);
-                        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd/MM");
-                        final String formattedDate1 = dateMinus7Days.format(formatter1);
-                        final String formattedDate2 = dateMinus7Days.format(formatter2);
-                        if(ngayhoanthanh.equals(formattedDate1)){
-                            visitors.add(new BarEntry(i,tongtien));
-
-                            BarDataSet barDataSet = new BarDataSet(visitors,"Doanh Thu");
-                            barDataSet.setValueTextColor(Color.BLACK);
-                            barDataSet.setValueTextSize(16f);
-
-                            BarData barData = new BarData(barDataSet);
-                            barChart.setData(barData);
-
-
-                            days.add(formattedDate2);
-
-                            XAxis xAxis = barChart.getXAxis();
-                            xAxis.setValueFormatter(new IndexAxisValueFormatter(days));
-                            xAxis.setCenterAxisLabels(false);
-                            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-                            xAxis.setGranularity(1);
-                            xAxis.setGranularityEnabled(true);
-
-
-                            barData.setBarWidth(0.1f);
-
-                            barChart.setFitBars(true);
-                            barChart.getDescription().setText("");
-                            barChart.animateY(2000);
-                        }
-
-
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
-        for(i = 6;i>=0;i--) {
-            final LocalDate date = LocalDate.now();
-            final LocalDate dateMinus7Days = date.minusDays(i);
-            DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd/MM");
-            formattedDate1 = dateMinus7Days.format(formatter1);
-            formattedDate2 = dateMinus7Days.format(formatter2);
-            list.forEach(hoaDon -> {
-                if(hoaDon.getNgayhoanthanh().equals(formattedDate1)){
-                    if(hoaDon.getTongtien() > 0){
-                        visitors.add(new BarEntry(i, hoaDon.getTongtien()));
-                    }else {
-                        visitors.add(new BarEntry(i, 0));
-                    }
-                }
-            });
-            BarDataSet barDataSet = new BarDataSet(visitors,"Doanh Thu");
-            barDataSet.setValueTextColor(Color.BLACK);
-            barDataSet.setValueTextSize(16f);
-
-            BarData barData = new BarData(barDataSet);
-            barChart.setData(barData);
-
-            days.add(formattedDate2);
-
-            XAxis xAxis = barChart.getXAxis();
-            xAxis.setValueFormatter(new IndexAxisValueFormatter(days));
-            xAxis.setCenterAxisLabels(false);
-            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-            xAxis.setGranularity(1);
-            xAxis.setGranularityEnabled(true);
-
-            barData.setBarWidth(0.1f);
-
-            barChart.setFitBars(true);
-            barChart.getDescription().setText("");
-            barChart.animateY(2000);
-        }
     }
     @Override
     protected void onStart() {
@@ -179,24 +81,27 @@ public class ThongKe extends AppCompatActivity {
                         list.add(hoaDon);
                     }
                     if (list.size() > 0) {
-                        for (i = 6; i > 0; i--) {
+                        int count = 0;
+                        for (int i = 6; i >=0; i--) {
                             AtomicBoolean isCheckDate = new AtomicBoolean();
                             final LocalDate date = LocalDate.now();
-                            final LocalDate dateMinus7Days = date.minusDays(i);
+                            final LocalDate dateMinus7Days = date.minusDays(i+1);
                             DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                             DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd/MM");
-                            formattedDate1 = dateMinus7Days.format(formatter1);
-                            formattedDate2 = dateMinus7Days.format(formatter2);
+                            String formattedDate1 = dateMinus7Days.format(formatter1);
+                            String formattedDate2 = dateMinus7Days.format(formatter2);
                             list.forEach(hoaDon -> {
-                                if (hoaDon.getNgayhoanthanh().equals(formattedDate1)) {
+                                if (hoaDon.getNgayhoanthanh().equals(formattedDate1.trim())) {
                                     tongtien += hoaDon.getTongtien();
                                     isCheckDate.set(true);
                                 }
                             });
                             if(isCheckDate.get()){
-                                visitors.add(new BarEntry(i, tongtien));
+                                visitors.add(new BarEntry(count, tongtien));
+                                count++;
                             }else {
-                                visitors.add(new BarEntry(i, 0));
+                                visitors.add(new BarEntry(count, 0));
+                                count++;
                             }
                             tongtien = 0;
                             BarDataSet barDataSet = new BarDataSet(visitors, "Doanh Thu");

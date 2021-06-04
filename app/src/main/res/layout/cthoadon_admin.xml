@@ -134,7 +134,7 @@
                 android:textColor="@color/black"
                 android:id="@+id/btndagiaoDH"
                 android:layout_margin="20dp"/>
-<!--            <Button
+            <Button
                 android:layout_width="130dp"
                 android:layout_height="70dp"
                 android:backgroundTint="@color/aqua"
@@ -145,7 +145,7 @@
                 android:id="@+id/btndahuyDH"
                 android:text="Hủy"
                 android:layout_below="@+id/btndagiaoDH"
-                android:textColor="@color/black"/>-->
+                android:textColor="@color/black"/>
         </RelativeLayout>
     </LinearLayout>
 </ScrollView>

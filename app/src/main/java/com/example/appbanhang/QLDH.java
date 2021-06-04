@@ -42,10 +42,10 @@ public class QLDH extends AppCompatActivity {
         imBack = findViewById(R.id.imgb);
         viewPager = findViewById(R.id.viewpaper);
         adapter = new FragmentPager_AdminQLDH(getSupportFragmentManager());
-        adapter.addFragment(new Fragment_AdminChoXacNhan(),"Chờ Xác Nhận");
-        adapter.addFragment(new Fragment_AdminDangGiao(),"Đang giao");
-        adapter.addFragment(new Fragment_AdminDaGiao(),"Đã giao");
-        adapter.addFragment(new Fragment_AdminDaHuy(),"Đã giao");
+        adapter.addFragment(new Fragment_AdminChoXacNhan(), "Chờ Xác Nhận");
+        adapter.addFragment(new Fragment_AdminDangGiao(), "Đang giao");
+        adapter.addFragment(new Fragment_AdminDaGiao(), "Đã giao");
+        adapter.addFragment(new Fragment_AdminDaHuy(), "Đã giao");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
         imBack.setOnClickListener(new View.OnClickListener() {
@@ -54,43 +54,7 @@ public class QLDH extends AppCompatActivity {
                 finish();
             }
         });
-      /*  recyclerView = findViewById(R.id.recyclerViewQLDH);
-
-        reference = FirebaseDatabase.getInstance().getReference().child("hoadon");
-        DataFromFirebaseListener();
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(QLDH.this);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        adapter = new RecyclerViewDonHang(QLDH.this, listQLDH);
-        recyclerView.setAdapter(adapter);*/
     }
-/*    private void DataFromFirebaseListener() {
-        listQLDH = new ArrayList<HoaDon>();
-        Query query = reference.orderByChild("trangthai").equalTo("Chờ Xác Nhận");
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds : snapshot.getChildren()) {
-                    String key = ds.child("id").getValue(String.class);
-                    String idUser = ds.child("idUser").getValue(String.class);
-                    String ngayTaoDon = ds.child("ngaytaodon").getValue(String.class);
-                    String tenUser = ds.child("hoten").getValue(String.class);
-                    String sodienthoai = ds.child("sodienthoai").getValue(String.class);
-                    int tongtien = ds.child("tongtien").getValue(Integer.class);
-                    String trangthai = ds.child("trangthai").getValue(String.class);
-                    String diachi = ds.child("diachi").getValue(String.class);
-                        HoaDon hd = new HoaDon(key, tongtien, ngayTaoDon, "", tenUser, sodienthoai, diachi, trangthai, idUser);
-                        listQLDH.add(hd);
-                    }
-                    adapter.notifyDataSetChanged();
-                }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-
-            });
-    }*/
-
     @Override
     protected void onStart() {
         super.onStart();

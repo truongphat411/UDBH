@@ -8,12 +8,12 @@
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\itemlstc.xml"
     },
     {
-        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_qldh.xml.flat",
-        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\qldh.xml"
-    },
-    {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_qldh.xml.flat",
+        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\qldh.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher_background.xml.flat",
@@ -36,12 +36,12 @@
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\drawable\\menu.png"
     },
     {
-        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
-    },
-    {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_capnhapthuonghieu.xml.flat",
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\activity_capnhapthuonghieu.xml"
+    },
+    {
+        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragmentdagiao.xml.flat",
@@ -120,12 +120,12 @@
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\activity_chitietcapnhat.xml"
     },
     {
-        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_giohangtinhtien.xml.flat",
-        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\giohangtinhtien.xml"
-    },
-    {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable_home_icon.xml.flat",
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\drawable\\home_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_giohangtinhtien.xml.flat",
+        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\giohangtinhtien.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_thuonghieu.xml.flat",

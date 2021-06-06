@@ -51,12 +51,13 @@ public class FragmentDangGiao extends Fragment {
                     int tongtien = ds.child("tongtien").getValue(Integer.class);
                     String trangthai = ds.child("trangthai").getValue(String.class);
                     String diachi = ds.child("diachi").getValue(String.class);
+                    int laisuat = ds.child("laisuat").getValue(Integer.class);
                     AtomicBoolean isTaiKhoan = new AtomicBoolean();
                     if (idUser.equals(MainActivity.id)) {
                         isTaiKhoan.set(true);
                     }
                     if (isTaiKhoan.get()) {
-                        HoaDon hd = new HoaDon(key, tongtien, ngayTaoDon, "", tenUser, sodienthoai, diachi, trangthai, idUser);
+                        HoaDon hd = new HoaDon(key, tongtien, ngayTaoDon, "", tenUser, sodienthoai, diachi, trangthai, idUser,"",laisuat);
                         listDG.add(hd);
                     }
                     adapter.notifyDataSetChanged();

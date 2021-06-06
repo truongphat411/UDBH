@@ -34,7 +34,9 @@ public class gioHangTinhTien extends Fragment {
     ListView lvgh;
     TextView txttongtien;
     private int tongtien = 0;
+    private int tongtienGoc = 0;
     public static int TT;
+    public static int laisuat;
     gioHangAdapter gioHangAdapter;
     public gioHangTinhTien(){
     }
@@ -82,9 +84,13 @@ public class gioHangTinhTien extends Fragment {
         gioHangAdapter.notifyDataSetChanged();
         MainActivity.listGH.forEach(sanPham -> {
             tongtien += (sanPham.getSoluong()*sanPham.getGiaSP());
+            tongtienGoc += (sanPham.getSoluong()*sanPham.getGiaGoc());
             txttongtien.setText("Giá: " + tongtien +" VNĐ");
             TT = tongtien;
+            laisuat = TT - tongtienGoc;
         });
+        Log.d("gia", "onResume: "+laisuat);
         tongtien = 0;
+        tongtienGoc = 0;
     }
 }

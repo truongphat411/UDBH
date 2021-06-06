@@ -18,8 +18,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class RecyclerView_CapnhatSanPham extends RecyclerView.Adapter<RecyclerView_CapnhatSanPham.ViewHolder>{
-    private Context mContext;
-    private ArrayList<SanPham> sanphamArrayList;
+    private final Context mContext;
+    private final ArrayList<SanPham> sanphamArrayList;
     public RecyclerView_CapnhatSanPham(Context mContext, ArrayList<SanPham> sanphamArrayList) {
         this.mContext = mContext;
         this.sanphamArrayList = sanphamArrayList;
@@ -49,6 +49,7 @@ public class RecyclerView_CapnhatSanPham extends RecyclerView.Adapter<RecyclerVi
                 intent.putExtra("soluongKho",sanphamArrayList.get(position).getSoluongKho());
                 intent.putExtra("hinhSP",sanphamArrayList.get(position).getHinhSP());
                 intent.putExtra("idTH",sanphamArrayList.get(position).getIdTH());
+                intent.putExtra("giaGoc",sanphamArrayList.get(position).getGiaGoc());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
             }

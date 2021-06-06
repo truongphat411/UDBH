@@ -185,6 +185,7 @@ public class CTHoaDon_admin extends AppCompatActivity {
                                 String idTH = ds.child("idTH").getValue(String.class);
                                 String motaSP = ds.child("motaSP").getValue(String.class);
                                 int soluongKho = ds.child("soluongKho").getValue(Integer.class);
+                                int giaGoc = ds.child("giaGoc").getValue(Integer.class);
                                 AtomicBoolean isSanPham = new AtomicBoolean();
                                 assert key != null;
                                 if(key.equals(idSP)){
@@ -193,7 +194,7 @@ public class CTHoaDon_admin extends AppCompatActivity {
                                 if(isHoaDon.get() && isSanPham.get()){
                                     ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon(keyCT,key,idHD,soluong);
                                     listCTDH.add(chiTietHoaDon);
-                                    SanPham sanPham = new SanPham(key,tensp,hinhsp,soluong*giasp,"",motaSP,idTH,soluongKho);
+                                    SanPham sanPham = new SanPham(key,tensp,hinhsp,soluong*giasp,"",motaSP,idTH,soluongKho,giaGoc);
                                     listSP.add(sanPham);
                                 }
                             }

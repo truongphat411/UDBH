@@ -107,10 +107,21 @@
             android:hint="Nhập số lượng sản phẩm trong kho"
             android:layout_below="@+id/edtmathuonghieu"
             />
+        <EditText
+            android:id="@+id/edtgiaGoc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="10dp"
+            android:hint="Nhập giá gốc sản phẩm"
+            android:layout_below="@+id/edtsoluongkho"
+            />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/edtsoluongkho"
+            android:layout_below="@+id/edtgiaGoc"
             >
             <Button
                 android:layout_width="130dp"

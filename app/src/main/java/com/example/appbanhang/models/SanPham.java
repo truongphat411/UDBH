@@ -3,20 +3,29 @@ package com.example.appbanhang.models;
 public class SanPham {
 
 
-    public String idSP;
+    private String idSP;
+    private int giaGoc;
+
+    public int getGiaGoc() {
+        return giaGoc;
+    }
+
+    public void setGiaGoc(int giaGoc) {
+        this.giaGoc = giaGoc;
+    }
 
     public String getIdSP() {
         return idSP;
     }
 
-    public void setIdSP(String idSP) {
+    private void setIdSP(String idSP) {
         this.idSP = idSP;
     }
 
-    public String tenSP;
-    public String hinhSP;
-    public int giaSP;
-    public boolean isYeuThich;
+    private String tenSP;
+    private String hinhSP;
+    private int giaSP;
+    private boolean isYeuThich;
 
     public int getSoluongKho() {
         return soluongKho;
@@ -26,7 +35,7 @@ public class SanPham {
         this.soluongKho = soluongKho;
     }
 
-    public int soluongKho;
+    private int soluongKho;
     public int getSoluong() {
         return soluong;
     }
@@ -35,7 +44,7 @@ public class SanPham {
         this.soluong = soluong;
     }
 
-    public int soluong = 0;
+    private int soluong = 0;
 
     public boolean isYeuThich() {
         return isYeuThich;
@@ -43,9 +52,9 @@ public class SanPham {
     public void setYeuThich(boolean yeuThich) {
         isYeuThich = yeuThich;
     }
-    public String tenTH;
-    public String motaSP;
-    public String idTH;
+    private String tenTH;
+    private String motaSP;
+    private String idTH;
 
     public String getIdTH() {
         return idTH;
@@ -63,7 +72,7 @@ public class SanPham {
         this.motaSP = motaSP;
     }
 
-    public SanPham(String idSP, String tenSP, String hinhSP, int giaSP, String tenTH, String motaSP,String idTH,int soluongKho) {
+    public SanPham(String idSP, String tenSP, String hinhSP, int giaSP, String tenTH, String motaSP,String idTH,int soluongKho,int giaGoc) {
         this.idSP = idSP;
         this.tenSP = tenSP;
         this.hinhSP = hinhSP;
@@ -72,6 +81,7 @@ public class SanPham {
         this.motaSP = motaSP;
         this.idTH = idTH;
         this.soluongKho = soluongKho;
+        this.giaGoc = giaGoc;
     }
 
     public String getTenSP() {

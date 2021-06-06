@@ -65,7 +65,7 @@ public class sanPhamAdapter extends BaseAdapter {
         TextView textView = convertView.findViewById(R.id.txttensp);
         TextView giaTienText = convertView.findViewById(R.id.txtgiatien);
         textView.setText(currentItem.getTenSP());
-        giaTienText.setText(String.valueOf("đ"+currentItem.giaSP));
+        giaTienText.setText(String.valueOf("đ"+currentItem.getGiaSP()));
         ImageButton imageButton = convertView.findViewById(R.id.imgyeuthich);
         if(currentItem.isYeuThich() == true){
             imageButton.setImageResource(R.drawable.favorite_icon);
@@ -95,7 +95,7 @@ public class sanPhamAdapter extends BaseAdapter {
             }
         });
         /// url của firebase
-        String url = sanPham.get(position).hinhSP;
+        String url = sanPham.get(position).getHinhSP();
         Picasso.with(context).load(url).into(imageView);
         return convertView;
     }

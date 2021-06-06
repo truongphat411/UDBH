@@ -1879,6 +1879,7 @@ id edit_query
 id edtDiaChi
 id edtSearch
 id edtdiachi
+id edtgiaGoc
 id edtgiaSP
 id edthoten
 id edtmathuonghieu
@@ -2138,6 +2139,7 @@ id submit_area
 id tabMode
 id tablayout
 id tablayout_capnhatsanpham
+id table
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
 id tag_accessibility_heading
@@ -2168,6 +2170,7 @@ id thongbao
 id time
 id title
 id title1
+id title2
 id titleDividerNoCustom
 id title_template
 id toggle
@@ -2190,8 +2193,14 @@ id txtCNSP
 id txtChecked
 id txtDC
 id txtDNDK
+id txtDS30N
+id txtDS7N
+id txtDSHN
 id txtDiaChiNhanHang
 id txtGiasp
+id txtLN30N
+id txtLN7N
+id txtLNHN
 id txtLSngaygio
 id txtLSsodienthoai
 id txtLSten

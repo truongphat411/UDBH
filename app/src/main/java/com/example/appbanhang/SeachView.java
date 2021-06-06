@@ -117,7 +117,8 @@ public class SeachView extends AppCompatActivity {
                         String hinh = ds.child("hinhSP").getValue(String.class);
                         String idTH = ds.child("idTH").getValue(String.class);
                         int soluongKho = ds.child("soluongKho").getValue(Integer.class);
-                            SanPham sanPham = new SanPham(key, ten, hinh, gia, idTH, mota, "",soluongKho);
+                        int giaGoc = ds.child("giaGoc").getValue(Integer.class);
+                            SanPham sanPham = new SanPham(key, ten, hinh, gia, idTH, mota, "",soluongKho,giaGoc);
                             list.add(sanPham);
                     }
                     recyclerView = findViewById(R.id.recyclerSearch);

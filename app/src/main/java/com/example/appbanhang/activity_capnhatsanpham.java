@@ -57,7 +57,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class activity_capnhatsanpham extends AppCompatActivity {
-    EditText edttenSP,edtgiaSP,edtmotaSP,edtmathuonghieu,edtsoluongKho;
+    EditText edttenSP,edtgiaSP,edtmotaSP,edtmathuonghieu,edtsoluongKho,edtgiaGoc;
     ImageView imvhinhSP;
     Button btncapnhatSP,btnxoaSP;
     String idSP;
@@ -113,6 +113,7 @@ public class activity_capnhatsanpham extends AppCompatActivity {
         edtmotaSP = findViewById(R.id.edtmotaSP);
         edtmathuonghieu = findViewById(R.id.edtmathuonghieu);
         edtsoluongKho =findViewById(R.id.edtsoluongkho);
+        edtgiaGoc = findViewById(R.id.edtgiaGoc);
         imvhinhSP = findViewById(R.id.imvhinhSP);
         btncapnhatSP = findViewById(R.id.btncapnhatSP);
         btnxoaSP = findViewById(R.id.btnxoaSP);
@@ -130,6 +131,7 @@ public class activity_capnhatsanpham extends AppCompatActivity {
         Uri myUri = Uri.parse(intent.getStringExtra("hinhSP"));
         Picasso.with(activity_capnhatsanpham.this).load(myUri).placeholder(R.drawable.image).into(imvhinhSP);
         edtmathuonghieu.setText(intent.getStringExtra("idTH"));
+        edtgiaGoc.setText(String.valueOf(intent.getIntExtra("giaGoc",0)));
     }
     private void CapNhatSP(){
         reference = FirebaseDatabase.getInstance().getReference().child("sanpham");
@@ -143,6 +145,7 @@ public class activity_capnhatsanpham extends AppCompatActivity {
                     reference.child(String.valueOf(idSP)).child("motaSP").setValue(edtmotaSP.getText().toString().trim());
                     reference.child(String.valueOf(idSP)).child("soluongKho").setValue(Integer.parseInt(edtsoluongKho.getText().toString().trim()));
                     reference.child(String.valueOf(idSP)).child("idTH").setValue(edtmathuonghieu.getText().toString().trim());
+                    reference.child(String.valueOf(idSP)).child("giaGoc").setValue(Integer.parseInt(edtgiaGoc.getText().toString().trim()));
                     Toast.makeText(activity_capnhatsanpham.this,"Cập nhật thành công",Toast.LENGTH_SHORT).show();
                     finish();
                 }

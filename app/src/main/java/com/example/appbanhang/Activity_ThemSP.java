@@ -44,7 +44,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Activity_ThemSP extends AppCompatActivity {
-    EditText edttenSP,edtgiaSP,edtmotaSP,edtmathuonghieu,edtsoluongKho;
+    EditText edttenSP,edtgiaSP,edtmotaSP,edtmathuonghieu,edtsoluongKho,edtgiaGoc;
     ImageView imvhinhSP;
     Button btnthemSP;
     DatabaseReference reference;
@@ -93,6 +93,7 @@ public class Activity_ThemSP extends AppCompatActivity {
         edtmotaSP = findViewById(R.id.edtmotaSP);
         edtmathuonghieu = findViewById(R.id.edtmathuonghieu);
         edtsoluongKho = findViewById(R.id.edtsoluongkho);
+        edtgiaGoc = findViewById(R.id.edtgiaGoc);
         imvhinhSP = findViewById(R.id.imvhinhSP);
         btnthemSP = findViewById(R.id.btnthemSP);
         imgBack = findViewById(R.id.imgBack);
@@ -106,7 +107,8 @@ public class Activity_ThemSP extends AppCompatActivity {
         String motaSP = edtmotaSP.getText().toString().trim();
         String idTH = edtmathuonghieu.getText().toString().trim();
         int soluongKho = Integer.parseInt(edtsoluongKho.getText().toString().trim());
-        SanPham sanPham = new SanPham(key,tenSP,hinhSP,giaSP,"",motaSP,idTH,soluongKho);
+        int giaGoc = Integer.parseInt(edtgiaGoc.getText().toString().trim());
+        SanPham sanPham = new SanPham(key,tenSP,hinhSP,giaSP,"",motaSP,idTH,soluongKho,giaGoc);
         reference.child(key).setValue(sanPham);
         Toast.makeText(Activity_ThemSP.this,"Thêm sản phẩm thành công",Toast.LENGTH_SHORT).show();
         finish();

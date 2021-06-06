@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,6 +32,7 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -39,21 +41,23 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ThongKe extends AppCompatActivity {
     BarChart barChart;
     DatabaseReference reference;
-    ArrayList<HoaDon> list = new ArrayList<>();
-    private ArrayList<BarEntry> visitors = new ArrayList<>();
-    private ArrayList<String> days = new ArrayList<>();
     private int tongtien;
+    TextView txtDSHN,txtDS7N,txtDS30N,txtLNHN,txtLN7N,txtLN30N;
+    private int tongtienDSHN,tongtienDS7N,tongtienDS30N,tongtienLNHN,tongtienLN7N,tongtienLN30N;
+    private Locale localeEN = new Locale("en", "EN");
+    private NumberFormat en = NumberFormat.getInstance(localeEN);
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.thongke);
-        barChart = findViewById(R.id.barChart);
+        anhxa();
         readData();
     }
     @Override
@@ -68,6 +72,9 @@ public class ThongKe extends AppCompatActivity {
         }
     }
     private void readData(){
+        ArrayList<HoaDon> list = new ArrayList<>();
+        ArrayList<BarEntry> visitors = new ArrayList<>();
+        ArrayList<String> days = new ArrayList<>();
         reference = FirebaseDatabase.getInstance().getReference().child("hoadon");
         reference.addValueEventListener(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -76,15 +83,24 @@ public class ThongKe extends AppCompatActivity {
                 if (snapshot.exists()) {
                     for (DataSnapshot ds : snapshot.getChildren()) {
                         int tongtien = ds.child("tongtien").getValue(Integer.class);
+                        int laisuat = ds.child("laisuat").getValue(Integer.class);
                         String ngayhoanthanh = ds.child("ngayhoanthanh").getValue(String.class);
-                        HoaDon hoaDon = new HoaDon("", tongtien, "", ngayhoanthanh, "", "", "", "", "");
+                        HoaDon hoaDon = new HoaDon("", tongtien, "", ngayhoanthanh, "", "", "", "", "","",laisuat);
                         list.add(hoaDon);
                     }
                     if (list.size() > 0) {
                         int count = 0;
+                        final LocalDate date = LocalDate.now();
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                        String formattedDate = date.format(formatter);
+                        list.forEach(hoaDon -> {
+                            if(hoaDon.getNgayhoanthanh().equals(formattedDate.trim())){
+                                tongtienDSHN += hoaDon.getTongtien();
+                                tongtienLNHN += hoaDon.getLaisuat();
+                            }
+                        });
                         for (int i = 6; i >=0; i--) {
                             AtomicBoolean isCheckDate = new AtomicBoolean();
-                            final LocalDate date = LocalDate.now();
                             final LocalDate dateMinus7Days = date.minusDays(i+1);
                             DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                             DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd/MM");
@@ -93,6 +109,8 @@ public class ThongKe extends AppCompatActivity {
                             list.forEach(hoaDon -> {
                                 if (hoaDon.getNgayhoanthanh().equals(formattedDate1.trim())) {
                                     tongtien += hoaDon.getTongtien();
+                                    tongtienDS7N += hoaDon.getTongtien();
+                                    tongtienLN7N += hoaDon.getLaisuat();
                                     isCheckDate.set(true);
                                 }
                             });
@@ -126,12 +144,64 @@ public class ThongKe extends AppCompatActivity {
                             barChart.getDescription().setText("");
                             barChart.animateY(2000);
                         }
+                        String str = en.format(tongtienDS7N);
+                        txtDS7N.setText(str);
+                        String str1 = en.format(tongtienLN7N);
+                        txtLN7N.setText(str1);
+                        for(int i = 0; i < 31; i++){
+                            final LocalDate dateMinus = date.minusDays(i+1);
+                            DateTimeFormatter formatter3 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                            String formattedDate3 = dateMinus.format(formatter3);
+                            list.forEach(hoaDon -> {
+                                if (hoaDon.getNgayhoanthanh().equals(formattedDate3.trim())) {
+                                    tongtienDS30N += hoaDon.getTongtien();
+                                    tongtienLN30N += hoaDon.getLaisuat();
+                                }
+                            });
+                        }
+                        String str2 = en.format(tongtienDS30N);
+                        txtDS30N.setText(str2);
+                        String str3 = en.format(tongtienLN30N);
+                        txtLN30N.setText(str3);
+
                     }
+                    String str = en.format(tongtienDSHN);
+                    txtDSHN.setText(str);
+                    String str1 = en.format(tongtienLNHN);
+                    txtLNHN.setText(str1);
                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+    }
+    private void tinhTongTien(){
+        ArrayList<HoaDon> list = new ArrayList<>();
+        reference = FirebaseDatabase.getInstance().getReference().child("hoadon");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for(DataSnapshot ds : snapshot.getChildren()){
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    private void anhxa(){
+        barChart = findViewById(R.id.barChart);
+        txtDSHN = findViewById(R.id.txtDSHN);
+        txtDS7N = findViewById(R.id.txtDS7N);
+        txtDS30N = findViewById(R.id.txtDS30N);
+        txtLNHN = findViewById(R.id.txtLNHN);
+        txtLN7N = findViewById(R.id.txtLN7N);
+        txtLN30N = findViewById(R.id.txtLN30N);
     }
 }

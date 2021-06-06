@@ -2,11 +2,29 @@ package com.example.appbanhang.models;
 
 public class HoaDon {
     private String id;
+    private String lido;
 
+    private int laisuat;
+
+    public int getLaisuat() {
+        return laisuat;
+    }
+
+    public void setLaisuat(int laisuat) {
+        this.laisuat = laisuat;
+    }
+
+    public String getLido() {
+        return lido;
+    }
+
+    public void setLido(String lido) {
+        this.lido = lido;
+    }
     public HoaDon() {
     }
 
-    public HoaDon(String id, int tongtien, String ngaytaodon, String ngayhoanthanh, String hoten, String sodienthoai, String diachi, String trangthai,String idUser) {
+    public HoaDon(String id, int tongtien, String ngaytaodon, String ngayhoanthanh, String hoten, String sodienthoai, String diachi, String trangthai,String idUser,String lido,int laisuat) {
         this.id = id;
         this.tongtien = tongtien;
         this.ngaytaodon = ngaytaodon;
@@ -16,6 +34,8 @@ public class HoaDon {
         this.diachi = diachi;
         this.trangthai = trangthai;
         this.idUser = idUser;
+        this.lido = lido;
+        this.laisuat = laisuat;
     }
 
     private int tongtien;

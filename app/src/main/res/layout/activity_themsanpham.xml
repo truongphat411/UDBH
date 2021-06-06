@@ -107,6 +107,17 @@
             android:hint="Nhập số lượng sản phẩm trong kho"
             android:layout_below="@+id/edtmathuonghieu"
             />
+        <EditText
+            android:id="@+id/edtgiaGoc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="10dp"
+            android:hint="Nhập giá gốc sản phẩm"
+            android:layout_below="@+id/edtsoluongkho"
+            />
             <Button
                 android:layout_width="130dp"
                 android:layout_height="70dp"
@@ -118,7 +129,7 @@
                 android:id="@+id/btnthemSP"
                 android:text="Thêm"
                 android:textColor="@color/black"
-                android:layout_below="@+id/edtsoluongkho"
+                android:layout_below="@+id/edtgiaGoc"
                 />
     </RelativeLayout>
 </ScrollView>

@@ -101,8 +101,8 @@ public class chiTietSanPham extends AppCompatActivity {
         String tenth = intent.getStringExtra("tenth");
         String idth = intent.getStringExtra("idTH");
         int soluongKho = intent.getIntExtra("soluongKho",0);
-
-        sanPhamSelected = new SanPham(id,ten,hinh,gia,tenth,mota,idth,soluongKho);
+        int giaGoc = intent.getIntExtra("giaGoc",0);
+        sanPhamSelected = new SanPham(id,ten,hinh,gia,tenth,mota,idth,soluongKho,giaGoc);
 
 
         Picasso.with(chiTietSanPham.this).load(hinh).into(image_sanpham);

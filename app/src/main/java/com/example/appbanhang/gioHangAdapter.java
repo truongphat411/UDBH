@@ -73,7 +73,7 @@ public class gioHangAdapter extends BaseAdapter {
         TextView textView = convertView.findViewById(R.id.txttengiohang);
         textView.setText(currentItem.getTenSP());
         TextView textView1 = convertView.findViewById(R.id.txtgiagiohang);
-        textView1.setText(String.valueOf(currentItem.giaSP));
+        textView1.setText(String.valueOf(currentItem.getGiaSP()));
         Button button = convertView.findViewById(R.id.btncong);
         TextView textView2 = convertView.findViewById(R.id.txtsoluong);
         textView2.setText("số lượng: " + currentItem.getSoluong());
@@ -153,7 +153,7 @@ public class gioHangAdapter extends BaseAdapter {
 
             }
         });
-        String url = currentItem.hinhSP;
+        String url = currentItem.getHinhSP();
         Picasso.with(context).load(url).into(imageView);
         return convertView;
     }

@@ -40,7 +40,7 @@ public class FragmentChoXacNhan extends Fragment {
         return view;
     }
     private void DataFromFirebaseListener() {
-        listCXN = new ArrayList<HoaDon>();
+        listCXN = new ArrayList<>();
         Query query = reference.orderByChild("trangthai").equalTo("Chờ Xác Nhận");
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -54,12 +54,13 @@ public class FragmentChoXacNhan extends Fragment {
                     int tongtien = ds.child("tongtien").getValue(Integer.class);
                     String trangthai = ds.child("trangthai").getValue(String.class);
                     String diachi = ds.child("diachi").getValue(String.class);
+                    int laisuat = ds.child("laisuat").getValue(Integer.class);
                     AtomicBoolean isTaiKhoan = new AtomicBoolean();
                     if(idUser.equals(MainActivity.id)){
                         isTaiKhoan.set(true);
                     }
                     if(isTaiKhoan.get()){
-                        HoaDon hd = new HoaDon(key,tongtien,ngayTaoDon,"",tenUser,sodienthoai,diachi,trangthai,idUser);
+                        HoaDon hd = new HoaDon(key,tongtien,ngayTaoDon,"",tenUser,sodienthoai,diachi,trangthai,idUser,"",laisuat);
                         listCXN.add(hd);
                     }
                     adapter.notifyDataSetChanged();

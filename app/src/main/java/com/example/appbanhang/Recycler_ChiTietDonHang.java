@@ -35,7 +35,7 @@ public class Recycler_ChiTietDonHang extends RecyclerView.Adapter<Recycler_ChiTi
 
     @Override
     public void onBindViewHolder(@NonNull Recycler_ChiTietDonHang.ViewHolder holder, int position) {
-        String url = sanpham.get(position).hinhSP;
+        String url = sanpham.get(position).getHinhSP();
         Picasso.with(mContext).load(url).into(holder.imvHinhSP);
         holder.txtTenSP.setText(sanpham.get(position).getTenSP());
         holder.txtSoluong.setText("X"+chitiet.get(position).getSoluong());

@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
     ViewPager viewPager;
     public static  ArrayList<SanPham> listGH = new ArrayList<>();
     public static  ArrayList<SanPham> listYT = new ArrayList<>();
-    public static ArrayList<HoaDon> listCXN = new ArrayList<>();
     public static String id;
     public static Boolean dadangnhap = false;
     public static String hoten;

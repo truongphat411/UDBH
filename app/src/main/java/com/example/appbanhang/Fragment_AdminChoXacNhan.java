@@ -50,9 +50,10 @@ public class Fragment_AdminChoXacNhan extends Fragment {
                     String tenUser = ds.child("hoten").getValue(String.class);
                     String sodienthoai = ds.child("sodienthoai").getValue(String.class);
                     int tongtien = ds.child("tongtien").getValue(Integer.class);
+                    int laisuat = ds.child("laisuat").getValue(Integer.class);
                     String trangthai = ds.child("trangthai").getValue(String.class);
                     String diachi = ds.child("diachi").getValue(String.class);
-                        HoaDon hd = new HoaDon(key,tongtien,ngayTaoDon,"",tenUser,sodienthoai,diachi,trangthai,idUser);
+                        HoaDon hd = new HoaDon(key,tongtien,ngayTaoDon,"",tenUser,sodienthoai,diachi,trangthai,idUser,"",laisuat);
                         listCXN.add(hd);
                     }
                     adapter.notifyDataSetChanged();

@@ -67,6 +67,7 @@ public class Fragment_CapNhatSanPham extends Fragment {
                     String motasp = ds.child("motaSP").getValue(String.class);
                     String idTH = ds.child("idTH").getValue(String.class);
                     int soluongKho = ds.child("soluongKho").getValue(Integer.class);
+                    int giaGoc = ds.child("giaGoc").getValue(Integer.class);
                     AtomicBoolean isSanPham = new AtomicBoolean();
 
                     list.forEach(sanPham -> {
@@ -76,7 +77,7 @@ public class Fragment_CapNhatSanPham extends Fragment {
                     });
 
                     if(!isSanPham.get()){
-                        SanPham sp = new SanPham(key, tensp, hinhsp, giasp, tenth, motasp, idTH,soluongKho);
+                        SanPham sp = new SanPham(key, tensp, hinhsp, giasp, tenth, motasp, idTH,soluongKho,giaGoc);
                         list.add(sp);
                     }
                 }

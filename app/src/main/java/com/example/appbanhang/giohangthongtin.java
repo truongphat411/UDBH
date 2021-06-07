@@ -117,16 +117,19 @@ public class giohangthongtin extends Fragment {
                                     chiTietHoaDon = new ChiTietHoaDon(keyCTHD,sp.getIdSP(),keyHD,sp.getSoluong());
                                     referenceCTHD.child(keyCTHD).setValue(chiTietHoaDon);
                                     referenceSP.child(sp.getIdSP()).child("soluongKho").setValue(soluong);
+                                }else {
                                     isCheck.set(true);
                                 }
                             }
                         });
                     });
-                    if(isCheck.get()){
+                    if(!isCheck.get()){
                         myCalendar.add(Calendar.DATE,2);
                         String ngaytaodon = sdf.format(myCalendar.getTime());
                         String ngayhoanthanh = "";
                         String trangthai = "Chờ Xác Nhận";
+                        Log.d("hihi", "onClick: "+gioHangTinhTien.TT);
+                        Log.d("hihi", "onClick: "+gioHangTinhTien.laisuat);
                         HoaDon hoaDon = new HoaDon(keyHD,gioHangTinhTien.TT,ngaytaodon,ngayhoanthanh,hoten,sodienthoai,diachi,trangthai,MainActivity.id,"",gioHangTinhTien.laisuat);
                         referenceHD.child(keyHD).setValue(hoaDon);
                         Toast.makeText(view.getContext(), "Tạo đơn hàng thành công", Toast.LENGTH_LONG).show();
@@ -141,13 +144,15 @@ public class giohangthongtin extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
                                 switch (which){
                                     case DialogInterface.BUTTON_POSITIVE:
-
+                                        MainActivity.listGH.clear();
+                                        saveData();
                                         break;
                                 }
                             }
                         };
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                        builder.setMessage("Một số sản phẩm không đủ số lượng ").setPositiveButton("OK", dialogClickListener).show();
+                        builder.setTitle("Thông báo");
+                        builder.setMessage("Một số sản phẩm không đủ số lượng.Vui lòng chọn sản phẩm mới vào giỏ hàng").setPositiveButton("OK", dialogClickListener).show();
                     }
                     }
                 }

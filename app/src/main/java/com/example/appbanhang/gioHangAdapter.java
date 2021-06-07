@@ -99,6 +99,7 @@ public class gioHangAdapter extends BaseAdapter {
                     tongtien += (sanPham.getSoluong()*sanPham.getGiaSP());
                     txttongtien.setText("Giá: " + tongtien+" VNĐ");
                 });
+                gioHangTinhTien.TT = tongtien;
                 saveData();
                 tongtien = 0;
             }
@@ -118,6 +119,7 @@ public class gioHangAdapter extends BaseAdapter {
                         tongtien += (sanPham.getSoluong()*sanPham.getGiaSP());
                         txttongtien.setText("Giá: " + tongtien+" VNĐ");
                     });
+                    gioHangTinhTien.TT = tongtien;
                     saveData();
                     tongtien = 0;
                 }else {
@@ -131,9 +133,11 @@ public class gioHangAdapter extends BaseAdapter {
                                         tongtien += (sanPham.getSoluong()*sanPham.getGiaSP());
                                         txttongtien.setText("Giá: " + tongtien+" VNĐ");
                                     });
+                                    gioHangTinhTien.TT = tongtien;
                                     tongtien = 0;
                                     if(MainActivity.listGH.size() == 0){
                                         txttongtien.setText("Giá: " + 0 +" VNĐ");
+                                        gioHangTinhTien.TT = 0;
                                     }
                                     saveData();
                                     notifyDataSetChanged();

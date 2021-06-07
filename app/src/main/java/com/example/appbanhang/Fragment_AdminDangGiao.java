@@ -37,7 +37,7 @@ public class Fragment_AdminDangGiao extends Fragment {
         return view;
     }
     private void DataFromFirebaseListener() {
-        listDG = new ArrayList<HoaDon>();
+        listDG = new ArrayList<>();
         Query query = reference.orderByChild("trangthai").equalTo("Đang Giao");
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -78,5 +78,6 @@ public class Fragment_AdminDangGiao extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new RecyclerViewDonHang_admin(getActivity() , listDG);
         recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 }

@@ -1129,6 +1129,7 @@ color secondary_text_default_material_dark
 color secondary_text_default_material_light
 color secondary_text_disabled_material_dark
 color secondary_text_disabled_material_light
+color silver
 color switch_thumb_disabled_material_dark
 color switch_thumb_disabled_material_light
 color switch_thumb_material_dark
@@ -1580,6 +1581,11 @@ drawable avd_hide_password
 drawable avd_show_password
 drawable back_icon
 drawable bell
+drawable bg_aliceblue_corner_16
+drawable bg_aqua_corner_10
+drawable bg_aqua_corner_16_top_left_top_right
+drawable bg_silver_corner_10
+drawable bg_white_corner_10_border_gray
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -1792,12 +1798,14 @@ id btnDangKy
 id btnDangNhap
 id btnDangXuat
 id btnHoanTat
+id btnHuy
 id btnHuyDonHang
 id btnKhoaTaiKhoan
 id btnLuuTD
 id btnMoTaiKhoan
 id btnNhapThongTin
 id btnRetry
+id btnXacNhan
 id btncapnhatSP
 id btncapnhatTH
 id btncong
@@ -2062,6 +2070,12 @@ id postLayout
 id progress_circular
 id progress_horizontal
 id radio
+id radioGroup
+id radio_button_1
+id radio_button_2
+id radio_button_3
+id radio_button_4
+id radio_button_5
 id ratio
 id rectangles
 id recyclerSanPham
@@ -2384,6 +2398,8 @@ layout item_search
 layout itemdonhang
 layout itemdonmua
 layout itemlstc
+layout layout_dialog_huydh
+layout layout_dialog_huydh_admin
 layout lichsutruycap
 layout listfavorite
 layout me

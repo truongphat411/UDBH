@@ -88,6 +88,10 @@
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\drawable\\search_bar_drawable.xml"
     },
     {
+        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_white_corner_10_border_gray.xml.flat",
+        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\drawable\\bg_white_corner_10_border_gray.xml"
+    },
+    {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_lichsutruycap.xml.flat",
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\lichsutruycap.xml"
     },
@@ -192,6 +196,14 @@
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\donhangtrong.xml"
     },
     {
+        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_aqua_corner_10.xml.flat",
+        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\drawable\\bg_aqua_corner_10.xml"
+    },
+    {
+        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_layout_dialog_huydh_admin.xml.flat",
+        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\layout_dialog_huydh_admin.xml"
+    },
+    {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_searchview.xml.flat",
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\searchview.xml"
     },
@@ -236,6 +248,10 @@
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
     },
     {
+        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_aqua_corner_16_top_left_top_right.xml.flat",
+        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\drawable\\bg_aqua_corner_16_top_left_top_right.xml"
+    },
+    {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable_donmua.png.flat",
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\drawable\\donmua.png"
     },
@@ -266,6 +282,10 @@
     {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_noconnection.xml.flat",
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\noconnection.xml"
+    },
+    {
+        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_aliceblue_corner_16.xml.flat",
+        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\drawable\\bg_aliceblue_corner_16.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable_back_icon.xml.flat",
@@ -368,6 +388,10 @@
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\fragmentdadangnhap.xml"
     },
     {
+        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_silver_corner_10.xml.flat",
+        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\drawable\\bg_silver_corner_10.xml"
+    },
+    {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_chitietdonhang.xml.flat",
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\item_chitietdonhang.xml"
     },
@@ -458,6 +482,10 @@
     {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_chitietthuonghieu.xml.flat",
         "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\activity_chitietthuonghieu.xml"
+    },
+    {
+        "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_layout_dialog_huydh.xml.flat",
+        "source": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\src\\main\\res\\layout\\layout_dialog_huydh.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\AndroidStudioProjects\\UDBH\\app\\build\\intermediates\\res\\merged\\debug\\layout_dangnhapvadangky.xml.flat",

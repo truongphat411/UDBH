@@ -59,7 +59,7 @@ public class Fragment_AdminChoXacNhan extends Fragment {
                     adapter.notifyDataSetChanged();
                     if(listCXN.size() == 0){
                     donHangTrong fragment = new donHangTrong();
-                    FragmentTransaction fragmentTransaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
+                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.frameADMINchoxacnhan, fragment);
                     fragmentTransaction.commit();
                 }
@@ -79,5 +79,6 @@ public class Fragment_AdminChoXacNhan extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new RecyclerViewDonHang_admin(getActivity() , listCXN);
         recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 }

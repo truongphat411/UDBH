@@ -1,14 +1,19 @@
 package com.example.appbanhang;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +47,7 @@ public class CTHoaDon extends AppCompatActivity {
     String idHD;
     int tongtien;
     String trangthai;
+    RadioButton radioButton;
     DatabaseReference referenceHD;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,24 +57,7 @@ public class CTHoaDon extends AppCompatActivity {
         btnHuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String trangthai = "Đã Hủy";
-                referenceHD = FirebaseDatabase.getInstance().getReference().child("hoadon");
-                Query query = referenceHD.orderByChild("id").equalTo(idHD);
-                query.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.exists()){
-                            referenceHD.child(idHD).child("trangthai").setValue(trangthai.trim());
-                            referenceHD.child(idHD).child("ngaytaodon").setValue("".trim());
-                            Toast.makeText(CTHoaDon.this,"Đã hủy đơn hàng",Toast.LENGTH_SHORT).show();
-                            finish();
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
+                openDialog(Gravity.CENTER);
             }
         });
         Intent intent = getIntent();
@@ -160,6 +149,72 @@ public class CTHoaDon extends AppCompatActivity {
         txtDiaChiNhanHang = findViewById(R.id.txtDiaChiNhanHang);
         recyclerChiTietDonHang = findViewById(R.id.RecyclerChiTietDonHang);
         btnHuy = findViewById(R.id.btndahuyDH);
+    }
+    private void openDialog(int gravity){
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.layout_dialog_huydh);
+
+        Window window = dialog.getWindow();
+        if(window == null){
+            return;
+        }
+
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams windowAttributes = window.getAttributes();
+        windowAttributes.gravity = gravity;
+        window.setAttributes(windowAttributes);
+
+        if(Gravity.BOTTOM == gravity){
+            dialog.setCancelable(true);
+        }else {
+            dialog.setCancelable(false);
+        }
+
+        RadioGroup radioGroup = dialog.findViewById(R.id.radioGroup);
+        Button btnHuy = dialog.findViewById(R.id.btnHuy);
+        Button btnXacNhan = dialog.findViewById(R.id.btnXacNhan);
+
+
+
+
+        btnHuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        btnXacNhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int selectedId = radioGroup.getCheckedRadioButtonId();
+                radioButton = dialog.findViewById(selectedId);
+                    String trangthai = "Đã Hủy";
+                    referenceHD = FirebaseDatabase.getInstance().getReference().child("hoadon");
+                    Query query = referenceHD.orderByChild("id").equalTo(idHD);
+                    query.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.exists()){
+                                referenceHD.child(idHD).child("trangthai").setValue(trangthai.trim());
+                                referenceHD.child(idHD).child("ngaytaodon").setValue("".trim());
+                                referenceHD.child(idHD).child("lido").setValue(radioButton.getText().toString().trim());
+                                Toast.makeText(CTHoaDon.this,"Đã hủy đơn hàng",Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+        });
+        dialog.show();
+
     }
     @Override
     protected void onStart() {

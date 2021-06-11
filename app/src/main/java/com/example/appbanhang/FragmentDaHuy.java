@@ -1,5 +1,6 @@
 package com.example.appbanhang;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,7 +9,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,7 +28,7 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class FragmentDaHuy extends Fragment {
-    public static ArrayList<HoaDon> listDH;
+    public ArrayList<HoaDon> listDH;
     RecyclerView recyclerView;
     DatabaseReference reference;
     RecyclerViewDonHang adapter;
@@ -40,6 +43,7 @@ public class FragmentDaHuy extends Fragment {
         listDH = new ArrayList<HoaDon>();
         Query query = reference.orderByChild("trangthai").equalTo("Đã Hủy");
         query.addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()) {
@@ -53,23 +57,29 @@ public class FragmentDaHuy extends Fragment {
                     String trangthai = ds.child("trangthai").getValue(String.class);
                     String diachi = ds.child("diachi").getValue(String.class);
                     int laisuat = ds.child("laisuat").getValue(Integer.class);
+                    String lido = ds.child("lido").getValue(String.class);
                     AtomicBoolean isTaiKhoan = new AtomicBoolean();
+                    AtomicBoolean isDatontai = new AtomicBoolean();
+                    listDH.forEach(hoaDon -> {
+                        if(hoaDon.getId().equals(key)){
+                            isDatontai.set(true);
+                        }
+                    });
                     if (idUser.equals(MainActivity.id)) {
                         isTaiKhoan.set(true);
                     }
-                    if (isTaiKhoan.get()) {
-                        HoaDon hd = new HoaDon(key, tongtien, ngayTaoDon, "", tenUser, sodienthoai, diachi, trangthai, idUser,"",laisuat);
+                    if (isTaiKhoan.get() && !isDatontai.get()) {
+                        HoaDon hd = new HoaDon(key, tongtien, ngayTaoDon, "", tenUser, sodienthoai, diachi, trangthai, idUser,lido,laisuat);
                         listDH.add(hd);
                     }
                     adapter.notifyDataSetChanged();
                 }
-                if (listDH.size() == 0) {
+                if(listDH.size() == 0) {
                     donHangTrong fragment = new donHangTrong();
                     FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.frameDaHuy, fragment);
                     fragmentTransaction.commit();
                 }
-                Log.d("MTP", "onDataChange: 9");
             }
 
             @Override

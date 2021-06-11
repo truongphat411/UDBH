@@ -36,23 +36,17 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class HomePage extends Fragment {
-    public HomePage(){
-
-    }
     TextView txtSearch;
     GridView gridView;
-    ArrayList<ThuongHieu> thuongHieuArrayList= new ArrayList<>();
+    ArrayList<ThuongHieu> thuongHieuArrayList = new ArrayList<>();
     DatabaseReference reference;
     CustomAdapter customAdapter;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home, container , false);
         gridView = view.findViewById(R.id.grid_view);
         txtSearch = view.findViewById(R.id.txtSearch);
-        reference = FirebaseDatabase.getInstance().getReference().child("thuonghieu");
-        /// lắng nghe sự thay đổi của data trên firebase
         DataFromFirebaseListener();
         customAdapter = new CustomAdapter(getActivity(), thuongHieuArrayList);
         gridView.setAdapter(customAdapter);
@@ -78,6 +72,7 @@ public class HomePage extends Fragment {
         return view;
     }
     public void DataFromFirebaseListener() {
+        reference = FirebaseDatabase.getInstance().getReference().child("thuonghieu");
         reference.addValueEventListener(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override

@@ -1,5 +1,6 @@
 package com.example.appbanhang;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,7 +27,7 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Fragment_AdminChoXacNhan extends Fragment {
-    public static ArrayList<HoaDon> listCXN;
+    public ArrayList<HoaDon> listCXN;
     RecyclerView recyclerView;
     DatabaseReference reference;
     RecyclerViewDonHang_admin adapter;
@@ -41,6 +43,7 @@ public class Fragment_AdminChoXacNhan extends Fragment {
         listCXN = new ArrayList<>();
         Query query = reference.orderByChild("trangthai").equalTo("Chờ Xác Nhận");
         query.addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()) {
@@ -53,8 +56,17 @@ public class Fragment_AdminChoXacNhan extends Fragment {
                     int laisuat = ds.child("laisuat").getValue(Integer.class);
                     String trangthai = ds.child("trangthai").getValue(String.class);
                     String diachi = ds.child("diachi").getValue(String.class);
-                        HoaDon hd = new HoaDon(key,tongtien,ngayTaoDon,"",tenUser,sodienthoai,diachi,trangthai,idUser,"",laisuat);
-                        listCXN.add(hd);
+                    String lido = ds.child("lido").getValue(String.class);
+                        AtomicBoolean isDatontai = new AtomicBoolean();
+                        listCXN.forEach(hoaDon -> {
+                            if(hoaDon.getId().equals(key)){
+                                isDatontai.set(true);
+                            }
+                        });
+                        if(!isDatontai.get()){
+                            HoaDon hd = new HoaDon(key,tongtien,ngayTaoDon,"",tenUser,sodienthoai,diachi,trangthai,idUser,lido,laisuat);
+                            listCXN.add(hd);
+                        }
                     }
                     adapter.notifyDataSetChanged();
                     if(listCXN.size() == 0){

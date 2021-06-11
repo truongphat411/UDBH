@@ -46,7 +46,9 @@ public class CTHoaDon_admin extends AppCompatActivity {
     Recycler_ChiTietDonHang adapter;
     ArrayList<SanPham> listSP;
     ArrayList<ChiTietHoaDon> listCTDH;
+    TextView txtlido;
     String idHD;
+    String lido;
     int tongtien;
     String trangthai;
     DatabaseReference referenceHD;
@@ -111,24 +113,7 @@ public class CTHoaDon_admin extends AppCompatActivity {
         btnDaHuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String trangthai = "Đã Hủy";
-                referenceHD = FirebaseDatabase.getInstance().getReference().child("hoadon");
-                Query query = referenceHD.orderByChild("id").equalTo(idHD);
-                query.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.exists()){
-                            referenceHD.child(idHD).child("trangthai").setValue(trangthai.trim());
-                            referenceHD.child(idHD).child("ngaytaodon").setValue("".trim());
-                            Toast.makeText(CTHoaDon_admin.this,"Đã hủy đơn hàng",Toast.LENGTH_SHORT).show();
-                            finish();
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
+                openDialog(Gravity.CENTER);
             }
         });
         Intent intent = getIntent();
@@ -138,15 +123,25 @@ public class CTHoaDon_admin extends AppCompatActivity {
         txtSoDienThoaiNhanHang.setText(intent.getStringExtra("sodienthoai"));
         txtDiaChiNhanHang.setText(intent.getStringExtra("diachi"));
         trangthai = intent.getStringExtra("trangthai");
+        lido = intent.getStringExtra("lido");
         if(trangthai.equals("Chờ Xác Nhận")){
+            txtlido.setVisibility(View.GONE);
             btnDaGiao.setEnabled(false);
             btnDaGiao.setBackgroundColor(getResources().getColor(R.color.grey));
         }
         if(trangthai.equals("Đang Giao")){
+            txtlido.setVisibility(View.GONE);
             btnXacNhan.setEnabled(false);
             btnXacNhan.setBackgroundColor(getResources().getColor(R.color.grey));
         }
-        if(trangthai.equals("Đã Giao".trim()) || trangthai.equals("Đã Hủy")){
+        if(trangthai.equals("Đã Giao")){
+            txtlido.setVisibility(View.GONE);
+            btnXacNhan.setVisibility(View.GONE);
+            btnDaGiao.setVisibility(View.GONE);
+            btnDaHuy.setVisibility(View.GONE);
+        }
+        if(trangthai.equals("Đã Hủy")){
+            txtlido.setText("Lí do hủy đơn hàng: "+lido);
             btnXacNhan.setVisibility(View.GONE);
             btnDaGiao.setVisibility(View.GONE);
             btnDaHuy.setVisibility(View.GONE);
@@ -232,6 +227,7 @@ public class CTHoaDon_admin extends AppCompatActivity {
         btnXacNhan = findViewById(R.id.btnxacnhanDH);
         btnDaGiao = findViewById(R.id.btndagiaoDH);
         btnDaHuy = findViewById(R.id.btndahuyDH);
+        txtlido = findViewById(R.id.txtlido);
     }
     private void openDialog(int gravity){
         final Dialog dialog = new Dialog(this);
@@ -287,7 +283,6 @@ public class CTHoaDon_admin extends AppCompatActivity {
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
             }

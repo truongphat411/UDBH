@@ -49,6 +49,7 @@ public class RecyclerViewDonHang extends RecyclerView.Adapter<RecyclerViewDonHan
                 intent.putExtra("diachi",hoaDonArrayList.get(position).getDiachi());
                 intent.putExtra("sodienthoai",hoaDonArrayList.get(position).getSodienthoai());
                 intent.putExtra("trangthai",hoaDonArrayList.get(position).getTrangthai());
+                intent.putExtra("lido",hoaDonArrayList.get(position).getLido());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
             }

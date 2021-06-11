@@ -78,34 +78,6 @@ public class giohangthongtin extends Fragment {
                 if (!validateHoTen() | !validateSoDienThoai() | !validateDiaChi()) {
                     return;
                 }else {
-                    /*AtomicBoolean isCheck = new AtomicBoolean();
-                    String keyHD = referenceHD.push().getKey();
-                    myCalendar.add(Calendar.DATE,2);
-                    String ngaytaodon = sdf.format(myCalendar.getTime());
-                    String ngayhoanthanh = "";
-                    String trangthai = "Chờ Xác Nhận";
-                    HoaDon hoaDon = new HoaDon(keyHD,gioHangTinhTien.TT,ngaytaodon,ngayhoanthanh,hoten,sodienthoai,diachi,trangthai,MainActivity.id,"",gioHangTinhTien.laisuat);
-                    referenceHD.child(keyHD).setValue(hoaDon);
-                    Toast.makeText(view.getContext(), "Tạo đơn hàng thành công", Toast.LENGTH_LONG).show();
-                    MainActivity.listGH.forEach(sanPham -> {
-                        int soluong = sanPham.getSoluongKho() - sanPham.getSoluong();
-                        if(soluong >= 0){
-                            String keyCTHD = referenceCTHD.push().getKey();
-                            chiTietHoaDon = new ChiTietHoaDon(keyCTHD,sanPham.getIdSP(),keyHD,sanPham.getSoluong());
-                            referenceCTHD.child(keyCTHD).setValue(chiTietHoaDon);
-                            referenceSP.child(sanPham.getIdSP()).setValue();
-                        }else {
-                            Toast.makeText(getActivity(),"Vui lòng kiểm tra số lượng",Toast.LENGTH_SHORT).show();
-                            isCheck.set(false);
-                        }
-                    });
-                    if(isCheck.get()){
-                        MainActivity.listGH.clear();
-                        saveData();
-                        Intent intent = new Intent(getActivity(),donMua.class);
-                        intent.putExtra("idHD",keyHD);
-                        startActivity(intent);
-                    }*/
                     String keyHD = referenceHD.push().getKey();
                     AtomicBoolean isCheck = new AtomicBoolean();
                     listSP.forEach(sanPham -> {

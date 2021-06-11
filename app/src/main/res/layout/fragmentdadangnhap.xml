@@ -66,6 +66,7 @@
         android:drawableRight="@drawable/next"
         android:background="@color/aqua"/>
     <TextView
+        android:id="@+id/thongtinlienhe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/aqua"
@@ -74,10 +75,10 @@
         android:drawablePadding="10dp"
         android:gravity="center_vertical"
         android:padding="20dp"
-        android:text="Thông tin ứng dụng"
+        android:text="Thông tin liên hệ"
         android:textSize="20sp"
         android:textStyle="bold" />
-    <TextView
+    <!--<TextView
         android:id="@+id/txtTTLH"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -104,7 +105,7 @@
         android:padding="20dp"
         android:text="Hỗ Trợ"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold" />-->
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

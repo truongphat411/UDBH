@@ -1894,7 +1894,6 @@ id edtmathuonghieu
 id edtmatkhau
 id edtmkCu
 id edtmkMoi
-id edtmkXacNhanMK
 id edtmotaSP
 id edtngaysinh
 id edtsodienthoai
@@ -2225,7 +2224,6 @@ id txtQLTK
 id txtSearch
 id txtSoDienThoaiNhanHang
 id txtTSP
-id txtTTLH
 id txtTenNhanHang
 id txtTenSP
 id txtUnchecked
@@ -2235,6 +2233,7 @@ id txtgiadonmua
 id txtgiagiohang
 id txtgiatien
 id txthoten
+id txtlido
 id txtmadonhang
 id txtmotaSP
 id txtnext
@@ -2249,6 +2248,7 @@ id txttendonmua
 id txttengiohang
 id txttensp
 id txtthoigianTG
+id txtthongtinungdung
 id txttongtien
 id txttongtiendonhang
 id txtuser
@@ -2472,6 +2472,7 @@ layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
 layout thongke
+layout thongtinlienhe
 layout tiendogiaohang
 layout user
 layout useritem
@@ -2538,7 +2539,6 @@ string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
-string firebase_database_url
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id

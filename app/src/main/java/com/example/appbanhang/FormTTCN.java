@@ -1,10 +1,13 @@
 package com.example.appbanhang;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -33,15 +36,20 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+import at.favre.lib.crypto.bcrypt.BCrypt;
 
 public class FormTTCN extends AppCompatActivity {
     LinearLayout formdoimatkhau;
     ImageButton imBack;
-    EditText edthoten, edtsodienthoai, edtdiachi, edtngaysinh, edtmkcu,edtmkmoi,edtxnmk;
+    EditText edthoten, edtsodienthoai, edtdiachi, edtngaysinh, edtmkcu,edtmkmoi;
     CheckBox cbNam,cbNu,cbDoiMK;
     Button btnLuuTD;
     DatabaseReference reference;
     final Calendar myCalendar = Calendar.getInstance();
+    public static final  String SHARED_PREFS = "sharedPrefs";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,8 +86,6 @@ public class FormTTCN extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DatatoFirebaseDatabase();
-                finish();
-                Toast.makeText(FormTTCN.this, "Lưu thông tin thành công", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -96,7 +102,6 @@ public class FormTTCN extends AppCompatActivity {
         btnLuuTD = findViewById(R.id.btnLuuTD);
         edtmkcu = findViewById(R.id.edtmkCu);
         edtmkmoi = findViewById(R.id.edtmkMoi);
-        edtxnmk = findViewById(R.id.edtmkXacNhanMK);
         formdoimatkhau = findViewById(R.id.formdoimatkhau);
     }
     @Override
@@ -158,80 +163,63 @@ public class FormTTCN extends AppCompatActivity {
         }
     }
     private void DatatoFirebaseDatabase(){
+        final AtomicBoolean isCheck = new AtomicBoolean();
         reference = FirebaseDatabase.getInstance().getReference().child("taikhoan");
         Query query = reference.orderByChild("sodienthoai").equalTo(MainActivity.sodienthoai);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()) {
-                    MainActivity.hoten = edthoten.getText().toString();
-                    MainActivity.sodienthoai = edtsodienthoai.getText().toString();
-                    MainActivity.diachi = edtdiachi.getText().toString();
-                    MainActivity.ngaysinh = edtngaysinh.getText().toString();
-                    reference.child(MainActivity.sodienthoai).child("hoten").setValue(MainActivity.hoten);
-                    reference.child(MainActivity.sodienthoai).child("sodienthoai").setValue(MainActivity.sodienthoai);
-                    reference.child(MainActivity.sodienthoai).child("diachi").setValue(MainActivity.diachi);
-                    reference.child(MainActivity.sodienthoai).child("ngaysinh").setValue(MainActivity.ngaysinh).toString();
-                    String gioitinh = "";
-                    if (cbNam.isChecked()) {
-                        gioitinh = (cbNam.getText().toString());
-                        reference.child(MainActivity.sodienthoai).child("gioitinh").setValue(gioitinh);
-                    } else if (cbNu.isChecked()) {
-                        gioitinh = (cbNu.getText().toString());
-                        reference.child(MainActivity.sodienthoai).child("gioitinh").setValue(gioitinh);
+                        reference.child(MainActivity.id).child("hoten").setValue(edthoten.getText().toString().trim());
+                        reference.child(MainActivity.id).child("sodienthoai").setValue(edtsodienthoai.getText().toString().trim());
+                        reference.child(MainActivity.id).child("diachi").setValue(edtdiachi.getText().toString().trim());
+                        reference.child(MainActivity.id).child("ngaysinh").setValue(edtngaysinh.getText().toString().trim());
+                        String matkhau = snapshot.child(MainActivity.id).child("matkhau").getValue(String.class);
+                        String gioitinh = "";
+                        if (cbNam.isChecked()) {
+                            gioitinh = (cbNam.getText().toString());
+                            reference.child(MainActivity.id).child("gioitinh").setValue(gioitinh);
+                            MainActivity.gioitinh = cbNam.getText().toString();
+                        } else if (cbNu.isChecked()) {
+                            gioitinh = (cbNu.getText().toString());
+                            reference.child(MainActivity.id).child("gioitinh").setValue(gioitinh);
+                            MainActivity.gioitinh = cbNu.getText().toString();
+                        }
+                        isCheck.set(true);
+                        BCrypt.Result result = BCrypt.verifyer().verify(edtmkcu.getText().toString().toCharArray(), matkhau);
+                        if(result.verified && !edtmkmoi.getText().toString().isEmpty()){
+                            String bcryptHashString = BCrypt.withDefaults().hashToString(12, edtmkmoi.getText().toString().toCharArray());
+                            reference.child(MainActivity.id).child("matkhau").setValue(bcryptHashString);
+                        }else if(!edtmkmoi.getText().toString().isEmpty() && !result.verified){
+                            edtmkcu.setError("Vui lòng nhập lại mật khẩu");
+                            isCheck.set(false);
+                        }
+                        if(isCheck.get()){
+                            MainActivity.hoten = edthoten.getText().toString().trim();
+                            MainActivity.sodienthoai = edtsodienthoai.getText().toString().trim();
+                            MainActivity.diachi = edtdiachi.getText().toString().trim();
+                            MainActivity.ngaysinh = edtngaysinh.getText().toString().trim();
+                            saveData();
+                            finish();
+                            Toast.makeText(FormTTCN.this, "Lưu thông tin thành công", Toast.LENGTH_LONG).show();
+                        }
                     }
-
                 }
-            }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
     }
-    private Boolean validateHoTen (){
-        String val = edthoten.getText().toString();
-
-        if(val.isEmpty()){
-            edthoten.setError("Vui lòng nhập tên đăng nhập");
-            return false;
-        }else {
-            edthoten.setError(null);
-            return true;
-        }
-    }
-    private Boolean validateSoDienThoai (){
-        String val = edtsodienthoai.getText().toString();
-
-        if(val.isEmpty()){
-            edtsodienthoai.setError("Vui lòng nhập số điện thoại");
-            return false;
-        }else {
-            edtsodienthoai.setError(null);
-            return true;
-        }
-    }
-    private Boolean validateDiaChi (){
-        String val = edtdiachi.getText().toString();
-
-        if(val.isEmpty()){
-            edtdiachi.setError("Vui lòng nhập địa chỉ");
-            return false;
-        }else {
-            edtdiachi.setError(null);
-            return true;
-        }
-    }
-    private Boolean validateNgaySinh(){
-        String val = edtngaysinh.getText().toString();
-
-        if(val.isEmpty()){
-            edtngaysinh.setError("Vui lòng nhập ngày sinh");
-            return false;
-        }else {
-            edtngaysinh.setError(null);
-            return true;
-        }
+    public void saveData(){
+        SharedPreferences sharedPreferences = Objects.requireNonNull(FormTTCN.this).getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("hoten",MainActivity.hoten);
+        editor.putString("sodienthoai",MainActivity.sodienthoai);
+        editor.putString("diachi",MainActivity.diachi);
+        editor.putString("ngaysinh",MainActivity.ngaysinh);
+        editor.putString("gioitinh",MainActivity.gioitinh);
+        editor.putString("id",MainActivity.id);
+        editor.apply();
     }
 }

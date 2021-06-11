@@ -111,6 +111,17 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/txtlido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:text="Lí do hủy đơn hàng:"
+                android:visibility="gone"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                />
             <Button
                 android:layout_width="130dp"
                 android:layout_height="70dp"
@@ -121,7 +132,8 @@
                 android:layout_marginRight="20dp"
                 android:id="@+id/btndahuyDH"
                 android:text="Hủy"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:layout_below="@+id/txtlido"/>
         </RelativeLayout>
     </LinearLayout>
 </ScrollView>

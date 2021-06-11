@@ -15,9 +15,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 public class MePage extends Fragment {
-    public MePage(){
-        
-    }
     TextView txtXemTT,txtTTLH;
     @Nullable
     @Override

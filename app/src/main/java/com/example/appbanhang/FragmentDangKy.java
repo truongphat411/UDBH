@@ -18,8 +18,12 @@ import androidx.fragment.app.Fragment;
 
 import com.example.appbanhang.models.LichSuTruyCap;
 import com.example.appbanhang.models.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -94,29 +98,43 @@ public class FragmentDangKy extends Fragment {
                     String ngaygio = sdf2.format(calendar.getTime());
                     rootNode = FirebaseDatabase.getInstance();
                     reference = rootNode.getReference().child("taikhoan");
-                    //get all the values
-                    String key = reference.push().getKey();
-                    String hoten = edthoten.getText().toString().trim();
-                    String sodienthoai = edtsodienthoai.getText().toString().trim();
-                    String matkhau = edtmatkhau.getText().toString().trim();
-                    String bcryptHashString = BCrypt.withDefaults().hashToString(12, matkhau.toCharArray());
-                    String diachi = edtdiachi.getText().toString().trim();
-                    String ngaysinh = edtngaysinh.getText().toString().trim();
-                    String ngaythamgia = sdf1.format(calendar.getTime());
-                    String tenLoai = "client";
-                    String gioitinh = "";
-                    if (cbnam.isChecked()) {
-                        gioitinh = cbnam.getText().toString();
-                    } else if (cbnu.isChecked()) {
-                        gioitinh = cbnu.getText().toString();
-                    }
-                    User user = new User(key,hoten, sodienthoai, bcryptHashString, diachi, ngaysinh, gioitinh,tenLoai,ngaythamgia,true);
-                    reference.child(key).setValue(user);
-                    String keyLSTC = referenceLSTC.push().getKey();
-                    lichSuTruyCap = new LichSuTruyCap(hoten, sodienthoai, ngaygio, "Tạo Tài Khoản");
-                    referenceLSTC.child(keyLSTC).setValue(lichSuTruyCap);
-                    Toast.makeText(view.getContext(), "Đăng Ký Thành Công", Toast.LENGTH_LONG).show();
-                    getActivity().finish();
+                    Query checkSDT = reference.orderByChild("sodienthoai").equalTo(edtsodienthoai.getText().toString().trim());
+                    checkSDT.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.exists()){
+                                edtsodienthoai.setError("Số điện thoại này đã được sử dụng");
+                            }else {
+                                String key = reference.push().getKey();
+                                String hoten = edthoten.getText().toString().trim();
+                                String sodienthoai = edtsodienthoai.getText().toString().trim();
+                                String matkhau = edtmatkhau.getText().toString().trim();
+                                String bcryptHashString = BCrypt.withDefaults().hashToString(12, matkhau.toCharArray());
+                                String diachi = edtdiachi.getText().toString().trim();
+                                String ngaysinh = edtngaysinh.getText().toString().trim();
+                                String ngaythamgia = sdf1.format(calendar.getTime());
+                                String tenLoai = "client";
+                                String gioitinh = "";
+                                if (cbnam.isChecked()) {
+                                    gioitinh = cbnam.getText().toString();
+                                } else if (cbnu.isChecked()) {
+                                    gioitinh = cbnu.getText().toString();
+                                }
+                                User user = new User(key,hoten, sodienthoai, bcryptHashString, diachi, ngaysinh, gioitinh,tenLoai,ngaythamgia,true);
+                                reference.child(key).setValue(user);
+                                String keyLSTC = referenceLSTC.push().getKey();
+                                lichSuTruyCap = new LichSuTruyCap(hoten, sodienthoai, ngaygio, "Tạo Tài Khoản");
+                                referenceLSTC.child(keyLSTC).setValue(lichSuTruyCap);
+                                Toast.makeText(view.getContext(), "Đăng Ký Thành Công", Toast.LENGTH_LONG).show();
+                                getActivity().finish();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                 }
             }
         });
@@ -128,18 +146,23 @@ public class FragmentDangKy extends Fragment {
         if(val.isEmpty()){
             edthoten.setError("Vui lòng nhập tên đăng nhập");
             return false;
-        }else {
+        }else if(val.length() > 40 ){
+            edtmatkhau.setError("Vui lòng nhập số mật khẩu ngắn hơn 40 kí tự");
+            return false;
+        }
+        else {
             edthoten.setError(null);
             return true;
         }
     }
     private Boolean validateSoDienThoai (){
         String val = edtsodienthoai.getText().toString();
-
         if(val.isEmpty()){
             edtsodienthoai.setError("Vui lòng nhập số điện thoại");
             return false;
-        }else {
+        }
+
+        else {
             edtsodienthoai.setError(null);
             return true;
         }
@@ -150,7 +173,11 @@ public class FragmentDangKy extends Fragment {
         if(val.isEmpty()){
             edtmatkhau.setError("Vui lòng nhập mật khẩu");
             return false;
-        }else {
+        }else if(val.length() > 15 ){
+            edtmatkhau.setError("Vui lòng nhập số mật khẩu ngắn hơn 15 kí tự");
+            return false;
+        }
+        else {
             edtmatkhau.setError(null);
             return true;
         }
@@ -161,14 +188,17 @@ public class FragmentDangKy extends Fragment {
         if(val.isEmpty()){
             edtdiachi.setError("Vui lòng nhập địa chỉ");
             return false;
-        }else {
+        }else if(val.length() > 30 ){
+            edtmatkhau.setError("Vui lòng nhập số địa chỉ ngắn hơn 30 kí tự");
+            return false;
+        }
+        else {
             edtdiachi.setError(null);
             return true;
         }
     }
     private Boolean validateNgaySinh(){
         String val = edtngaysinh.getText().toString();
-
         if(val.isEmpty()){
             edtngaysinh.setError("Vui lòng nhập ngày sinh");
             return false;

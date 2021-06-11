@@ -37,7 +37,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class CTHoaDon extends AppCompatActivity {
     ImageButton imgBack;
-    TextView txtTenNhanHang,txtSoDienThoaiNhanHang,txtDiaChiNhanHang;
+    TextView txtTenNhanHang,txtSoDienThoaiNhanHang,txtDiaChiNhanHang,txtlido;
     RecyclerView recyclerChiTietDonHang;
     Button btnHuy;
     DatabaseReference referenceCTHD,referenceSP;
@@ -46,7 +46,7 @@ public class CTHoaDon extends AppCompatActivity {
     ArrayList<ChiTietHoaDon> listCTDH;
     String idHD;
     int tongtien;
-    String trangthai;
+    String trangthai,lido;
     RadioButton radioButton;
     DatabaseReference referenceHD;
     @Override
@@ -67,8 +67,13 @@ public class CTHoaDon extends AppCompatActivity {
         txtSoDienThoaiNhanHang.setText(intent.getStringExtra("sodienthoai"));
         txtDiaChiNhanHang.setText(intent.getStringExtra("diachi"));
         trangthai = intent.getStringExtra("trangthai");
+        lido = intent.getStringExtra("lido");
         if(!trangthai.equals("Chờ Xác Nhận")){
             btnHuy.setVisibility(View.GONE);
+        }
+        if(trangthai.equals("Đã Hủy")){
+            txtlido.setVisibility(View.VISIBLE);
+            txtlido.setText("Lí do hủy đơn hàng: "+lido);
         }
         referenceCTHD = FirebaseDatabase.getInstance().getReference().child("chitiethoadon");
         referenceSP = FirebaseDatabase.getInstance().getReference().child("sanpham");
@@ -95,7 +100,6 @@ public class CTHoaDon extends AppCompatActivity {
                     String idSP = ds.child("idSP").getValue(String.class);
                     String idHDFromDatabase = ds.child("idHD").getValue(String.class);
                     int soluong = ds.child("soluong").getValue(Integer.class);
-
                     AtomicBoolean isHoaDon = new AtomicBoolean();
                     if(idHD.equals(idHDFromDatabase)){
                         isHoaDon.set(true);
@@ -149,6 +153,7 @@ public class CTHoaDon extends AppCompatActivity {
         txtDiaChiNhanHang = findViewById(R.id.txtDiaChiNhanHang);
         recyclerChiTietDonHang = findViewById(R.id.RecyclerChiTietDonHang);
         btnHuy = findViewById(R.id.btndahuyDH);
+        txtlido = findViewById(R.id.txtlido);
     }
     private void openDialog(int gravity){
         final Dialog dialog = new Dialog(this);

@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     public static final  String SHARED_PREFS = "sharedPrefs";
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
-    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

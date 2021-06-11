@@ -3,6 +3,9 @@ package com.example.appbanhang;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.icu.text.DateFormat;
+import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +17,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appbanhang.models.HoaDon;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class RecyclerViewDonHang_admin extends RecyclerView.Adapter<RecyclerViewDonHang_admin.ViewHolder> {
     private Context mContext;
@@ -32,7 +44,6 @@ public class RecyclerViewDonHang_admin extends RecyclerView.Adapter<RecyclerView
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewDonHang_admin.ViewHolder holder, int position) {
-
         holder.txtmadonhang.setText("Mã đơn hàng: "+hoaDonArrayList.get(position).getId());
         holder.txtngaydukien.setText("Hàng sẽ được xác nhận trước: "+hoaDonArrayList.get(position).getNgaytaodon());
         holder.txttongtien.setText(String.valueOf(hoaDonArrayList.get(position).getTongtien())+"đ");
@@ -46,6 +57,7 @@ public class RecyclerViewDonHang_admin extends RecyclerView.Adapter<RecyclerView
                 intent.putExtra("diachi",hoaDonArrayList.get(position).getDiachi());
                 intent.putExtra("sodienthoai",hoaDonArrayList.get(position).getSodienthoai());
                 intent.putExtra("trangthai",hoaDonArrayList.get(position).getTrangthai());
+                intent.putExtra("lido",hoaDonArrayList.get(position).getLido());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
             }

@@ -82,13 +82,12 @@ public class FragmentDonMua extends Fragment {
                             String hinhsp = ds.child("hinhSP").getValue(String.class);
                             String tensp = ds.child("tenSP").getValue(String.class);
                             int giasp = ds.child("giaSP").getValue(Integer.class);
-                            String tenth = ds.child("tenTH").getValue(String.class);
                             String motasp = ds.child("motaSP").getValue(String.class);
                             int soluongKho = ds.child("soluongKho").getValue(Integer.class);
                             int giaGoc = ds.child("giaGoc").getValue(Integer.class);
                             String idTH = ds.child("idTH").getValue(String.class);
                             String idSP = idSPFb;
-                            SanPham sp = new SanPham(idSP, tensp, hinhsp, giasp, tenth, motasp, idTH,soluongKho,giaGoc);
+                            SanPham sp = new SanPham(idSP, tensp, hinhsp, giasp, motasp, idTH,soluongKho,giaGoc);
                             listSP.add(sp);
                         }
 

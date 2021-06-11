@@ -97,12 +97,12 @@ public class giohangthongtin extends Fragment {
                     });
                     if(!isCheck.get()){
                         myCalendar.add(Calendar.DATE,2);
-                        String ngaytaodon = sdf.format(myCalendar.getTime());
+                        String ngaydukien = sdf.format(myCalendar.getTime());
                         String ngayhoanthanh = "";
                         String trangthai = "Chờ Xác Nhận";
                         Log.d("hihi", "onClick: "+gioHangTinhTien.TT);
                         Log.d("hihi", "onClick: "+gioHangTinhTien.laisuat);
-                        HoaDon hoaDon = new HoaDon(keyHD,gioHangTinhTien.TT,ngaytaodon,ngayhoanthanh,hoten,sodienthoai,diachi,trangthai,MainActivity.id,"",gioHangTinhTien.laisuat);
+                        HoaDon hoaDon = new HoaDon(keyHD,gioHangTinhTien.TT,ngaydukien,ngayhoanthanh,hoten,sodienthoai,diachi,trangthai,MainActivity.id,"",gioHangTinhTien.laisuat);
                         referenceHD.child(keyHD).setValue(hoaDon);
                         Toast.makeText(view.getContext(), "Tạo đơn hàng thành công", Toast.LENGTH_LONG).show();
                         MainActivity.listGH.clear();
@@ -138,7 +138,7 @@ public class giohangthongtin extends Fragment {
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     String key = ds.getKey();
                     int soluongKho = ds.child("soluongKho").getValue(Integer.class);
-                    SanPham sp = new SanPham(key,"","",0,"","","",soluongKho,0);
+                    SanPham sp = new SanPham(key,"","",0,"","",soluongKho,0);
                     listSP.add(sp);
                 }
             }

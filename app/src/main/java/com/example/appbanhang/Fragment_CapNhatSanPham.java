@@ -31,17 +31,12 @@ public class Fragment_CapNhatSanPham extends Fragment {
     DatabaseReference reference;
     ArrayList<SanPham> list;
     RecyclerView_CapnhatSanPham adapter;
-    public static boolean isCapnhat = false;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
          View view = inflater.inflate(R.layout.fragment_sanpham,container,false);
          recyclerView = view.findViewById(R.id.recyclerSanPham);
          btnthemSP = view.findViewById(R.id.btnthemSP);
-         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-         recyclerView.setLayoutManager(linearLayoutManager);
-         recyclerView.setHasFixedSize(true);
-         loadData();
         btnthemSP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,30 +55,26 @@ public class Fragment_CapNhatSanPham extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds : snapshot.getChildren()){
                     String key = ds.getKey();
-                    String hinhsp = ds.child("hinhSP").getValue(String.class);
-                    String tensp = ds.child("tenSP").getValue(String.class);
-                    int giasp = ds.child("giaSP").getValue(Integer.class);
-                    String tenth = ds.child("tenTH").getValue(String.class);
-                    String motasp = ds.child("motaSP").getValue(String.class);
-                    String idTH = ds.child("idTH").getValue(String.class);
-                    int soluongKho = ds.child("soluongKho").getValue(Integer.class);
-                    int giaGoc = ds.child("giaGoc").getValue(Integer.class);
+                    String hinhsp = snapshot.child(key).child("hinhSP").getValue(String.class);
+                    String tensp = snapshot.child(key).child("tenSP").getValue(String.class);
+                    int giasp = snapshot.child(key).child("giaSP").getValue(Integer.class);
+                    String motasp = snapshot.child(key).child("motaSP").getValue(String.class);
+                    String idTH = snapshot.child(key).child("idTH").getValue(String.class);
+                    int soluongKho = snapshot.child(key).child("soluongKho").getValue(Integer.class);
+                    int giaGoc = snapshot.child(key).child("giaGoc").getValue(Integer.class);
                     AtomicBoolean isSanPham = new AtomicBoolean();
-
                     list.forEach(sanPham -> {
                         if(sanPham.getIdSP().equals(key)){
                             isSanPham.set(true);
                         }
                     });
-
                     if(!isSanPham.get()){
-                        SanPham sp = new SanPham(key, tensp, hinhsp, giasp, tenth, motasp, idTH,soluongKho,giaGoc);
+                        SanPham sp = new SanPham(key, tensp, hinhsp, giasp, motasp, idTH,soluongKho,giaGoc);
                         list.add(sp);
                     }
                 }
-                adapter = new RecyclerView_CapnhatSanPham(getActivity(),list);
-                recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -97,5 +88,11 @@ public class Fragment_CapNhatSanPham extends Fragment {
     public void onResume() {
         super.onResume();
         loadData();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setHasFixedSize(true);
+        adapter = new RecyclerView_CapnhatSanPham(getActivity(),list);
+        recyclerView.setAdapter(adapter);
+
     }
 }

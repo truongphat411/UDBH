@@ -74,7 +74,7 @@ public class CTHoaDon_admin extends AppCompatActivity {
                             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                             String ngaygio = sdf.format(calendar.getTime());
                             referenceHD.child(idHD).child("trangthai").setValue(trangthai.trim());
-                            referenceHD.child(idHD).child("ngaytaodon").setValue("".trim());
+                            referenceHD.child(idHD).child("ngaydukien").setValue("".trim());
                             referenceHD.child(idHD).child("ngayhoanthanh").setValue(ngaygio.trim());
                             Toast.makeText(CTHoaDon_admin.this,"Đã giao đơn hàng",Toast.LENGTH_SHORT).show();
                             finish();
@@ -97,9 +97,9 @@ public class CTHoaDon_admin extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.exists()){
                             myCalendar.add(Calendar.DATE,2);
-                            String ngaytaodon = sdf.format(myCalendar.getTime());
+                            String ngaydukien = sdf.format(myCalendar.getTime());
                             referenceHD.child(idHD).child("trangthai").setValue(trangthai.trim());
-                            referenceHD.child(idHD).child("ngaytaodon").setValue(ngaytaodon.trim());
+                            referenceHD.child(idHD).child("ngaydukien").setValue(ngaydukien.trim());
                             Toast.makeText(CTHoaDon_admin.this,"Đang giao đơn hàng",Toast.LENGTH_SHORT).show();
                             finish();
                         }
@@ -196,7 +196,7 @@ public class CTHoaDon_admin extends AppCompatActivity {
                                 if(isHoaDon.get() && isSanPham.get()){
                                     ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon(keyCT,key,idHD,soluong);
                                     listCTDH.add(chiTietHoaDon);
-                                    SanPham sanPham = new SanPham(key,tensp,hinhsp,soluong*giasp,"",motaSP,idTH,soluongKho,giaGoc);
+                                    SanPham sanPham = new SanPham(key,tensp,hinhsp,soluong*giasp,motaSP,idTH,soluongKho,giaGoc);
                                     listSP.add(sanPham);
                                 }
                             }
@@ -275,7 +275,7 @@ public class CTHoaDon_admin extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.exists()){
                             referenceHD.child(idHD).child("trangthai").setValue(trangthai.trim());
-                            referenceHD.child(idHD).child("ngaytaodon").setValue("".trim());
+                            referenceHD.child(idHD).child("ngaydukien").setValue("".trim());
                             referenceHD.child(idHD).child("lido").setValue(radioButton.getText().toString().trim());
                             Toast.makeText(CTHoaDon_admin.this,"Đã hủy đơn hàng",Toast.LENGTH_SHORT).show();
                             finish();

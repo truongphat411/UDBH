@@ -124,7 +124,7 @@ public class CTHoaDon extends AppCompatActivity {
                                 if(isHoaDon.get() && isSanPham.get()){
                                     ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon(keyCT,key,idHD,soluong);
                                     listCTDH.add(chiTietHoaDon);
-                                    SanPham sanPham = new SanPham(key,tensp,hinhsp,soluong*giasp,"",motaSP,idTH,soluongKho,giaGoc);
+                                    SanPham sanPham = new SanPham(key,tensp,hinhsp,soluong*giasp,motaSP,idTH,soluongKho,giaGoc);
                                     listSP.add(sanPham);
                                 }
                             }
@@ -205,7 +205,7 @@ public class CTHoaDon extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if(snapshot.exists()){
                                 referenceHD.child(idHD).child("trangthai").setValue(trangthai.trim());
-                                referenceHD.child(idHD).child("ngaytaodon").setValue("".trim());
+                                referenceHD.child(idHD).child("ngaydukien").setValue("".trim());
                                 referenceHD.child(idHD).child("lido").setValue(radioButton.getText().toString().trim());
                                 Toast.makeText(CTHoaDon.this,"Đã hủy đơn hàng",Toast.LENGTH_SHORT).show();
                                 finish();

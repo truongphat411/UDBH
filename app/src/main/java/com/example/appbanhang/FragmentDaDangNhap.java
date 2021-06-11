@@ -30,7 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class FragmentDaDangNhap extends Fragment {
-    TextView txthoten,txtsodienthoai,txtXemTT;
+    TextView txthoten,txtsodienthoai,txtXemTT,txtthongtinlienhe;
     RelativeLayout rlttcn;
     Button btnDangXuat;
     LichSuTruyCap lichSuTruyCap;
@@ -45,6 +45,7 @@ public class FragmentDaDangNhap extends Fragment {
         txtsodienthoai = view.findViewById(R.id.txtsodienthoai);
         btnDangXuat = view.findViewById(R.id.btnDangXuat);
         txtXemTT = view.findViewById(R.id.txtXemTT);
+        txtthongtinlienhe = view.findViewById(R.id.thongtinlienhe);
         txthoten.setText(MainActivity.hoten);
         txtsodienthoai.setText(MainActivity.sodienthoai);
         reference = FirebaseDatabase.getInstance().getReference().child("lichsutruycap");
@@ -59,6 +60,13 @@ public class FragmentDaDangNhap extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),donMua.class);
+                startActivity(intent);
+            }
+        });
+        txtthongtinlienhe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),TTLH.class);
                 startActivity(intent);
             }
         });

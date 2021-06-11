@@ -3,6 +3,7 @@ package com.example.appbanhang;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -24,16 +25,21 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import com.example.appbanhang.models.SanPham;
+import com.example.appbanhang.models.ThuongHieu;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -41,7 +47,10 @@ import com.google.firebase.storage.UploadTask;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Activity_ThemSP extends AppCompatActivity {
     EditText edttenSP,edtgiaSP,edtmotaSP,edtmathuonghieu,edtsoluongKho,edtgiaGoc;
@@ -49,22 +58,30 @@ public class Activity_ThemSP extends AppCompatActivity {
     Button btnthemSP;
     DatabaseReference reference;
     ImageButton imgBack,imgcamera;
+    DatabaseReference referenceTH;
     public static final int CAMERA_PERM_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;
     public static final int GALLERY_REQUEST_CODE = 105;
     String currentPhotoPath;
     StorageReference storageReference;
     String hinhSP;
+    ArrayList<ThuongHieu> listTH = new ArrayList<>();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_themsanpham);
-        storageReference = FirebaseStorage.getInstance().getReferenceFromUrl("gs://udbh-35c1f.appspot.com");
+        readData();
+        storageReference = FirebaseStorage.getInstance().getReferenceFromUrl("gs://udbh-c1d85.appspot.com");
         anhxa();
         btnthemSP.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
-                themSP();
+                if(!validateTenSP() || !validateGiaGoc() || !validateGiaSP() || !validateMaTH() || !validateSoLuongKho() || !validateMotaSP()){
+                    return;
+                }else {
+                    themSP();
+                }
             }
         });
         imgcamera.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +116,9 @@ public class Activity_ThemSP extends AppCompatActivity {
         imgBack = findViewById(R.id.imgBack);
         imgcamera = findViewById(R.id.imgcamera);
     }
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void themSP(){
+        AtomicBoolean isCheck = new AtomicBoolean();
         reference = FirebaseDatabase.getInstance().getReference().child("sanpham");
         String key = reference.push().getKey();
         String tenSP = edttenSP.getText().toString().trim();
@@ -108,10 +127,38 @@ public class Activity_ThemSP extends AppCompatActivity {
         String idTH = edtmathuonghieu.getText().toString().trim();
         int soluongKho = Integer.parseInt(edtsoluongKho.getText().toString().trim());
         int giaGoc = Integer.parseInt(edtgiaGoc.getText().toString().trim());
-        SanPham sanPham = new SanPham(key,tenSP,hinhSP,giaSP,"",motaSP,idTH,soluongKho,giaGoc);
-        reference.child(key).setValue(sanPham);
-        Toast.makeText(Activity_ThemSP.this,"Thêm sản phẩm thành công",Toast.LENGTH_SHORT).show();
-        finish();
+        listTH.forEach(thuongHieu -> {
+            if (thuongHieu.getID().equals(idTH)){
+                isCheck.set(true);
+            }
+        });
+        if(!isCheck.get()){
+            edtmathuonghieu.setError("Mã thương hiệu không đúng");
+        }else {
+            SanPham sanPham = new SanPham(key,tenSP,hinhSP,giaSP,motaSP,idTH,soluongKho,giaGoc);
+            reference.child(key).setValue(sanPham);
+            reference.child(key).child("soluong").removeValue();
+            reference.child(key).child("yeuThich").removeValue();
+            Toast.makeText(Activity_ThemSP.this,"Thêm sản phẩm thành công",Toast.LENGTH_SHORT).show();
+            finish();
+        }
+    }
+    private void readData() {
+        referenceTH = FirebaseDatabase.getInstance().getReference().child("thuonghieu");
+        referenceTH.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    String key = ds.getKey();
+                    ThuongHieu th = new ThuongHieu(key,"","");
+                    listTH.add(th);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
     private void askCameraPermissions(){
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
@@ -220,7 +267,78 @@ public class Activity_ThemSP extends AppCompatActivity {
             }
         }
     }
+    private Boolean validateTenSP (){
+        String val = edttenSP.getText().toString();
 
+        if(val.isEmpty()){
+            edttenSP.setError("Vui lòng nhập tên sản phẩm");
+            return false;
+        }
+        else {
+            edttenSP.setError(null);
+            return true;
+        }
+    }
+    private Boolean validateMaTH (){
+        String val = edtmathuonghieu.getText().toString();
+
+        if(val.isEmpty()){
+            edtmathuonghieu.setError("Vui lòng nhập mã thương hiệu");
+            return false;
+        }
+        else {
+            edttenSP.setError(null);
+            return true;
+        }
+    }
+    private Boolean validateGiaGoc (){
+        String val = edtgiaGoc.getText().toString();
+
+        if(val.isEmpty()){
+            edtgiaGoc.setError("Vui lòng nhập giá gốc của sản phẩm");
+            return false;
+        }
+        else {
+            edtgiaGoc.setError(null);
+            return true;
+        }
+    }
+    private Boolean validateGiaSP (){
+        String val = edtgiaSP.getText().toString();
+
+        if(val.isEmpty()){
+            edtgiaSP.setError("Vui lòng nhập giá sản phẩm");
+            return false;
+        }
+        else {
+            edtgiaSP.setError(null);
+            return true;
+        }
+    }
+    private Boolean validateMotaSP (){
+        String val = edtmotaSP.getText().toString();
+
+        if(val.isEmpty()){
+            edtmotaSP.setError("Vui lòng nhập mô tả sản phẩm");
+            return false;
+        }
+        else {
+            edtmotaSP.setError(null);
+            return true;
+        }
+    }
+    private Boolean validateSoLuongKho (){
+        String val = edtsoluongKho.getText().toString();
+
+        if(val.isEmpty()){
+            edtsoluongKho.setError("Vui lòng nhập số lượng kho");
+            return false;
+        }
+        else {
+            edtsoluongKho.setError(null);
+            return true;
+        }
+    }
     @Override
     protected void onStart() {
         super.onStart();

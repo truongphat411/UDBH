@@ -1,8 +1,6 @@
 package com.example.appbanhang.models;
 
 public class SanPham {
-
-
     private String idSP;
     private int giaGoc;
 
@@ -44,7 +42,7 @@ public class SanPham {
         this.soluong = soluong;
     }
 
-    private int soluong = 0;
+    private int soluong;
 
     public boolean isYeuThich() {
         return isYeuThich;
@@ -52,7 +50,6 @@ public class SanPham {
     public void setYeuThich(boolean yeuThich) {
         isYeuThich = yeuThich;
     }
-    private String tenTH;
     private String motaSP;
     private String idTH;
 
@@ -72,18 +69,16 @@ public class SanPham {
         this.motaSP = motaSP;
     }
 
-    public SanPham(String idSP, String tenSP, String hinhSP, int giaSP, String tenTH, String motaSP,String idTH,int soluongKho,int giaGoc) {
+    public SanPham(String idSP, String tenSP, String hinhSP, int giaSP, String motaSP,String idTH,int soluongKho,int giaGoc) {
         this.idSP = idSP;
         this.tenSP = tenSP;
         this.hinhSP = hinhSP;
         this.giaSP = giaSP;
-        this.tenTH = tenTH;
         this.motaSP = motaSP;
         this.idTH = idTH;
         this.soluongKho = soluongKho;
         this.giaGoc = giaGoc;
     }
-
     public String getTenSP() {
         return tenSP;
     }
@@ -106,13 +101,5 @@ public class SanPham {
 
     public void setGiaSP(int giaSP) {
         this.giaSP = giaSP;
-    }
-
-    public String getTenTH() {
-        return tenTH;
-    }
-
-    public void setTenTH(String tenTH) {
-        this.tenTH = tenTH;
     }
 }

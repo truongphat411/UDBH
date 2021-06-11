@@ -66,7 +66,7 @@ public class activity_capnhatthuonghieu extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chitietthuonghieu);
-        storageReference = FirebaseStorage.getInstance().getReferenceFromUrl("gs://udbh-35c1f.appspot.com");
+        storageReference = FirebaseStorage.getInstance().getReferenceFromUrl("gs://udbh-c1d85.appspot.com");
         anhxa();
         btncapnhatTH.setOnClickListener(new View.OnClickListener() {
             @Override

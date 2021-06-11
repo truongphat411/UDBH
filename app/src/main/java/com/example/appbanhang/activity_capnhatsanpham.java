@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -32,6 +33,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import com.example.appbanhang.models.SanPham;
+import com.example.appbanhang.models.ThuongHieu;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseError;
@@ -54,7 +56,9 @@ import org.jetbrains.annotations.NotNull;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class activity_capnhatsanpham extends AppCompatActivity {
     EditText edttenSP,edtgiaSP,edtmotaSP,edtmathuonghieu,edtsoluongKho,edtgiaGoc;
@@ -62,6 +66,8 @@ public class activity_capnhatsanpham extends AppCompatActivity {
     Button btncapnhatSP,btnxoaSP;
     String idSP;
     DatabaseReference reference;
+    DatabaseReference referenceTH;
+    ArrayList<ThuongHieu> listTH = new ArrayList<>();
     ImageButton imgBack,imgcamera;
     public static final int CAMERA_PERM_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;
@@ -73,12 +79,17 @@ public class activity_capnhatsanpham extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chitietcapnhat);
+        readData();
         storageReference = FirebaseStorage.getInstance().getReferenceFromUrl("gs://udbh-c1d85.appspot.com");
         anhxa();
         btncapnhatSP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!validateTenSP() || !validateGiaGoc() || !validateGiaSP() || !validateMaTH() || !validateSoLuongKho() || !validateMotaSP()){
+                    return;
+                }else {
                     CapNhatSP();
+                }
             }
         });
         btnxoaSP.setOnClickListener(new View.OnClickListener() {
@@ -134,24 +145,52 @@ public class activity_capnhatsanpham extends AppCompatActivity {
         edtgiaGoc.setText(String.valueOf(intent.getIntExtra("giaGoc",0)));
     }
     private void CapNhatSP(){
+        AtomicBoolean isCheck = new AtomicBoolean();
         reference = FirebaseDatabase.getInstance().getReference().child("sanpham");
         Query query = reference.orderByChild("idSP").equalTo(idSP);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    reference.child(String.valueOf(idSP)).child("tenSP").setValue(edttenSP.getText().toString().trim());
-                    reference.child(String.valueOf(idSP)).child("giaSP").setValue(Integer.parseInt(edtgiaSP.getText().toString().trim()));
-                    reference.child(String.valueOf(idSP)).child("motaSP").setValue(edtmotaSP.getText().toString().trim());
-                    reference.child(String.valueOf(idSP)).child("soluongKho").setValue(Integer.parseInt(edtsoluongKho.getText().toString().trim()));
-                    reference.child(String.valueOf(idSP)).child("idTH").setValue(edtmathuonghieu.getText().toString().trim());
-                    reference.child(String.valueOf(idSP)).child("giaGoc").setValue(Integer.parseInt(edtgiaGoc.getText().toString().trim()));
-                    Toast.makeText(activity_capnhatsanpham.this,"Cập nhật thành công",Toast.LENGTH_SHORT).show();
-                    finish();
+                    listTH.forEach(thuongHieu -> {
+                        if(thuongHieu.getID().equals(edtmathuonghieu.getText().toString().trim())){
+                            isCheck.set(true);
+                        }
+                    });
+                    if(!isCheck.get()){
+                        edtmathuonghieu.setError("Mã thương hiệu không đúng");
+                    }else {
+                        reference.child(String.valueOf(idSP)).child("tenSP").setValue(edttenSP.getText().toString().trim());
+                        reference.child(String.valueOf(idSP)).child("giaSP").setValue(Integer.parseInt(edtgiaSP.getText().toString().trim()));
+                        reference.child(String.valueOf(idSP)).child("motaSP").setValue(edtmotaSP.getText().toString().trim());
+                        reference.child(String.valueOf(idSP)).child("soluongKho").setValue(Integer.parseInt(edtsoluongKho.getText().toString().trim()));
+                        reference.child(String.valueOf(idSP)).child("idTH").setValue(edtmathuonghieu.getText().toString().trim());
+                        reference.child(String.valueOf(idSP)).child("giaGoc").setValue(Integer.parseInt(edtgiaGoc.getText().toString().trim()));
+                        Toast.makeText(activity_capnhatsanpham.this,"Cập nhật thành công",Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+    private void readData() {
+        referenceTH = FirebaseDatabase.getInstance().getReference().child("thuonghieu");
+        referenceTH.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    String key = ds.getKey();
+                    ThuongHieu th = new ThuongHieu(key,"","");
+                    listTH.add(th);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }
@@ -291,6 +330,78 @@ public class activity_capnhatsanpham extends AppCompatActivity {
                 }
             }
         }
+    private Boolean validateTenSP (){
+        String val = edttenSP.getText().toString();
+
+        if(val.isEmpty()){
+            edttenSP.setError("Vui lòng nhập tên sản phẩm");
+            return false;
+        }
+        else {
+            edttenSP.setError(null);
+            return true;
+        }
+    }
+    private Boolean validateMaTH (){
+        String val = edtmathuonghieu.getText().toString();
+
+        if(val.isEmpty()){
+            edtmathuonghieu.setError("Vui lòng nhập mã thương hiệu");
+            return false;
+        }
+        else {
+            edttenSP.setError(null);
+            return true;
+        }
+    }
+    private Boolean validateGiaGoc (){
+        String val = edtgiaGoc.getText().toString();
+
+        if(val.isEmpty()){
+            edtgiaGoc.setError("Vui lòng nhập giá gốc của sản phẩm");
+            return false;
+        }
+        else {
+            edtgiaGoc.setError(null);
+            return true;
+        }
+    }
+    private Boolean validateGiaSP (){
+        String val = edtgiaSP.getText().toString();
+
+        if(val.isEmpty()){
+            edtgiaSP.setError("Vui lòng nhập giá sản phẩm");
+            return false;
+        }
+        else {
+            edtgiaSP.setError(null);
+            return true;
+        }
+    }
+    private Boolean validateMotaSP (){
+        String val = edtmotaSP.getText().toString();
+
+        if(val.isEmpty()){
+            edtmotaSP.setError("Vui lòng nhập mô tả sản phẩm");
+            return false;
+        }
+        else {
+            edtmotaSP.setError(null);
+            return true;
+        }
+    }
+    private Boolean validateSoLuongKho (){
+        String val = edtsoluongKho.getText().toString();
+
+        if(val.isEmpty()){
+            edtsoluongKho.setError("Vui lòng nhập số lượng kho");
+            return false;
+        }
+        else {
+            edtsoluongKho.setError(null);
+            return true;
+        }
+    }
     @Override
     protected void onStart() {
         super.onStart();

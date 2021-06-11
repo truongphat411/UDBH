@@ -51,7 +51,7 @@ public class FragmentChoXacNhan extends Fragment {
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     String key = ds.child("id").getValue(String.class);
                     String idUser = ds.child("idUser").getValue(String.class);
-                    String ngayTaoDon = ds.child("ngaytaodon").getValue(String.class);
+                    String ngaydukien = ds.child("ngaydukien").getValue(String.class);
                     String tenUser = ds.child("hoten").getValue(String.class);
                     String sodienthoai = ds.child("sodienthoai").getValue(String.class);
                     int tongtien = ds.child("tongtien").getValue(Integer.class);
@@ -69,7 +69,7 @@ public class FragmentChoXacNhan extends Fragment {
                         isTaiKhoan.set(true);
                     }
                     if(isTaiKhoan.get() && !isDatontai.get()){
-                        HoaDon hd = new HoaDon(key,tongtien,ngayTaoDon,"",tenUser,sodienthoai,diachi,trangthai,idUser,"",laisuat);
+                        HoaDon hd = new HoaDon(key,tongtien,ngaydukien,"",tenUser,sodienthoai,diachi,trangthai,idUser,"",laisuat);
                         listCXN.add(hd);
                     }
                     adapter.notifyDataSetChanged();

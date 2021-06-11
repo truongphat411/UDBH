@@ -13,14 +13,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class FragmentChuaDangNhap extends Fragment {
-    TextView txtDNDK,txtXemTT;
+    TextView txtDNDK,txtXemTT,txtthongtinlienhe;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragmentchuadangnhap,container,false);
-        txtDNDK = (TextView) view.findViewById(R.id.txtDNDK);
-        txtXemTT = (TextView) view.findViewById(R.id.txtXemTT);
-
+        txtDNDK =  view.findViewById(R.id.txtDNDK);
+        txtXemTT =  view.findViewById(R.id.txtXemTT);
+        txtthongtinlienhe = view.findViewById(R.id.txtthongtinlienhe);
         txtDNDK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,6 +29,13 @@ public class FragmentChuaDangNhap extends Fragment {
             }
         });
         txtXemTT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),FormDNDK.class);
+                startActivity(intent);
+            }
+        });
+        txtthongtinlienhe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),FormDNDK.class);

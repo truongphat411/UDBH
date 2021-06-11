@@ -49,6 +49,7 @@
         <activity android:name="com.example.appbanhang.activity_capnhatthuonghieu" />
         <activity android:name="com.example.appbanhang.CTHoaDon_admin" />
         <activity android:name="com.example.appbanhang.ThongKe" />
+        <activity android:name="com.example.appbanhang.TTLH" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

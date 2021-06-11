@@ -98,11 +98,10 @@ public class chiTietSanPham extends AppCompatActivity {
         String hinh = intent.getStringExtra("hinh");
         int gia = intent.getIntExtra("gia",0);
         String mota = intent.getStringExtra("mota");
-        String tenth = intent.getStringExtra("tenth");
         String idth = intent.getStringExtra("idTH");
         int soluongKho = intent.getIntExtra("soluongKho",0);
         int giaGoc = intent.getIntExtra("giaGoc",0);
-        sanPhamSelected = new SanPham(id,ten,hinh,gia,tenth,mota,idth,soluongKho,giaGoc);
+        sanPhamSelected = new SanPham(id,ten,hinh,gia,mota,idth,soluongKho,giaGoc);
 
 
         Picasso.with(chiTietSanPham.this).load(hinh).into(image_sanpham);

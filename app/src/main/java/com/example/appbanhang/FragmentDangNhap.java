@@ -1,21 +1,27 @@
 package com.example.appbanhang;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +56,7 @@ public class FragmentDangNhap extends Fragment {
     public static final  String SHARED_PREFS = "sharedPrefs";
     DatabaseReference referenceLSTC;
     LichSuTruyCap lichSuTruyCap;
+    TextView txtquenmk;
     private final AtomicBoolean isCheckPass = new AtomicBoolean();
     @Nullable
     @Override
@@ -59,6 +66,7 @@ public class FragmentDangNhap extends Fragment {
         edtmatkhau = view.findViewById(R.id.edtmatkhau);
         btnDangNhap = view.findViewById(R.id.btnDangNhap);
         imbPassword = view.findViewById(R.id.imbPassword);
+        txtquenmk = view.findViewById(R.id.txtquenmk);
         imbPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +79,13 @@ public class FragmentDangNhap extends Fragment {
                     edtmatkhau.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     isCheckPass.set(false);
                 }
+            }
+        });
+        txtquenmk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),Quen_MK.class);
+                startActivity(intent);
             }
         });
         referenceLSTC = FirebaseDatabase.getInstance().getReference().child("lichsutruycap");
@@ -189,7 +204,6 @@ public class FragmentDangNhap extends Fragment {
 
             }
         });
-
     }
     public void saveData(){
         SharedPreferences sharedPreferences = Objects.requireNonNull(getActivity()).getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);

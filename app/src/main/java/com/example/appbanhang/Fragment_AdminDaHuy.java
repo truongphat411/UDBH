@@ -69,11 +69,20 @@ public class Fragment_AdminDaHuy extends Fragment {
                     }
                     }
                     adapter.notifyDataSetChanged();
-                if (listDH.size() == 0) {
+                /*if (listDH.size() == 0) {
                     donHangTrong fragment = new donHangTrong();
                     FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.frameADMINdahuy, fragment);
                     fragmentTransaction.commit();
+                }*/
+                donHangTrong fragment = new donHangTrong();
+                if (listDH.size() == 0) {
+                    getFragmentManager().beginTransaction().add(R.id.frameADMINdahuy, fragment, "admin_dahuy").commit();
+                } else {
+                    Fragment f = getFragmentManager().findFragmentByTag("admin_dahuy");
+                    if (f != null) {
+                        getActivity().getSupportFragmentManager().beginTransaction().remove(f).commitAllowingStateLoss();
+                    }
                 }
             }
 

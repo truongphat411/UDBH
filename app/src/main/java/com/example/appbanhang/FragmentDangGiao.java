@@ -72,14 +72,24 @@ public class FragmentDangGiao extends Fragment {
                         HoaDon hd = new HoaDon(key, tongtien, ngaydukien, "", tenUser, sodienthoai, diachi, trangthai, idUser,lido,laisuat);
                         listDG.add(hd);
                     }
-                    adapter.notifyDataSetChanged();
                 }
-                if(listDG.size() == 0){
+                adapter.notifyDataSetChanged();
+                donHangTrong fragment = new donHangTrong();
+                if (listDG.size() == 0) {
+                    getFragmentManager().beginTransaction().add(R.id.framedanggiao, fragment, "danggiao").commit();
+                } else {
+                    Fragment f = getFragmentManager().findFragmentByTag("danggiao");
+                    if (f != null) {
+                        getActivity().getSupportFragmentManager().beginTransaction().remove(f).commitAllowingStateLoss();
+                    }
+                }
+                /*if(listDG.size() == 0){
                     donHangTrong fragment = new donHangTrong();
                     FragmentTransaction fragmentTransaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.framedanggiao, fragment);
                     fragmentTransaction.commit();
-                }
+                }*/
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

@@ -36,7 +36,7 @@ public class RecyclerViewDonHang extends RecyclerView.Adapter<RecyclerViewDonHan
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtmadonhang.setText("Mã đơn hàng: "+hoaDonArrayList.get(position).getId());
-        holder.txtngaydukien.setText("Hàng sẽ được xác nhận trước: "+hoaDonArrayList.get(position).getNgaydukien());
+        holder.txtngaydukien.setText("Hàng sẽ được chuyển đi trước: "+hoaDonArrayList.get(position).getNgaydukien());
         holder.txttongtien.setText(String.valueOf(hoaDonArrayList.get(position).getTongtien())+"đ");
         holder.rlItemHD.setOnClickListener(new View.OnClickListener() {
             @Override

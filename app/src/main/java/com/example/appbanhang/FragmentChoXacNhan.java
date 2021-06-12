@@ -72,13 +72,22 @@ public class FragmentChoXacNhan extends Fragment {
                         HoaDon hd = new HoaDon(key,tongtien,ngaydukien,"",tenUser,sodienthoai,diachi,trangthai,idUser,"",laisuat);
                         listCXN.add(hd);
                     }
-                    adapter.notifyDataSetChanged();
                 }
-                if(listCXN.size() == 0){
+                adapter.notifyDataSetChanged();
+                /*if(listCXN.size() == 0){
                     donHangTrong fragment = new donHangTrong();
                     FragmentTransaction fragmentTransaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.framechoxacnhan, fragment);
                     fragmentTransaction.commit();
+                }*/
+                donHangTrong fragment = new donHangTrong();
+                if (listCXN.size() == 0) {
+                    getFragmentManager().beginTransaction().add(R.id.framechoxacnhan, fragment, "choxacnhan").commit();
+                } else {
+                    Fragment f = getFragmentManager().findFragmentByTag("choxacnhan");
+                    if (f != null) {
+                        getActivity().getSupportFragmentManager().beginTransaction().remove(f).commitAllowingStateLoss();
+                    }
                 }
             }
             @Override

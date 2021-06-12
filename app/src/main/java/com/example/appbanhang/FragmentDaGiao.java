@@ -73,13 +73,22 @@ public class FragmentDaGiao extends Fragment {
                         HoaDon hd = new HoaDon(key, tongtien, ngaydukien, "", tenUser, sodienthoai, diachi, trangthai, idUser,lido,laisuat);
                         listDG.add(hd);
                     }
-                    adapter.notifyDataSetChanged();
                 }
-                if(listDG.size() == 0){
+                adapter.notifyDataSetChanged();
+                /*if(listDG.size() == 0){
                     donHangTrong fragment = new donHangTrong();
                     FragmentTransaction fragmentTransaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.frameDaGiao, fragment);
                     fragmentTransaction.commit();
+                }*/
+                donHangTrong fragment = new donHangTrong();
+                if (listDG.size() == 0) {
+                    getFragmentManager().beginTransaction().add(R.id.frameDaGiao, fragment, "dagiao").commit();
+                } else {
+                    Fragment f = getFragmentManager().findFragmentByTag("dagiao");
+                    if (f != null) {
+                        getActivity().getSupportFragmentManager().beginTransaction().remove(f).commitAllowingStateLoss();
+                    }
                 }
             }
             @Override

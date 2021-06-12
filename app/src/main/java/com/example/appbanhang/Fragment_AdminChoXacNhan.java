@@ -69,11 +69,20 @@ public class Fragment_AdminChoXacNhan extends Fragment {
                         }
                     }
                     adapter.notifyDataSetChanged();
-                    if(listCXN.size() == 0){
+                   /* if(listCXN.size() == 0){
                     donHangTrong fragment = new donHangTrong();
                     FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.frameADMINchoxacnhan, fragment);
                     fragmentTransaction.commit();
+                }*/
+                donHangTrong fragment = new donHangTrong();
+                if (listCXN.size() == 0) {
+                    getFragmentManager().beginTransaction().add(R.id.frameADMINchoxacnhan, fragment, "admin_choxacnhan").commit();
+                } else {
+                    Fragment f = getFragmentManager().findFragmentByTag("admin_choxacnhan");
+                    if (f != null) {
+                        getActivity().getSupportFragmentManager().beginTransaction().remove(f).commitAllowingStateLoss();
+                    }
                 }
             }
             @Override

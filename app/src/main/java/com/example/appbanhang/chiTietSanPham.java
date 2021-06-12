@@ -85,7 +85,6 @@ public class chiTietSanPham extends AppCompatActivity {
                 if(sanPhamSelected.getSoluong() >= sanPhamSelected.getSoluongKho()){
                     btnThemGioHang.setEnabled(false);
                     btnThemGioHang.setBackgroundColor(getResources().getColor(R.color.grey));
-                    Toast.makeText(chiTietSanPham.this, "Sản phẩm hiện đã hết.", Toast.LENGTH_SHORT).show();
                 }
                 saveData();
             }

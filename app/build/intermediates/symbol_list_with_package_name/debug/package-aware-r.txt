@@ -1892,6 +1892,7 @@ id edtgiaSP
 id edthoten
 id edtmathuonghieu
 id edtmatkhau
+id edtmatkhaumoi
 id edtmkCu
 id edtmkMoi
 id edtmotaSP
@@ -2241,6 +2242,7 @@ id txtnext
 id txtngaydh
 id txtngaydk
 id txtngaythamgia
+id txtquenmk
 id txtsodienthoai
 id txtsoluong
 id txtsoluongdonmua
@@ -2401,6 +2403,8 @@ layout itemdonmua
 layout itemlstc
 layout layout_dialog_huydh
 layout layout_dialog_huydh_admin
+layout layout_matkhaumoi
+layout layout_quenmk
 layout lichsutruycap
 layout listfavorite
 layout me
@@ -2592,6 +2596,7 @@ string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
 string project_id
+string quen_mk
 string search_menu_title
 string status_bar_notification_info_overflow
 string title_dangky

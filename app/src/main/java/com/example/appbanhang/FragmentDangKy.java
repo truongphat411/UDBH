@@ -161,7 +161,6 @@ public class FragmentDangKy extends Fragment {
             edtsodienthoai.setError("Vui lòng nhập số điện thoại");
             return false;
         }
-
         else {
             edtsodienthoai.setError(null);
             return true;

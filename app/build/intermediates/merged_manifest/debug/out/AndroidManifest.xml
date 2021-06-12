@@ -50,6 +50,7 @@
         <activity android:name="com.example.appbanhang.CTHoaDon_admin" />
         <activity android:name="com.example.appbanhang.ThongKe" />
         <activity android:name="com.example.appbanhang.TTLH" />
+        <activity android:name="com.example.appbanhang.Quen_MK" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

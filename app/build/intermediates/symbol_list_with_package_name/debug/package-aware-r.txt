@@ -1962,6 +1962,7 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id image_DHT
 id image_hinhdonhang
 id image_hinhdonmua
 id image_hinhgiohang
@@ -2212,6 +2213,7 @@ id txtDS30N
 id txtDS7N
 id txtDSHN
 id txtDiaChiNhanHang
+id txtDonHangTrong
 id txtGiasp
 id txtLN30N
 id txtLN7N
@@ -2385,8 +2387,6 @@ layout fragmentdadangnhap
 layout fragmentdagiao
 layout fragmentdahuy
 layout fragmentdanggiao
-layout fragmentdonhang
-layout fragmentdonmua
 layout fragmentlistchoxacnhan
 layout giohang
 layout giohangthongtin

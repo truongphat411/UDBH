@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,11 +34,15 @@ public class FragmentDaHuy extends Fragment {
     RecyclerView recyclerView;
     DatabaseReference reference;
     RecyclerViewDonHang adapter;
+    ImageView image_DHT;
+    TextView txtDonHangTrong;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragmentdahuy,container,false);
         recyclerView = view.findViewById(R.id.listDaHuy);
+        image_DHT = view.findViewById(R.id.image_DHT);
+        txtDonHangTrong = view.findViewById(R.id.txtDonHangTrong);
         return view;
     }
     private void DataFromFirebaseListener() {
@@ -74,20 +80,12 @@ public class FragmentDaHuy extends Fragment {
                     }
                 }
                 adapter.notifyDataSetChanged();
-                /*if(listDH.size() == 0) {
-                    donHangTrong fragment = new donHangTrong();
-                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.frameDaHuy, fragment);
-                    fragmentTransaction.commit();
-                }*/
-                donHangTrong fragment = new donHangTrong();
-                if (listDH.size() == 0) {
-                    getFragmentManager().beginTransaction().add(R.id.frameDaHuy, fragment, "dahuy").commit();
-                } else {
-                    Fragment f = getFragmentManager().findFragmentByTag("dahuy");
-                    if (f != null) {
-                        getActivity().getSupportFragmentManager().beginTransaction().remove(f).commitAllowingStateLoss();
-                    }
+                if(listDH.size() == 0){
+                    image_DHT.setVisibility(View.VISIBLE);
+                    txtDonHangTrong.setVisibility(View.VISIBLE);
+                }else {
+                    image_DHT.setVisibility(View.GONE);
+                    txtDonHangTrong.setVisibility(View.GONE);
                 }
             }
 

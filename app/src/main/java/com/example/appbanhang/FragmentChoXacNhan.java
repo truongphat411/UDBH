@@ -8,11 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,15 +38,20 @@ public class FragmentChoXacNhan extends Fragment {
     RecyclerView recyclerView;
     DatabaseReference reference;
     RecyclerViewDonHang adapter;
+    ImageView image_DHT;
+    TextView txtDonHangTrong;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragmentchoxacnhan,container,false);
         recyclerView = view.findViewById(R.id.listChoXacNhan);
+        image_DHT = view.findViewById(R.id.image_DHT);
+        txtDonHangTrong = view.findViewById(R.id.txtDonHangTrong);
         return view;
     }
     private void DataFromFirebaseListener() {
         listCXN = new ArrayList<>();
+        reference = FirebaseDatabase.getInstance().getReference().child("hoadon");
         Query query = reference.orderByChild("trangthai").equalTo("Chờ Xác Nhận");
         query.addValueEventListener(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -74,20 +83,12 @@ public class FragmentChoXacNhan extends Fragment {
                     }
                 }
                 adapter.notifyDataSetChanged();
-                /*if(listCXN.size() == 0){
-                    donHangTrong fragment = new donHangTrong();
-                    FragmentTransaction fragmentTransaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.framechoxacnhan, fragment);
-                    fragmentTransaction.commit();
-                }*/
-                donHangTrong fragment = new donHangTrong();
-                if (listCXN.size() == 0) {
-                    getFragmentManager().beginTransaction().add(R.id.framechoxacnhan, fragment, "choxacnhan").commit();
-                } else {
-                    Fragment f = getFragmentManager().findFragmentByTag("choxacnhan");
-                    if (f != null) {
-                        getActivity().getSupportFragmentManager().beginTransaction().remove(f).commitAllowingStateLoss();
-                    }
+                if(listCXN.size() == 0){
+                    image_DHT.setVisibility(View.VISIBLE);
+                    txtDonHangTrong.setVisibility(View.VISIBLE);
+                }else {
+                    image_DHT.setVisibility(View.GONE);
+                    txtDonHangTrong.setVisibility(View.GONE);
                 }
             }
             @Override
@@ -99,11 +100,11 @@ public class FragmentChoXacNhan extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        reference = FirebaseDatabase.getInstance().getReference().child("hoadon");
         DataFromFirebaseListener();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new RecyclerViewDonHang(getActivity() , listCXN);
         recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 }

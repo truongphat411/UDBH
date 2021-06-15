@@ -100,31 +100,25 @@ public class giohangthongtin extends Fragment {
                         String ngaydukien = sdf.format(myCalendar.getTime());
                         String ngayhoanthanh = "";
                         String trangthai = "Chờ Xác Nhận";
-                        Log.d("hihi", "onClick: "+gioHangTinhTien.TT);
-                        Log.d("hihi", "onClick: "+gioHangTinhTien.laisuat);
                         HoaDon hoaDon = new HoaDon(keyHD,gioHangTinhTien.TT,ngaydukien,ngayhoanthanh,hoten,sodienthoai,diachi,trangthai,MainActivity.id,"",gioHangTinhTien.laisuat);
                         referenceHD.child(keyHD).setValue(hoaDon);
                         Toast.makeText(view.getContext(), "Tạo đơn hàng thành công", Toast.LENGTH_LONG).show();
                         MainActivity.listGH.clear();
                         saveData();
                         Intent intent = new Intent(getActivity(),donMua.class);
-                        intent.putExtra("idHD",keyHD);
                         startActivity(intent);
                     }else {
-                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                switch (which){
-                                    case DialogInterface.BUTTON_POSITIVE:
-                                        MainActivity.listGH.clear();
-                                        saveData();
-                                        break;
-                                }
-                            }
-                        };
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                         builder.setTitle("Thông báo");
-                        builder.setMessage("Một số sản phẩm không đủ số lượng.Vui lòng chọn sản phẩm mới vào giỏ hàng").setPositiveButton("OK", dialogClickListener).show();
+                        builder.setMessage("Một số sản phẩm không đủ số lượng.Vui lòng chọn sản phẩm mới vào giỏ hàng.");
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                MainActivity.listGH.clear();
+                                saveData();
+                            }
+                        });
+                        builder.show();
                     }
                     }
                 }

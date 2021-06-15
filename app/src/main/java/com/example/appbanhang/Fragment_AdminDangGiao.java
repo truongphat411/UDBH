@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,11 +33,15 @@ public class Fragment_AdminDangGiao extends Fragment {
     RecyclerView recyclerView;
     DatabaseReference reference;
     RecyclerViewDonHang_admin adapter;
+    ImageView image_DHT;
+    TextView txtDonHangTrong;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_admindanggiao,container,false);
         recyclerView = view.findViewById(R.id.listDangGiao);
+        image_DHT = view.findViewById(R.id.image_DHT);
+        txtDonHangTrong = view.findViewById(R.id.txtDonHangTrong);
         return view;
     }
     private void DataFromFirebaseListener() {
@@ -69,14 +75,12 @@ public class Fragment_AdminDangGiao extends Fragment {
                     }
                 }
                 adapter.notifyDataSetChanged();
-                donHangTrong fragment = new donHangTrong();
-                if (listDG.size() == 0) {
-                    getFragmentManager().beginTransaction().add(R.id.frameADMINdanggiao, fragment,"admin_danggiao").commit();
-                } else {
-                   Fragment f = getFragmentManager().findFragmentByTag("admin_danggiao");
-                    if (f != null) {
-                        getActivity().getSupportFragmentManager().beginTransaction().remove(f).commitAllowingStateLoss();
-                    }
+                if(listDG.size() == 0){
+                    image_DHT.setVisibility(View.VISIBLE);
+                    txtDonHangTrong.setVisibility(View.VISIBLE);
+                }else {
+                    image_DHT.setVisibility(View.GONE);
+                    txtDonHangTrong.setVisibility(View.GONE);
                 }
             }
             @Override

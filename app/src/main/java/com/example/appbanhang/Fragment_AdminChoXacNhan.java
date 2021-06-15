@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,12 +34,15 @@ public class Fragment_AdminChoXacNhan extends Fragment {
     RecyclerView recyclerView;
     DatabaseReference reference;
     RecyclerViewDonHang_admin adapter;
+    ImageView image_DHT;
+    TextView txtDonHangTrong;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_adminchoxacnhan,container,false);
         recyclerView = view.findViewById(R.id.listChoXacNhan);
-
+        image_DHT = view.findViewById(R.id.image_DHT);
+        txtDonHangTrong = view.findViewById(R.id.txtDonHangTrong);
         return view;
     }
     private void DataFromFirebaseListener() {
@@ -69,20 +75,12 @@ public class Fragment_AdminChoXacNhan extends Fragment {
                         }
                     }
                     adapter.notifyDataSetChanged();
-                   /* if(listCXN.size() == 0){
-                    donHangTrong fragment = new donHangTrong();
-                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.frameADMINchoxacnhan, fragment);
-                    fragmentTransaction.commit();
-                }*/
-                donHangTrong fragment = new donHangTrong();
-                if (listCXN.size() == 0) {
-                    getFragmentManager().beginTransaction().add(R.id.frameADMINchoxacnhan, fragment, "admin_choxacnhan").commit();
-                } else {
-                    Fragment f = getFragmentManager().findFragmentByTag("admin_choxacnhan");
-                    if (f != null) {
-                        getActivity().getSupportFragmentManager().beginTransaction().remove(f).commitAllowingStateLoss();
-                    }
+                if(listCXN.size() == 0){
+                    image_DHT.setVisibility(View.VISIBLE);
+                    txtDonHangTrong.setVisibility(View.VISIBLE);
+                }else {
+                    image_DHT.setVisibility(View.GONE);
+                    txtDonHangTrong.setVisibility(View.GONE);
                 }
             }
             @Override

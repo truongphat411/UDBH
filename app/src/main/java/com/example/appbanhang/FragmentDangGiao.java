@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,15 +35,19 @@ public class FragmentDangGiao extends Fragment {
     RecyclerView recyclerView;
     DatabaseReference reference;
     RecyclerViewDonHang adapter;
+    ImageView image_DHT;
+    TextView txtDonHangTrong;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragmentdanggiao,container,false);
         recyclerView = view.findViewById(R.id.listDangGiao);
+        image_DHT = view.findViewById(R.id.image_DHT);
+        txtDonHangTrong = view.findViewById(R.id.txtDonHangTrong);
         return view;
     }
     private void DataFromFirebaseListener() {
-        listDG = new ArrayList<HoaDon>();
+        listDG = new ArrayList<>();
         Query query = reference.orderByChild("trangthai").equalTo("Đang Giao");
         query.addValueEventListener(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -74,22 +80,13 @@ public class FragmentDangGiao extends Fragment {
                     }
                 }
                 adapter.notifyDataSetChanged();
-                donHangTrong fragment = new donHangTrong();
-                if (listDG.size() == 0) {
-                    getFragmentManager().beginTransaction().add(R.id.framedanggiao, fragment, "danggiao").commit();
-                } else {
-                    Fragment f = getFragmentManager().findFragmentByTag("danggiao");
-                    if (f != null) {
-                        getActivity().getSupportFragmentManager().beginTransaction().remove(f).commitAllowingStateLoss();
-                    }
+                if(listDG.size() == 0){
+                    image_DHT.setVisibility(View.VISIBLE);
+                    txtDonHangTrong.setVisibility(View.VISIBLE);
+                }else {
+                    image_DHT.setVisibility(View.GONE);
+                    txtDonHangTrong.setVisibility(View.GONE);
                 }
-                /*if(listDG.size() == 0){
-                    donHangTrong fragment = new donHangTrong();
-                    FragmentTransaction fragmentTransaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.framedanggiao, fragment);
-                    fragmentTransaction.commit();
-                }*/
-
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

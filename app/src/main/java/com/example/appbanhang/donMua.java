@@ -28,7 +28,6 @@ public class donMua extends AppCompatActivity {
         imBack = findViewById(R.id.imgb);
         viewPager = findViewById(R.id.viewpaper);
         Intent intent = getIntent();
-        String idHD = intent.getStringExtra("idHD");
         imBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
